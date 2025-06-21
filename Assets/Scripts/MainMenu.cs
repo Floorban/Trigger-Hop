@@ -5,8 +5,8 @@ using DG.Tweening;
 using static Unity.VisualScripting.Member;
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button startButton, settingsButton,quitButton;
-    [SerializeField] private GameObject levelSelectionMenu, settingsMenu;
+    [SerializeField] private Button startButton, settingsButton, quitButton;
+    [SerializeField] private GameObject mainMenu, levelSelectionMenu, settingsMenu;
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
     private void Awake()
@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
             levelSelectionMenu.SetActive(false);
             levelSelectionMenu.transform.localScale = Vector3.zero;
         }
+        if (mainMenu) mainMenu.SetActive(true);
     }
     private void InitButtons()
     {
@@ -49,12 +50,13 @@ public class MainMenu : MonoBehaviour
         PlayButtonSfx(buttonSound, buttonClickClip);
         PlayButtonAnim(startButton.gameObject, () =>
         {
+            mainMenu.SetActive(false);
             // Logic after animation completes
             if (levelSelectionMenu)
             {
                 levelSelectionMenu.SetActive(true);
                 // Animate menu slide-in
-                levelSelectionMenu.transform.DOScale(Vector3.one, 0.8f).SetEase(Ease.OutElastic, 1.5f);
+                levelSelectionMenu.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
             }
         });
     }
@@ -63,6 +65,7 @@ public class MainMenu : MonoBehaviour
         PlayButtonSfx(buttonSound, buttonClickClip);
         PlayButtonAnim(settingsButton.gameObject, () =>
         {
+            mainMenu.SetActive(false);
             if (settingsMenu)
             {
                 settingsMenu.SetActive(true);
@@ -73,13 +76,33 @@ public class MainMenu : MonoBehaviour
     private void QuitGame()
     {
         PlayButtonSfx(buttonSound, buttonClickClip);
-        PlayButtonAnim(quitButton.gameObject, () =>
+/*        PlayButtonAnim(quitButton.gameObject, () =>
         {
             Application.Quit();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        });
+        });*/
+
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+    public void ReturnMainMenu(GameObject currentMenu)
+    {
+        PlayButtonSfx(buttonSound, buttonClickClip);
+/*        PlayButtonAnim(backButton, () => 
+            currentMenu.transform.DOScale(Vector3.zero, 0.8f)
+                .SetEase(Ease.OutElastic, 1.5f)
+                .OnComplete(() => currentMenu.SetActive(false)));*/
+
+        currentMenu.SetActive(false);
+        currentMenu.transform.localScale = Vector3.zero;
+
+        mainMenu.SetActive(true);
+        mainMenu.transform.localScale = Vector3.zero;
+        mainMenu.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
     }
     private void PlayButtonSfx(AudioSource source, AudioClip clip)
     {
@@ -88,7 +111,9 @@ public class MainMenu : MonoBehaviour
     private void PlayButtonAnim(GameObject targetButton, UnityAction onComplete)
     {
         if (targetButton)
-            targetButton.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f, 2, 0.2f).SetEase(Ease.InOutQuad).OnComplete(() => onComplete?.Invoke()); // Scale punch animation
+            targetButton.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f, 2, 0.2f) // Scale punch animation
+                                    .SetEase(Ease.InOutQuad)
+                                    .OnComplete(() => onComplete?.Invoke()); 
         else
             onComplete?.Invoke();
     }

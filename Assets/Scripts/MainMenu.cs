@@ -104,6 +104,7 @@ public class MainMenu : MonoBehaviour
         mainMenu.transform.localScale = Vector3.zero;
         mainMenu.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
     }
+    public void SocialButtonClicked(string website) => Application.OpenURL(website);
     private void PlayButtonSfx(AudioSource source, AudioClip clip)
     {
         if (source && clip) source.PlayOneShot(clip);

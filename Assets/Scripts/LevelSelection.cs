@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class LevelSelection : MonoBehaviour
 {
     [SerializeField] private Button[] levelButtons;
-    [SerializeField] private int currentLevel;
+    private int currentLevel;
+    private int lastTopButtonIndex = -1;
     [SerializeField] private float radius = 200f;
     [SerializeField] private float friction = 0.98f;
     [SerializeField] private float rotationSensitivity = 0.5f;
@@ -26,7 +27,41 @@ public class LevelSelection : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         SetupRadialLayout();
     }
+    private void Start()
+    {
+        InitFirstLevelButton(0);
+    }
+    private void SetupRadialLayout()
+    {
+        currentAngle = 0f;
+        rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
 
+        if (!ValidateButtons()) return;
+
+        angleStep = 360f / levelButtons.Length;
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            if (levelButtons[i] != null)
+            {
+                float angle = i * angleStep * Mathf.Deg2Rad;
+                Vector2 pos = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
+                RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
+                buttonRect.anchoredPosition = pos;
+                int index = i;
+                levelButtons[i].onClick.AddListener(() =>
+                {
+                    SelectLevel(index);
+                    RotateButtonToTop(index);
+                });
+            }
+        }
+    }
+    public void InitFirstLevelButton(int buttonIndex)
+    {
+        if (!ValidateButtons()) return;
+        SelectLevel(buttonIndex);
+        RotateButtonToTop(buttonIndex);
+    }
     private void Update()
     {
         if (Mathf.Abs(angularVelocity) > 0.01f)
@@ -48,6 +83,78 @@ public class LevelSelection : MonoBehaviour
         }
 
         UpdateButtonRotations();
+    }
+    private void HandleFingerUpdate(LeanFinger finger)
+    {
+        if (finger.IsOverGui)
+        {
+            float deltaAngle = -finger.ScaledDelta.x * rotationSensitivity;
+            currentAngle += deltaAngle;
+            rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+            angularVelocity = deltaAngle / Time.deltaTime * 0.5f;
+        }
+    }
+    private void UpdateButtonRotations()
+    {
+        if (!ValidateButtons()) return;
+
+        int topButtonIndex = GetNearestButtonIndex();
+
+        for (int i = 0; i < levelButtons.Length; i++)
+        {
+            if (levelButtons[i] != null)
+            {
+                float angle = -i * angleStep + currentAngle;
+                RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
+                buttonRect.rotation = Quaternion.Euler(0f, 0f, angle);
+            }
+        }
+
+        if (topButtonIndex != lastTopButtonIndex) //&& !isSnapping
+        {
+            ScaleDownNonSelectedButtons();
+            lastTopButtonIndex = topButtonIndex;
+        }
+    }
+    private void SelectLevel(int index)
+    {
+        if (!canSelect) return;
+        currentLevel = index + 1;
+    }
+
+    public void StartLevel()
+    {
+        if (!canSelect || currentLevel <= 0) return;
+
+        Debug.Log($"Loading Level {currentLevel}");
+        PlayButtonSfx();
+        SceneManager.LoadScene(currentLevel);
+    }
+
+    public void RotateButtonToTop(int buttonIndex)
+    {
+        if (!ValidateButtons()) return;
+
+        float targetButtonAngle = buttonIndex * angleStep;
+        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
+        float angleDiff = Mathf.DeltaAngle(normalizedAngle, targetButtonAngle);
+
+        isSnapping = true;
+
+        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.4f)
+            .SetEase(Ease.InOutCubic)
+            .OnUpdate(() =>
+            {
+                rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+                UpdateButtonRotations();
+            })
+            .OnComplete(() =>
+            {
+                isSnapping = false;
+                PlayScaleEffect(buttonIndex);
+                ScaleDownNonSelectedButtons();
+                lastTopButtonIndex = buttonIndex;
+            });
     }
 
     private void SnapToNearestSlot()
@@ -81,83 +188,10 @@ public class LevelSelection : MonoBehaviour
         scaleSequence.Append(btn.DOScale(1.5f, 0.15f).SetEase(Ease.OutQuad));
         scaleSequence.Append(btn.DOScale(1f, 0.1f).SetEase(Ease.InQuad));*/
 
-        btn.DOScale(1.5f, 0.2f).SetEase(Ease.OutQuad)
-            .OnComplete(() => btn.DOScale(1.2f, 0.15f).SetEase(Ease.InQuad));
+        btn.DOScale(1.7f, 0.2f).SetEase(Ease.OutQuad)
+            .OnComplete(() => btn.DOScale(1.4f, 0.15f).SetEase(Ease.InQuad));
     }
 
-    public void RotateButtonToTop(int buttonIndex)
-    {
-        if (!ValidateButtons()) return;
-
-        float targetButtonAngle = buttonIndex * angleStep;
-        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
-        float angleDiff = Mathf.DeltaAngle(normalizedAngle, targetButtonAngle);
-
-        isSnapping = true;
-
-        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.4f)
-            .SetEase(Ease.InOutCubic)
-            .OnUpdate(() =>
-            {
-                rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-                UpdateButtonRotations();
-            })
-            .OnComplete(() =>
-            {
-                isSnapping = false;
-                PlayScaleEffect(buttonIndex);
-                ScaleDownNonSelectedButtons();
-                lastTopButtonIndex = buttonIndex;
-            });
-    }
-
-    private void SetupRadialLayout()
-    {
-        if (!ValidateButtons()) return;
-
-        angleStep = 360f / levelButtons.Length;
-        for (int i = 0; i < levelButtons.Length; i++)
-        {
-            if (levelButtons[i] != null)
-            {
-                float angle = i * angleStep * Mathf.Deg2Rad;
-                Vector2 pos = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
-                RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
-                buttonRect.anchoredPosition = pos;
-                int index = i;
-                levelButtons[i].onClick.AddListener(() =>
-                {
-                    SelectLevel(index, -index * angleStep);
-                    RotateButtonToTop(index);
-                });
-            }
-        }
-    }
-
-    private int lastTopButtonIndex = -1;
-
-    private void UpdateButtonRotations()
-    {
-        if (!ValidateButtons()) return;
-
-        int topButtonIndex = GetNearestButtonIndex();
-
-        for (int i = 0; i < levelButtons.Length; i++)
-        {
-            if (levelButtons[i] != null)
-            {
-                float angle = -i * angleStep + currentAngle;
-                RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
-                buttonRect.rotation = Quaternion.Euler(0f, 0f, angle);
-            }
-        }
-
-        if (topButtonIndex != lastTopButtonIndex) //&& !isSnapping
-        {
-            ScaleDownNonSelectedButtons();
-            lastTopButtonIndex = topButtonIndex;
-        }
-    }
     private void ScaleDownNonSelectedButtons()
     {
         if (!ValidateButtons()) return;
@@ -169,42 +203,15 @@ public class LevelSelection : MonoBehaviour
             {
                 RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
                 buttonRect.DOKill();
-                buttonRect.DOScale(1f, 0.1f).SetEase(Ease.InQuad);
+                buttonRect.DOScale(1f, 0.15f).SetEase(Ease.InQuad);
             }
         }
     }
-    private void HandleFingerUpdate(LeanFinger finger)
-    {
-        if (finger.IsOverGui)
-        {
-            float deltaAngle = -finger.ScaledDelta.x * rotationSensitivity;
-            currentAngle += deltaAngle;
-            rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-            angularVelocity = deltaAngle / Time.deltaTime * 0.5f;
-        }
-    }
-
-    private void SelectLevel(int index, float buttonAngle)
-    {
-        if (!canSelect) return;
-        currentLevel = index + 1;
-    }
-
-    public void StartLevel()
-    {
-        if (!canSelect || currentLevel <= 0) return;
-
-        Debug.Log($"Loading Level {currentLevel}");
-        PlayButtonSfx();
-        //SceneManager.LoadScene(currentLevel);
-    }
-
     private void PlayButtonSfx()
     {
         if (buttonSound != null && buttonClickClip != null)
             buttonSound.PlayOneShot(buttonClickClip);
     }
-
     private bool ValidateButtons()
     {
         return levelButtons != null && levelButtons.Length > 0;

@@ -48,11 +48,7 @@ public class LevelSelection : MonoBehaviour
                 RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
                 buttonRect.anchoredPosition = pos;
                 int index = i;
-                levelButtons[i].onClick.AddListener(() =>
-                {
-                    SelectLevel(index);
-                    RotateButtonToTop(index);
-                });
+                levelButtons[i].onClick.AddListener(() => SnapSelectedButtonToTop(index));
             }
         }
     }
@@ -60,7 +56,7 @@ public class LevelSelection : MonoBehaviour
     {
         if (!ValidateButtons()) return;
         SelectLevel(buttonIndex);
-        RotateButtonToTop(buttonIndex);
+        SnapSelectedButtonToTop(buttonIndex);
     }
     private void Update()
     {
@@ -70,11 +66,11 @@ public class LevelSelection : MonoBehaviour
             rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
             angularVelocity *= friction;
 
-            if (Mathf.Abs(angularVelocity) <= 5f && !isSnapping)
+            if (Mathf.Abs(angularVelocity) <= 5f)
             {
+                if (!isSnapping) SnapSelectedButtonToTop(lastTopButtonIndex);
                 angularVelocity = 0f;
                 isSnapping = true;
-                SnapToNearestSlot();
             }
         }
         else if (!isSnapping)
@@ -96,18 +92,9 @@ public class LevelSelection : MonoBehaviour
     }
     private void HandleFingerUp(LeanFinger finger)
     {
-/*        if (!isSnapping)
-        {
-            if (Mathf.Abs(angularVelocity) < 5f)
-            {
-                angularVelocity = 0f;
-                SnapToNearestSlot();
-            }
-        }*/
-
         if (finger.IsOverGui)
         {
-            angularVelocity = 0.1f; // Reset velocity on finger release
+            angularVelocity = 0.1f;
         }
     }
     private void UpdateButtonRotations()
@@ -148,7 +135,7 @@ public class LevelSelection : MonoBehaviour
         SceneManager.LoadScene(currentLevel);
     }
 
-    public void RotateButtonToTop(int buttonIndex)
+    public void SnapSelectedButtonToTop(int buttonIndex)
     {
         if (!ValidateButtons()) return;
 
@@ -160,37 +147,13 @@ public class LevelSelection : MonoBehaviour
 
         DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.2f)
             .SetEase(Ease.InOutCubic)
-            .OnUpdate(() =>
-            {
-                rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-                UpdateButtonRotations();
-            })
-            .OnComplete(() =>
-            {
-                isSnapping = false;
-                PlayScaleEffect(buttonIndex);
-                ScaleDownNonSelectedButtons();
-                lastTopButtonIndex = buttonIndex;
-            });
-    }
-
-    private void SnapToNearestSlot()
-    {
-        if (!ValidateButtons()) return;
-
-        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
-        float targetAngle = Mathf.Round(normalizedAngle / angleStep) * angleStep;
-        float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
-
-        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.2f)
-            .SetEase(Ease.OutQuad)
             .OnUpdate(() => rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle))
             .OnComplete(() =>
             {
                 isSnapping = false;
-                PlayScaleEffect(GetNearestButtonIndex());
-                ScaleDownNonSelectedButtons();
-                lastTopButtonIndex = GetNearestButtonIndex();
+                PlayScaleEffect(buttonIndex);
+                //ScaleDownNonSelectedButtons();
+                lastTopButtonIndex = buttonIndex;
                 SelectLevel(lastTopButtonIndex);
             });
     }

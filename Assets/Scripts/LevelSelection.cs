@@ -13,7 +13,8 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
 
-    [SerializeField] private float currentAngle = -90f;
+    private float currentAngle;
+    private float angleStep;
     private float angularVelocity;
     private RectTransform rectTransform;
 
@@ -32,6 +33,7 @@ public class LevelSelection : MonoBehaviour
     {
         LeanTouch.OnFingerUpdate -= HandleFingerUpdate;
     }
+    private bool isSnapping = false;
 
     private void Update()
     {
@@ -40,15 +42,43 @@ public class LevelSelection : MonoBehaviour
             currentAngle += angularVelocity * Time.deltaTime;
             rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
             angularVelocity *= friction;
+
+            // Once it's slow enough, prepare to snap, since the vel is reduced under the > 0.01 condition it can still run this logics inside
+            if (Mathf.Abs(angularVelocity) <= 0.01f && !isSnapping)
+            {
+                angularVelocity = 0f;
+                isSnapping = true;
+                SnapToNearestSlot();
+            }
         }
+        else if (!isSnapping)
+        {
+            // Ensure don't get stuck in a weird idle state
+            angularVelocity = 0f;
+        }
+
         UpdateButtonRotations();
+    }
+    private void SnapToNearestSlot()
+    {
+        if (levelButtons == null || levelButtons.Length == 0) return;
+
+        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
+        float targetAngle = Mathf.Round(normalizedAngle / angleStep) * angleStep;
+
+        float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.6f)
+            .SetEase(Ease.OutExpo)
+            .OnUpdate(() => rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle))
+            .OnComplete(() => isSnapping = false);
     }
 
     private void SetupRadialLayout()
     {
         if (levelButtons == null || levelButtons.Length == 0) return;
 
-        float angleStep = 360f / levelButtons.Length;
+        angleStep = 360f / levelButtons.Length;
         for (int i = 0; i < levelButtons.Length; i++)
         {
             if (levelButtons[i] != null)
@@ -67,8 +97,6 @@ public class LevelSelection : MonoBehaviour
     private void UpdateButtonRotations()
     {
         if (levelButtons == null || levelButtons.Length == 0) return;
-
-        float angleStep = 360f / levelButtons.Length;
 
         for (int i = 0; i < levelButtons.Length; i++)
         {

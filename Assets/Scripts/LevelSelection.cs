@@ -13,7 +13,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
 
-    private float currentAngle;
+    [SerializeField] private float currentAngle = -90f;
     private float angularVelocity;
     private RectTransform rectTransform;
 
@@ -53,9 +53,9 @@ public class LevelSelection : MonoBehaviour
         {
             if (levelButtons[i] != null)
             {
-                // Start button 0 at top (0бу)
-                float angle = -i * angleStep * Mathf.Deg2Rad; // Negative to put 0 at top
-                Vector2 pos = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+                // Start button 0 at top with no rotation
+                float angle = i * angleStep * Mathf.Deg2Rad;
+                Vector2 pos = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * radius;
                 RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
                 buttonRect.anchoredPosition = pos;
                 int index = i;
@@ -74,7 +74,7 @@ public class LevelSelection : MonoBehaviour
         {
             if (levelButtons[i] != null)
             {
-                float angle = -i * angleStep + currentAngle; // Apply rotation
+                float angle = -i * angleStep + currentAngle;
                 RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
                 buttonRect.rotation = Quaternion.Euler(0f, 0f, angle); // Rotate outward
             }
@@ -109,10 +109,7 @@ public class LevelSelection : MonoBehaviour
     private void PlayButtonSfx()
     {
         if (buttonSound != null && buttonClickClip != null)
-        {
             buttonSound.PlayOneShot(buttonClickClip);
-            Debug.Log("Playing button sound...");
-        }
     }
 
     private void OnDestroy()

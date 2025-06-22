@@ -70,7 +70,7 @@ public class LevelSelection : MonoBehaviour
             rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
             angularVelocity *= friction;
 
-            if (Mathf.Abs(angularVelocity) <= 0.1f && !isSnapping)
+            if (Mathf.Abs(angularVelocity) <= 5f && !isSnapping)
             {
                 angularVelocity = 0f;
                 isSnapping = true;
@@ -92,6 +92,22 @@ public class LevelSelection : MonoBehaviour
             currentAngle += deltaAngle;
             rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
             angularVelocity = deltaAngle / Time.deltaTime * 0.5f;
+        }
+    }
+    private void HandleFingerUp(LeanFinger finger)
+    {
+/*        if (!isSnapping)
+        {
+            if (Mathf.Abs(angularVelocity) < 5f)
+            {
+                angularVelocity = 0f;
+                SnapToNearestSlot();
+            }
+        }*/
+
+        if (finger.IsOverGui)
+        {
+            angularVelocity = 0.1f; // Reset velocity on finger release
         }
     }
     private void UpdateButtonRotations()
@@ -173,6 +189,7 @@ public class LevelSelection : MonoBehaviour
             {
                 isSnapping = false;
                 PlayScaleEffect(GetNearestButtonIndex());
+                ScaleDownNonSelectedButtons();
                 lastTopButtonIndex = GetNearestButtonIndex();
                 SelectLevel(lastTopButtonIndex);
             });
@@ -227,11 +244,13 @@ public class LevelSelection : MonoBehaviour
     private void OnEnable()
     {
         LeanTouch.OnFingerUpdate += HandleFingerUpdate;
+        LeanTouch.OnFingerUp += HandleFingerUp;
     }
 
     private void OnDisable()
     {
         LeanTouch.OnFingerUpdate -= HandleFingerUpdate;
+        LeanTouch.OnFingerUp -= HandleFingerUp;
     }
 
     private void OnDestroy()

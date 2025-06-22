@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4407961852207834380, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: friction
+      value: 0.99
+      objectReference: {fileID: 0}
     - target: {fileID: 5505836029919034912, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_IsActive
       value: 1

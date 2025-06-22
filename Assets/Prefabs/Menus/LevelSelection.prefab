@@ -101,7 +101,6 @@ MonoBehaviour:
   canSelect: 1
   buttonSound: {fileID: 0}
   buttonClickClip: {fileID: 0}
-  currentAngle: 0
 --- !u!1 &7502985738250717677
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,18 +349,6 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 371204046428955247, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 371204046428955247, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 371204046428955247, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 371204046428955247, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -409,24 +396,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 466644207110023618, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 466644207110023618, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6994869682824427394, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
       propertyPath: m_Name
       value: Button_Level_3
       objectReference: {fileID: 0}
-    - target: {fileID: 7238642086376562341, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
-      propertyPath: m_text
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5849133068854583288, guid: eed4c7623dc5b60439b3e9b64add23cf, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -71,9 +71,58 @@ public class LevelSelection : MonoBehaviour
         DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.6f)
             .SetEase(Ease.OutExpo)
             .OnUpdate(() => rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle))
-            .OnComplete(() => isSnapping = false);
+            .OnComplete(() =>
+            {
+                isSnapping = false;
+                SelectedEffectOnTopButton();
+            });
     }
+    private void SelectedEffectOnTopButton()
+    {
+        if (levelButtons == null || levelButtons.Length == 0) return;
 
+        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
+        int nearestIndex = Mathf.RoundToInt(normalizedAngle / angleStep) % levelButtons.Length;
+        RectTransform topButtonRect = levelButtons[nearestIndex].GetComponent<RectTransform>();
+
+        topButtonRect.DOKill();
+        topButtonRect.localScale = Vector3.one;
+
+        Sequence scaleSequence = DOTween.Sequence();
+        scaleSequence.Append(topButtonRect.DOScale(1.5f, 0.15f).SetEase(Ease.OutQuad));
+        scaleSequence.Append(topButtonRect.DOScale(1f, 0.1f).SetEase(Ease.InQuad));
+    }
+    public void RotateButtonToTop(int buttonIndex)
+    {
+        if (levelButtons == null || levelButtons.Length == 0) return;
+
+        float targetButtonAngle = buttonIndex * angleStep;
+        float normalizedAngle = Mathf.Repeat(currentAngle, 360f);
+        float angleDiff = Mathf.DeltaAngle(normalizedAngle, targetButtonAngle);
+
+        isSnapping = true;
+
+        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.4f)
+            .SetEase(Ease.InOutCubic)
+            .OnUpdate(() =>
+            {
+                rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+                UpdateButtonRotations();
+            })
+            .OnComplete(() =>
+            {
+                isSnapping = false;
+                PlaySmoothScaleEffect(buttonIndex);
+            });
+    }
+    private void PlaySmoothScaleEffect(int buttonIndex)
+    {
+        RectTransform btn = levelButtons[buttonIndex].GetComponent<RectTransform>();
+        btn.DOKill();
+        btn.localScale = Vector3.one;
+        btn.DOScale(1.2f, 0.15f).SetEase(Ease.OutQuad)
+            .OnComplete(() => btn.DOScale(1f, 0.15f).SetEase(Ease.InQuad));
+    }
     private void SetupRadialLayout()
     {
         if (levelButtons == null || levelButtons.Length == 0) return;
@@ -89,7 +138,12 @@ public class LevelSelection : MonoBehaviour
                 RectTransform buttonRect = levelButtons[i].GetComponent<RectTransform>();
                 buttonRect.anchoredPosition = pos;
                 int index = i;
-                levelButtons[i].onClick.AddListener(() => SelectLevel(index, -i * angleStep));
+                levelButtons[i].onClick.AddListener(() =>
+                {
+                    SelectLevel(index, -i * angleStep);
+                    RotateButtonToTop(index);
+                });
+                //levelButtons[i].onClick.AddListener(() => SelectLevel(index, -i * angleStep));
             }
         }
     }

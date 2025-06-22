@@ -70,7 +70,7 @@ public class LevelSelection : MonoBehaviour
             rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
             angularVelocity *= friction;
 
-            if (Mathf.Abs(angularVelocity) <= 0.01f && !isSnapping)
+            if (Mathf.Abs(angularVelocity) <= 0.1f && !isSnapping)
             {
                 angularVelocity = 0f;
                 isSnapping = true;
@@ -120,6 +120,7 @@ public class LevelSelection : MonoBehaviour
     {
         if (!canSelect) return;
         currentLevel = index + 1;
+        //RotateButtonToTop(index);
     }
 
     public void StartLevel()
@@ -141,7 +142,7 @@ public class LevelSelection : MonoBehaviour
 
         isSnapping = true;
 
-        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.4f)
+        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.2f)
             .SetEase(Ease.InOutCubic)
             .OnUpdate(() =>
             {
@@ -165,14 +166,15 @@ public class LevelSelection : MonoBehaviour
         float targetAngle = Mathf.Round(normalizedAngle / angleStep) * angleStep;
         float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.6f)
-            .SetEase(Ease.OutExpo)
+        DOTween.To(() => currentAngle, x => currentAngle = x, currentAngle + angleDiff, 0.2f)
+            .SetEase(Ease.OutQuad)
             .OnUpdate(() => rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle))
             .OnComplete(() =>
             {
                 isSnapping = false;
                 PlayScaleEffect(GetNearestButtonIndex());
-                ScaleDownNonSelectedButtons();
+                lastTopButtonIndex = GetNearestButtonIndex();
+                SelectLevel(lastTopButtonIndex);
             });
     }
 

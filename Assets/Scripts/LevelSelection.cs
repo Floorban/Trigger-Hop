@@ -82,13 +82,21 @@ public class LevelSelection : MonoBehaviour
     }
     private void HandleFingerUpdate(LeanFinger finger)
     {
-        if (finger.IsOverGui)
-        {
-            float deltaAngle = -finger.ScaledDelta.x * rotationSensitivity;
-            currentAngle += deltaAngle;
-            rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-            angularVelocity = deltaAngle / Time.deltaTime * 0.5f;
-        }
+        if (!finger.IsOverGui) return;
+
+        Vector2 screenCenter = RectTransformUtility.WorldToScreenPoint(null, rectTransform.position);
+
+        Vector2 prev = finger.LastScreenPosition;
+        Vector2 curr = finger.ScreenPosition;
+
+        Vector2 prevDir = (prev - screenCenter).normalized;
+        Vector2 currDir = (curr - screenCenter).normalized;
+
+        float angleDelta = Vector2.SignedAngle(prevDir, currDir);
+
+        currentAngle += angleDelta;
+        rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+        angularVelocity = angleDelta / Time.deltaTime;
     }
     private void HandleFingerUp(LeanFinger finger)
     {

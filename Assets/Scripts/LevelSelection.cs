@@ -100,7 +100,7 @@ public class LevelSelection : MonoBehaviour
 
         currentAngle += angleDelta;
         rectTransform.rotation = Quaternion.Euler(0f, 0f, currentAngle);
-        angularVelocity = angleDelta / Time.deltaTime;
+        angularVelocity = angleDelta * rotationSensitivity / Time.deltaTime;
     }
     private void HandleFingerUp(LeanFinger finger)
     {

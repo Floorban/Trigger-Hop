@@ -36,7 +36,7 @@ public class SwipeMenu : MonoBehaviour
 
         if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
         {
-            if (swipe.x > 0.9f) Previous();
+            if (swipe.x > 0.95f) Previous();
             else Next();
         }
         else
@@ -68,20 +68,9 @@ public class SwipeMenu : MonoBehaviour
         if (levelPagesRect != null)
         {
             UpdatePageBar();
-
             levelPagesRect.DOLocalMove(targetPos, tweenTime)
                 .SetEase(tweenType)
-                .OnComplete(() =>
-                {
-                    isSwiping = false;
-                    RectTransform image = pageImage[currentPage - 1].GetComponent<RectTransform>();
-                    image.DOScale(1.6f, 0.15f).SetEase(Ease.OutQuad)
-                        .OnComplete(() => image.DOScale(1.3f, 0.1f).SetEase(Ease.InQuad));
-                    foreach (var level in levelSelections)
-                    {
-                        level.isSnapping = true;
-                    }
-                });
+                .OnComplete(() => FinishSwipe());
         }
     }
     private void UpdatePageBar()
@@ -103,8 +92,19 @@ public class SwipeMenu : MonoBehaviour
             level.canSelect = false;
         }
 
-        levelSelections[currentPage - 1].InitFirstLevelButton(0);
         levelSelections[currentPage - 1].canSelect = true;
+    }
+    private void FinishSwipe()
+    {
+        isSwiping = false;
+        RectTransform image = pageImage[currentPage - 1].GetComponent<RectTransform>();
+        image.DOScale(1.6f, 0.15f).SetEase(Ease.OutQuad)
+            .OnComplete(() => image.DOScale(1.3f, 0.1f).SetEase(Ease.InQuad));
+        foreach (var level in levelSelections)
+        {
+            level.isSnapping = true;
+        }
+        levelSelections[currentPage - 1].InitFirstLevelButton(0);
     }
     public void GetSelectedLevel(int lvlIndex)
     {

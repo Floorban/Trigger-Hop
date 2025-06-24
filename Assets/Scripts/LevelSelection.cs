@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Lean.Touch;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class LevelSelection : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private float radius = 200f;
     [SerializeField] private float friction = 0.98f;
     [SerializeField] private float rotationSensitivity = 0.5f;
-    [SerializeField] private bool canSelect = true;
+    public bool canSelect = true;
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
 
@@ -20,7 +21,9 @@ public class LevelSelection : MonoBehaviour
     private float angleStep;
     private float angularVelocity;
     private RectTransform rectTransform;
-    private bool isSnapping;
+    [HideInInspector] public bool isSnapping;
+
+    public static UnityAction<int> OnLevelSelected;
 
     private void Awake()
     {
@@ -100,7 +103,7 @@ public class LevelSelection : MonoBehaviour
     }
     private void HandleFingerUp(LeanFinger finger)
     {
-        if (finger.IsOverGui)
+        if (finger.IsOverGui && !isSnapping)
         {
             angularVelocity = 0.1f;
         }
@@ -132,16 +135,18 @@ public class LevelSelection : MonoBehaviour
         if (!canSelect) return;
         currentLevel = index + 1;
         //RotateButtonToTop(index);
+        Debug.Log($"Selected Level {currentLevel}");
+        OnLevelSelected?.Invoke(currentLevel);
     }
 
-    public void StartLevel()
+/*    public void StartLevel()
     {
         if (!canSelect || currentLevel <= 0) return;
 
         Debug.Log($"Loading Level {currentLevel}");
         PlayButtonSfx();
         SceneManager.LoadScene(currentLevel);
-    }
+    }*/
 
     public void SnapSelectedButtonToTop(int buttonIndex)
     {

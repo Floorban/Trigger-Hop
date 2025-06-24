@@ -100,7 +100,11 @@ public class SwipeMenu : MonoBehaviour
         foreach(var level in levelSelections)
         {
             level.isSnapping = true;
+            level.canSelect = false;
         }
+
+        levelSelections[currentPage - 1].InitFirstLevelButton(0);
+        levelSelections[currentPage - 1].canSelect = true;
     }
     public void GetSelectedLevel(int lvlIndex)
     {

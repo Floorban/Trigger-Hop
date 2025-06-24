@@ -13,7 +13,7 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private float radius = 200f;
     [SerializeField] private float friction = 0.98f;
     [SerializeField] private float rotationSensitivity = 0.5f;
-    public bool canSelect = true;
+    public bool canSelect;
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
 
@@ -24,6 +24,7 @@ public class LevelSelection : MonoBehaviour
     [HideInInspector] public bool isSnapping;
 
     public static UnityAction<int> OnLevelSelected;
+    public int previousLvls;
 
     private void Awake()
     {
@@ -133,7 +134,7 @@ public class LevelSelection : MonoBehaviour
     private void SelectLevel(int index)
     {
         if (!canSelect) return;
-        currentLevel = index + 1;
+        currentLevel = index + 1 + previousLvls;
         //RotateButtonToTop(index);
         Debug.Log($"Selected Level {currentLevel}");
         OnLevelSelected?.Invoke(currentLevel);

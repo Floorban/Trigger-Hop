@@ -39,10 +39,11 @@ public class WeaponManager : MonoBehaviour
         if (allGuns.Length > 0) currentGun = allGuns[0];
         if (currentGun)
             currentGun.Setup(player);
-          
+
+        input = new MobileInput();
+
 #if UNITY_EDITOR || UNITY_STANDALONE
         //input = new DesktopInput();
-        input = new MobileInput();
 #elif UNITY_IOS || UNITY_ANDROID
         input = new MobileInput();
 #endif

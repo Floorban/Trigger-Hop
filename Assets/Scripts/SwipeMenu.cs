@@ -130,12 +130,8 @@ public class SwipeMenu : MonoBehaviour
     }
     public void StartLevel()
     {
-        for (int i = 0; i < levelSelections.Length; i++)
-        {
-            if (!levelSelections[i].canSelect) return;
-        }
+        if (currentLevel <= 0 || !levelSelections[currentPage - 1].canSelect) return;
 
-        if (currentLevel <= 0) return;
         Debug.Log($"Loading Level {currentLevel}");
         SceneManager.LoadScene(currentLevel);
     }

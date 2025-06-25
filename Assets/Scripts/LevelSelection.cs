@@ -72,7 +72,7 @@ public class LevelSelection : MonoBehaviour
 
             if (Mathf.Abs(angularVelocity) <= 5f)
             {
-                if (!isSnapping) SnapSelectedButtonToTop(lastTopButtonIndex);
+                if (!isSnapping) SnapSelectedButtonToTop(GetNearestButtonIndex());
                 angularVelocity = 0f;
                 isSnapping = true;
             }
@@ -104,10 +104,10 @@ public class LevelSelection : MonoBehaviour
     }
     private void HandleFingerUp(LeanFinger finger)
     {
-        if (finger.IsOverGui && !isSnapping)
-        {
-            angularVelocity = 0.1f;
-        }
+        angularVelocity = 0.1f;
+
+/*        if (finger.IsOverGui)  //&& !isSnapping
+            angularVelocity = 0.1f;*/
     }
     private void UpdateButtonRotations()
     {

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class LevelSelection : MonoBehaviour
 {
-    [SerializeField] private Button[] levelButtons;
+    public Button[] levelButtons;
     private int currentLevel;
     private int lastTopButtonIndex = -1;
     [SerializeField] private float radius = 200f;

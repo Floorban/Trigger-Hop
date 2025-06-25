@@ -1,9 +1,9 @@
 using DG.Tweening;
 using Lean.Touch;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SwipeMenu : MonoBehaviour
 {
@@ -18,12 +18,14 @@ public class SwipeMenu : MonoBehaviour
     private bool isSwiping;
 
     [SerializeField] LevelSelection[] levelSelections;
+    [SerializeField] private List<Button> levelButtons;
     [SerializeField] Image[] pageImage;
     //[SerializeField] Sprite pageEnabled, pageDisabled;
     [SerializeField] Button nextButton, previousButton;
 
     private void Awake()
     {
+        Debug.Log(PlayerPrefs.GetInt("UnlockedLevel", 1));
         currentPage = 1;
         levelPagesRect = GetComponent<RectTransform>();
         if (levelPagesRect) targetPos = levelPagesRect.localPosition;
@@ -49,7 +51,6 @@ public class SwipeMenu : MonoBehaviour
             MovePage();
         }
     }
-
     public void Next(Button btn)
     {
         if (currentPage < maxPage)
@@ -130,15 +131,44 @@ public class SwipeMenu : MonoBehaviour
     }
     public void StartLevel()
     {
-        if (currentLevel <= 0 || !levelSelections[currentPage - 1].canSelect) return;
+        if (currentLevel <= 0 || !levelSelections[currentPage - 1].canSelect || currentLevel > PlayerPrefs.GetInt("UnlockedLevel", 1)) return;
 
         Debug.Log($"Loading Level {currentLevel}");
         SceneManager.LoadScene(currentLevel);
+    }
+    private void UnlockLevel()
+    {
+        int unlockedLvl = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        for (int i = 0; i < levelButtons.Count; i++)
+        {
+            //levelButtons[i].interactable = false;
+        }
+        for (int i = 0; i < unlockedLvl; i++)
+        {
+            levelButtons[i].interactable = true;
+        }
+    }
+    private void GetLevelButtons()
+    {
+        for (int i = 0; i < levelSelections.Length; i++)
+        {
+            for (int j = 0; j < levelSelections[i].levelButtons.Length; j++)
+            {
+                levelButtons.Add(levelSelections[i].levelButtons[j]);
+            }
+        }
+    }
+    public void ClearLevelData()
+    {
+        PlayerPrefs.DeleteAll();
     }
     private void OnEnable()
     {
         LeanTouch.OnFingerSwipe += HandleFingerSwipe;
         LevelSelection.OnLevelSelected += GetSelectedLevel;
+        GetLevelButtons();
+        UnlockLevel();
     }
 
     private void OnDisable()

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Lean.Touch;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,13 +20,17 @@ public class SwipeMenu : MonoBehaviour
     [SerializeField] LevelSelection[] levelSelections;
     [SerializeField] Image[] pageImage;
     //[SerializeField] Sprite pageEnabled, pageDisabled;
+    [SerializeField] Button nextButton, previousButton;
 
     private void Awake()
     {
         currentPage = 1;
         levelPagesRect = GetComponent<RectTransform>();
         if (levelPagesRect) targetPos = levelPagesRect.localPosition;
+        nextButton.onClick.AddListener(() => Next(nextButton));
+        previousButton.onClick.AddListener(() => Previous(previousButton));
         UpdatePageBar();
+        UpdateArrowButton();
     }
     private void HandleFingerSwipe(LeanFinger finger)
     {
@@ -36,8 +41,8 @@ public class SwipeMenu : MonoBehaviour
 
         if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
         {
-            if (swipe.x > 0.95f) Previous();
-            else Next();
+            if (swipe.x > 0.95f) Previous(previousButton);
+            else Next(nextButton);
         }
         else
         {
@@ -45,19 +50,21 @@ public class SwipeMenu : MonoBehaviour
         }
     }
 
-    public void Next()
+    public void Next(Button btn)
     {
         if (currentPage < maxPage)
         {
+            ScaleEffect(btn.GetComponent<RectTransform>(), 1.3f, 1f);
             currentPage++;
             targetPos += pageStep;
             MovePage();
         }
     }
-    public void Previous()
+    public void Previous(Button btn)
     {
         if (currentPage > 1)
         {
+            ScaleEffect(btn.GetComponent<RectTransform>(), 1.3f, 1f);
             currentPage--;
             targetPos -= pageStep;
             MovePage();
@@ -68,6 +75,7 @@ public class SwipeMenu : MonoBehaviour
         if (levelPagesRect != null)
         {
             UpdatePageBar();
+            UpdateArrowButton();
             levelPagesRect.DOLocalMove(targetPos, tweenTime)
                 .SetEase(tweenType)
                 .OnComplete(() => FinishSwipe());
@@ -97,14 +105,24 @@ public class SwipeMenu : MonoBehaviour
     private void FinishSwipe()
     {
         isSwiping = false;
-        RectTransform image = pageImage[currentPage - 1].GetComponent<RectTransform>();
-        image.DOScale(1.6f, 0.15f).SetEase(Ease.OutQuad)
-            .OnComplete(() => image.DOScale(1.3f, 0.1f).SetEase(Ease.InQuad));
+        ScaleEffect(pageImage[currentPage - 1].GetComponent<RectTransform>(), 1.6f, 1.3f);
         foreach (var level in levelSelections)
         {
             level.isSnapping = true;
         }
         levelSelections[currentPage - 1].InitFirstLevelButton(0);
+    }
+    private void UpdateArrowButton()
+    {
+        nextButton.interactable = true;
+        previousButton.interactable = true;
+        if (currentPage == 1) previousButton.interactable = false;
+        else if (currentPage == maxPage) nextButton.interactable = false;
+    }
+    private void ScaleEffect(RectTransform target, float zoomScale, float endScale)
+    {
+        target.DOScale(zoomScale, 0.15f).SetEase(Ease.OutQuad)
+            .OnComplete(() => target.DOScale(endScale, 0.1f).SetEase(Ease.InQuad));
     }
     public void GetSelectedLevel(int lvlIndex)
     {

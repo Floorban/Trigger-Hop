@@ -7,10 +7,8 @@ public class MobileInput : IInput {
         HandleSwitchWeaponInput(wManager);
     }
     private void HandleShootInput(WeaponManager wManager) {
-        if (Input.touchCount == 1) {
+        if (Input.touchCount == 1 && !wManager.isSwipingTwoFingers) {
             Touch touch = Input.GetTouch(0);
-            if (wManager.isSwipingTwoFingers)
-                return;
             if (wManager.currentGun) {
                 GunController gun = wManager.currentGun;
                 switch (touch.phase) {
@@ -31,7 +29,7 @@ public class MobileInput : IInput {
                 }
             }
         }
-        else {
+        else if (Input.touchCount != 1){
             wManager.StopAiming();
         }
     }

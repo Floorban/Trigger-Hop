@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
         rb.gravityScale = 0;
     }
     private void FixedUpdate() {
-        if (SceneController.instance.GetGameTime() == 0f)
+        if (SceneController.instance.GetPlayerTime() == 0f)
         {
             rb.linearVelocity = Vector2.zero; // freeze if paused
             return;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void HorizonMove() {
         if (!canMove) return;
-        rb.linearVelocity = new Vector2(moveDir * moveSpeed * SceneController.instance.GetGameTime(), rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveDir * moveSpeed * SceneController.instance.GetPlayerTime(), rb.linearVelocity.y);
     }
     private void Flip() {
         moveDir *= -1;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void ApplyCustomGravity()
     {
-        float timeScale = SceneController.instance.GetGameTime();
+        float timeScale = SceneController.instance.GetPlayerTime();
         if (timeScale == 0f) return; // don't apply gravity if paused
 
         Vector2 velocity = rb.linearVelocity;

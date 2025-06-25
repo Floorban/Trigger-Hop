@@ -4,32 +4,44 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
-    private static float gameTime;
-    public bool isPaused;
+
+    [Header("Global Time Control")]
+    [SerializeField] private bool isPaused = false;
+    [SerializeField][Range(0f, 1f)] private float playerTimeScale = 1f;
+    [SerializeField][Range(0f, 1f)] private float enemyTimeScale = 1f;
+
+    public bool IsPaused => isPaused;
+    public float GameTime => isPaused ? 0f : 1f;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            InitTimeScales();
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    private void FixedUpdate()
-    {
-        if (!isPaused) gameTime = 1;
-        else gameTime = 0;
-    }
     public void NextLevel() => SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-    public float GetGameTime()
+    private void InitTimeScales()
     {
-        return gameTime;
+        playerTimeScale = 1f;
+        enemyTimeScale = 1f;
     }
+
     public void ToggleGameState()
     {
         isPaused = !isPaused;
     }
+
+    public void PauseGame() => isPaused = true;
+    public void ResumeGame() => isPaused = false;
+
+    public float GetPlayerTime() => GameTime * playerTimeScale;
+    public float GetEnemyTime() => GameTime * enemyTimeScale;
+
+    public float GetScaledTime(float scale) => GameTime * scale;
 }

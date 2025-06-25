@@ -22,16 +22,11 @@ public class ProjectileController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float timeScale = SceneController.instance.GetGameTime();
+        float timeScale = SceneController.instance.GetPlayerTime();
 
-        // Movement
         rb.linearVelocity = direction * speed * timeScale;
-
-        // Lifetime tracking
         currentLifetime += Time.fixedDeltaTime * timeScale;
         if (currentLifetime >= maxLifetime)
-        {
             Destroy(gameObject);
-        }
     }
 }

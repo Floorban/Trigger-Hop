@@ -24,7 +24,9 @@ public class Pistol : GunController
         bac.damageAmount = baseDamage;
         Rigidbody2D brb = bullet.GetComponent<Rigidbody2D>();
         brb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        brb.linearVelocity = direction.normalized * bulletSpeed;
-        Destroy(bullet, bulletLifetime);
+        ProjectileController bulletCtrl = bullet.AddComponent<ProjectileController>();
+        bulletCtrl.Init(direction, bulletSpeed, bulletLifetime);
+        //brb.linearVelocity = direction.normalized * bulletSpeed * SceneController.instance.GetGameTime();
+        //Destroy(bullet, bulletLifetime);
     }
 }

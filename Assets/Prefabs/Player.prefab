@@ -99,6 +99,15 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.3150927
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -161,14 +170,16 @@ MonoBehaviour:
   - {fileID: 8710219848955722271}
   currentGun: {fileID: 0}
   slowMotionScale: 0.3
+  cycleCooldown: 0.3
+  swipeStartPos: {x: 0, y: 0}
+  isSwipingTwoFingers: 0
   reflections: 0
-  maxRayDistance: 10
+  maxRayDistance: 2
   layerDetection:
     serializedVersion: 2
     m_Bits: 4294967295
   shakeIntensity: 5
   cycleDistance: 50
-  cycleCooldown: 0.3
 --- !u!1 &7913725524309860818
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +286,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -348,6 +359,7 @@ MonoBehaviour:
   canMove: 1
   moveSpeed: 3
   movePauseDuration: 0.35
+  customGravity: -9.81
 --- !u!1001 &1437437746504184929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,6 +423,10 @@ PrefabInstance:
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: autoReload
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: baseDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: recoilForce
@@ -502,6 +518,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: baseDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
       propertyPath: bulletSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -556,6 +576,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: autoReload
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: baseDamage
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 624759709277876542, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}

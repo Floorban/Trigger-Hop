@@ -13,12 +13,22 @@ public class PlayerController : MonoBehaviour {
     [Header("RecoilEffect")]
     private Vector3 oriScale;
     [SerializeField] private float movePauseDuration = 0.2f;
+    [SerializeField] private float customGravity = -10f;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         oriScale = transform.localScale;
+        rb.gravityScale = 0;
     }
     private void FixedUpdate() {
+        if (SceneController.instance.GetGameTime() == 0f)
+        {
+            rb.linearVelocity = Vector2.zero; // freeze if paused
+            return;
+        }
+
         HorizonMove();
+        ApplyCustomGravity();
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.CompareTag("Wall")) {
@@ -33,13 +43,22 @@ public class PlayerController : MonoBehaviour {
     }
     private void HorizonMove() {
         if (!canMove) return;
-        rb.linearVelocity = new Vector2(moveDir * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveDir * moveSpeed * SceneController.instance.GetGameTime(), rb.linearVelocity.y);
     }
     private void Flip() {
         moveDir *= -1;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+    private void ApplyCustomGravity()
+    {
+        float timeScale = SceneController.instance.GetGameTime();
+        if (timeScale == 0f) return; // don't apply gravity if paused
+
+        Vector2 velocity = rb.linearVelocity;
+        velocity.y += customGravity * Time.fixedDeltaTime * timeScale;
+        rb.linearVelocity = velocity;
     }
     public void ApplyRecoil(Vector2 dir, float force)
     {

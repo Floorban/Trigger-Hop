@@ -9,7 +9,7 @@ public class LevelEnd : MonoBehaviour
         {
             UnlockNewLevel();
             // open final panel
-            //SceneController.instance.NextLevel();
+            SceneController.instance.NextLevel();
         }
     }
     private void UnlockNewLevel()

@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class SceneController : MonoBehaviour
 {
@@ -7,20 +9,20 @@ public class SceneController : MonoBehaviour
 
     [Header("Global Time Control")]
     [SerializeField] private bool isPaused = false;
-    [SerializeField][Range(0f, 1f)] private float playerTimeScale = 1f;
-    [SerializeField][Range(0f, 1f)] private float enemyTimeScale = 1f;
+    private float playerTimeScale = 1f;
+    private float enemyTimeScale = 1f;
+    [SerializeField] [Range(0f, 1f)] private float timeScale = 1f;
 
     public bool IsPaused => isPaused;
     public float GameTime => isPaused ? 0f : 1f;
 
-    public float PlayerTimeScale
+    public float TimeScale
     {
-        get => playerTimeScale;
+        get => timeScale;
         set
         {
-            playerTimeScale = Mathf.Clamp01(value);
-            Time.timeScale = GetPlayerTime();
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            timeScale = Mathf.Clamp01(value);
+            SetScaledTime(1f);
         }
     }
     private void Awake()
@@ -51,8 +53,11 @@ public class SceneController : MonoBehaviour
     public void PauseGame() => isPaused = true;
     public void ResumeGame() => isPaused = false;
 
-    public float GetPlayerTime() => GameTime * playerTimeScale;
-    public float GetEnemyTime() => GameTime * enemyTimeScale;
-
-    public float GetScaledTime(float scale) => GameTime * scale;
+    public float GetPlayerTime() => GameTime * playerTimeScale * timeScale;
+    public float GetEnemyTime() => GameTime * enemyTimeScale * timeScale;
+    public void SetScaledTime(float scale)
+    {
+        Time.timeScale = timeScale * scale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    } 
 }

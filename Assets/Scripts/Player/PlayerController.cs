@@ -14,30 +14,14 @@ public class PlayerController : MonoBehaviour {
     [Header("RecoilEffect")]
     private Vector3 oriScale;
     [SerializeField] private float movePauseDuration = 0.2f;
-    [SerializeField] private float customGravity = 10f;
-    [SerializeField] private float baseDrag = 0f;
-    [SerializeField] private float slowMotionDrag = 0.5f;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         oriScale = transform.localScale;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ApplyRecoil(-Vector2.up, 6f);
-        }
-    }
-    private void FixedUpdate() {
-/*        if (SceneController.instance.GetPlayerTime() == 0f)
-        {
-            rb.linearVelocity = Vector2.zero; // freeze if paused
-            return;
-        }*/
-        HorizonMove();
-        //ApplyCustomGravity();
-    }
+
+    private void FixedUpdate() => HorizonMove();
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Wall"))
@@ -57,11 +41,16 @@ public class PlayerController : MonoBehaviour {
         if (!canMove) return;
         rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
     }
-
-    private void ApplyCustomGravity()
+/*    private void ApplyCustomGravity()
     {
+        if (SceneController.instance.GetPlayerTime() == 0f)
+        {
+            rb.linearVelocity = Vector2.zero; // freeze if paused
+            return;
+        }
+
         float timeScale = SceneController.instance.GetPlayerTime();
-        if (timeScale == 0f) return; // don't apply gravity if paused
+        if (timeScale == 0f) return;
 
         rb.linearDamping = timeScale < 1f && timeScale >= 0f ? slowMotionDrag / timeScale : baseDrag;
         //rb.gravityScale = customGravity * timeScale;
@@ -69,7 +58,7 @@ public class PlayerController : MonoBehaviour {
         Vector2 velocity = rb.linearVelocity;
         velocity.y -= customGravity * Time.fixedDeltaTime * timeScale;
         rb.linearVelocity = velocity;
-    }
+    }*/
     public void ApplyRecoil(Vector2 dir, float force)
     {
         rb.AddForce(-dir.normalized * force, ForceMode2D.Impulse);

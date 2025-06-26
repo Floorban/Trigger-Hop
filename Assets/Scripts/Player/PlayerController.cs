@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb { get; private set; }
@@ -13,28 +14,39 @@ public class PlayerController : MonoBehaviour {
     [Header("RecoilEffect")]
     private Vector3 oriScale;
     [SerializeField] private float movePauseDuration = 0.2f;
-    [SerializeField] private float customGravity = -10f;
+    [SerializeField] private float customGravity = 10f;
+    [SerializeField] private float baseDrag = 0f;
+    [SerializeField] private float slowMotionDrag = 0.5f;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         oriScale = transform.localScale;
-        rb.gravityScale = 0;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ApplyRecoil(-Vector2.up, 6f);
+        }
     }
     private void FixedUpdate() {
-        if (SceneController.instance.GetPlayerTime() == 0f)
+/*        if (SceneController.instance.GetPlayerTime() == 0f)
         {
             rb.linearVelocity = Vector2.zero; // freeze if paused
             return;
-        }
-
+        }*/
         HorizonMove();
-        ApplyCustomGravity();
+        //ApplyCustomGravity();
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.CompareTag("Wall")) {
-            foreach (ContactPoint2D contact in collision.contacts) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Wall"))
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
                 // hit from the side
-                if (Mathf.Abs(contact.normal.x) > 0.1f) {
+                if (Mathf.Abs(contact.normal.x) > 0.1f)
+                {
                     Flip();
                     break;
                 }
@@ -43,7 +55,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void HorizonMove() {
         if (!canMove) return;
-        rb.linearVelocity = new Vector2(moveDir * moveSpeed * SceneController.instance.GetPlayerTime(), rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
     }
 
     private void ApplyCustomGravity()
@@ -51,8 +63,11 @@ public class PlayerController : MonoBehaviour {
         float timeScale = SceneController.instance.GetPlayerTime();
         if (timeScale == 0f) return; // don't apply gravity if paused
 
+        rb.linearDamping = timeScale < 1f && timeScale >= 0f ? slowMotionDrag / timeScale : baseDrag;
+        //rb.gravityScale = customGravity * timeScale;
+
         Vector2 velocity = rb.linearVelocity;
-        velocity.y += customGravity * Time.fixedDeltaTime * timeScale;
+        velocity.y -= customGravity * Time.fixedDeltaTime * timeScale;
         rb.linearVelocity = velocity;
     }
     public void ApplyRecoil(Vector2 dir, float force)
@@ -63,7 +78,7 @@ public class PlayerController : MonoBehaviour {
     }
     public IEnumerator ShootPause()
     {
-        canMove = false;
+        //canMove = false;
         // set the duration depending on the current weapon (type and recoil)
         // using unscaled time here
         yield return new WaitForSecondsRealtime(movePauseDuration);

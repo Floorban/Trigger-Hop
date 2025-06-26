@@ -12,6 +12,17 @@ public class SceneController : MonoBehaviour
 
     public bool IsPaused => isPaused;
     public float GameTime => isPaused ? 0f : 1f;
+
+    public float PlayerTimeScale
+    {
+        get => playerTimeScale;
+        set
+        {
+            playerTimeScale = Mathf.Clamp01(value);
+            Time.timeScale = GetPlayerTime();
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+    }
     private void Awake()
     {
         if (instance == null)

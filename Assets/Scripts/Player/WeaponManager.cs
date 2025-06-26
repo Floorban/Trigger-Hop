@@ -77,13 +77,13 @@ public class WeaponManager : MonoBehaviour
         if (currentGun.fireMode == GunBase.FireMode.Auto || isAiming) return;
         isAiming = true;
         // TO DO: using private multipliers instead of timescale for all the dynamic objects slater
-        Time.timeScale = slowMotionScale;
+        Time.timeScale = slowMotionScale * SceneController.instance.GetPlayerTime();
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         if (aimLine) aimLine.enabled = true;
     }
     public void StopAiming() {
         isAiming = false;
-        Time.timeScale = 1f;
+        Time.timeScale = 1f * SceneController.instance.GetPlayerTime();
         Time.fixedDeltaTime = 0.02f;
         if(aimLine) aimLine.enabled = false;
     }

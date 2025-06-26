@@ -45,12 +45,7 @@ public class PlayerController : MonoBehaviour {
         if (!canMove) return;
         rb.linearVelocity = new Vector2(moveDir * moveSpeed * SceneController.instance.GetPlayerTime(), rb.linearVelocity.y);
     }
-    private void Flip() {
-        moveDir *= -1;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
+
     private void ApplyCustomGravity()
     {
         float timeScale = SceneController.instance.GetPlayerTime();
@@ -84,6 +79,13 @@ public class PlayerController : MonoBehaviour {
 
         transform.DOScale(squashed, duration * 0.5f).SetEase(Ease.OutQuad)
             .OnComplete(() => transform.DOScale(originalScale, duration * 0.5f).SetEase(Ease.InQuad));
+    }
+    private void Flip()
+    {
+        moveDir *= -1;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     // TO DO: use leantween or dotween to replace the effect later

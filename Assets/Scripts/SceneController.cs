@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private bool isPaused = false;
     private float playerTimeScale = 1f;
     private float enemyTimeScale = 1f;
-    [SerializeField] [Range(0f, 1f)] private float timeScale = 1f;
+    [SerializeField] [Range(0f, 1.5f)] private float timeScale = 1f;
 
     public bool IsPaused => isPaused;
     public float GameTime => isPaused ? 0f : 1f;
@@ -21,8 +21,8 @@ public class SceneController : MonoBehaviour
         get => timeScale;
         set
         {
-            timeScale = Mathf.Clamp01(value);
-            SetScaledTime(1f);
+            timeScale = Mathf.Clamp(timeScale,0f,1.5f);
+            SetScaledTime();
         }
     }
     private void Awake()
@@ -55,7 +55,7 @@ public class SceneController : MonoBehaviour
 
     public float GetPlayerTime() => GameTime * playerTimeScale * timeScale;
     public float GetEnemyTime() => GameTime * enemyTimeScale * timeScale;
-    public void SetScaledTime(float scale)
+    public void SetScaledTime(float scale = 1f)
     {
         Time.timeScale = timeScale * scale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;

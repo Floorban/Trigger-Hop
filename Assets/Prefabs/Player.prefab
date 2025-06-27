@@ -165,9 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allGuns:
+  - {fileID: 8710219848955722271}
   - {fileID: 2609547342576380772}
   - {fileID: 5946880597954136939}
-  - {fileID: 8710219848955722271}
   currentGun: {fileID: 0}
   slowMotionScale: 0.3
   cycleCooldown: 0.3
@@ -356,13 +356,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083a4d4a3f9ff9c40ac33b79ec6cc4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
+  canMove: 0
   moveSpeed: 150
   isOnPlatform: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
   platformLayer:
     serializedVersion: 2
     m_Bits: 64
-  fallThroughDuration: 0.25
+  fallThroughDuration: 0.5
   movePauseDuration: 0.35
 --- !u!1001 &1437437746504184929
 PrefabInstance:
@@ -422,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: cooldown
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: autoReload
@@ -434,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: recoilForce
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -576,7 +579,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: cooldown
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: autoReload
@@ -588,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: recoilForce
-      value: 100
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 624759709277876542, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_LocalPosition.x

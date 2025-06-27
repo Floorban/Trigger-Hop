@@ -5,11 +5,17 @@ using UnityEngine.SocialPlatforms;
 
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb { get; private set; }
+    private Collider2D col;
 
     [Header("Movement")]
     public bool canMove = false;
     [SerializeField] private float moveSpeed = 3f;
     private int moveDir = 1; // 1 for right, -1 for left
+    [SerializeField] private bool isOnPlatform;
+    [SerializeField] private LayerMask playerLayer, platformLayer;
+    [SerializeField] private float fallThroughDuration = 0.25f;
+    private float lastTapTime = 0f;
+    private float doubleTapThreshold = 0.3f;
 
     [Header("RecoilEffect")]
     private Vector3 oriScale;
@@ -17,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         oriScale = transform.localScale;
     }
 
@@ -29,12 +36,23 @@ public class PlayerController : MonoBehaviour {
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 // hit from the side
-                if (Mathf.Abs(contact.normal.x) > 0.1f)
+                if (Mathf.Abs(contact.normal.x) > 0.5f)
                 {
                     Flip();
                     break;
                 }
             }
+        }
+        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
+        {
+            isOnPlatform = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
+        {
+            isOnPlatform = false;
         }
     }
     private void HorizonMove() {
@@ -63,9 +81,20 @@ public class PlayerController : MonoBehaviour {
     {
         rb.AddForce(-dir.normalized * force, ForceMode2D.Impulse);
         RecoilSquash();
-        StartCoroutine(ShootPause());
+/*        StartCoroutine(ShootPause());
+        if (isOnPlatform && dir.normalized.y < -0.5f)
+        {
+            StartCoroutine(FallThroughPlatform());
+        }*/
     }
-    public IEnumerator ShootPause()
+
+    private IEnumerator FallThroughPlatform()
+    {
+        Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, true);
+        yield return new WaitForSeconds(fallThroughDuration);
+        Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, false);
+    }
+    private IEnumerator ShootPause()
     {
         //canMove = false;
         // set the duration depending on the current weapon (type and recoil)

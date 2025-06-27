@@ -27,7 +27,7 @@ public class DesktopInput : IInput {
         if (wManager.currentGun) {
             GunController gun = wManager.currentGun;
             if (Input.GetKeyDown(KeyCode.R))
-                gun.Reload();
+                gun.Reload(gun.reloadDuration);
         }
     }
     private void HandleSwitchWeaponInput(WeaponManager wManager) {

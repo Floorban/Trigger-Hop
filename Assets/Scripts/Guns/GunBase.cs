@@ -16,6 +16,7 @@ public class GunBase : MonoBehaviour {
     public bool autoReload = true;
     public int clipSize = 6;
     public float cooldown = 0.3f;
+    public float reloadDuration = 1f;
     public float bulletSpeed = 20f;
     public float recoilForce = 5f;
     [SerializeField] protected float bulletLifetime = 1f;
@@ -90,7 +91,7 @@ public class GunBase : MonoBehaviour {
         if (currentAmmo <= 0) {
             canShoot = false;
             if (autoReload) {
-                Reload();
+                Reload(reloadDuration);
             }
         }
 
@@ -101,13 +102,13 @@ public class GunBase : MonoBehaviour {
     protected void ResetCooldown() {
         canShoot = true;
     }
-    public void Reload() {
+    public void Reload(float reloadTime) {
         if (isReloading) return;
         isReloading = true;
         Debug.Log("reloading");
         // add anim and sfx here
         // TO DO: get the reload duration from each gun's scriptable stats 
-        Invoke(nameof(FinishReload), 1f);
+        Invoke(nameof(FinishReload), reloadTime);
     }
     protected void FinishReload() {
         currentAmmo = clipSize;

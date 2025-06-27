@@ -40,7 +40,7 @@ public class WeaponManager : MonoBehaviour
         if (currentGun)
         {
             currentGun.Setup(player);
-            currentGun.Reload();
+            currentGun.Reload(0f);
         }
 
         input = new MobileInput();

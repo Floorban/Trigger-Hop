@@ -59,7 +59,37 @@ public class PlayerController : MonoBehaviour {
         if (!canMove) return;
         rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
     }
-/*    private void ApplyCustomGravity()
+
+    public void ApplyRecoil(Vector2 dir, float force)
+    {
+        rb.AddForce(-dir.normalized * force, ForceMode2D.Impulse);
+        RecoilSquash();
+        //StartCoroutine(ShootPause());
+/*        if (isOnPlatform && dir.normalized.y < -0.5f)
+        {
+            StartCoroutine(FallThroughPlatform());
+        }*/
+    }
+    public void RecoilSquash(float duration = 0.08f, float squashAmount = 0.7f)
+    {
+        transform.DOKill();
+
+        Vector3 originalScale = oriScale;
+        Vector3 squashed = new Vector3(originalScale.x * squashAmount, originalScale.y / squashAmount, originalScale.z);
+
+        transform.DOScale(squashed, duration).SetEase(Ease.OutQuad)
+            .OnComplete(() => transform.DOScale(originalScale, duration * 0.8f).SetEase(Ease.InQuad));
+    }
+    private IEnumerator ShootPause()
+    {
+        //canMove = false;
+        // set the duration depending on the current weapon (type and recoil)
+        // using unscaled time here
+        yield return new WaitForSecondsRealtime(movePauseDuration);
+        canMove = true;
+    }
+
+    /*    private void ApplyCustomGravity()
     {
         if (SceneController.instance.GetPlayerTime() == 0f)
         {
@@ -77,49 +107,21 @@ public class PlayerController : MonoBehaviour {
         velocity.y -= customGravity * Time.fixedDeltaTime * timeScale;
         rb.linearVelocity = velocity;
     }*/
-    public void ApplyRecoil(Vector2 dir, float force)
-    {
-        rb.AddForce(-dir.normalized * force, ForceMode2D.Impulse);
-        RecoilSquash();
-/*        StartCoroutine(ShootPause());
-        if (isOnPlatform && dir.normalized.y < -0.5f)
-        {
-            StartCoroutine(FallThroughPlatform());
-        }*/
-    }
 
-    private IEnumerator FallThroughPlatform()
+    /*private IEnumerator FallThroughPlatform()
     {
         Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, true);
         yield return new WaitForSeconds(fallThroughDuration);
         Physics2D.IgnoreLayerCollision(playerLayer, platformLayer, false);
-    }
-    private IEnumerator ShootPause()
-    {
-        //canMove = false;
-        // set the duration depending on the current weapon (type and recoil)
-        // using unscaled time here
-        yield return new WaitForSecondsRealtime(movePauseDuration);
-        canMove = true;
-    }
+    }*/
 
-    public void RecoilSquash(float duration = 0.1f, float squashAmount = 0.8f)
-    {
-        transform.DOKill();
-
-        Vector3 originalScale = oriScale;
-        Vector3 squashed = new Vector3(originalScale.x * squashAmount, originalScale.y / squashAmount, originalScale.z);
-
-        transform.DOScale(squashed, duration * 0.5f).SetEase(Ease.OutQuad)
-            .OnComplete(() => transform.DOScale(originalScale, duration * 0.5f).SetEase(Ease.InQuad));
-    }
-    private void Flip()
-    {
-        moveDir *= -1;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
+    /*    private void Flip()
+        {
+            moveDir *= -1;
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+        }*/
 
     // TO DO: use leantween or dotween to replace the effect later
     /*    public IEnumerator RecoilSquash(float duration = 0.1f, float squashAmount = 0.8f)

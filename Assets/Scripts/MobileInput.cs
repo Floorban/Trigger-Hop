@@ -10,7 +10,7 @@ public class MobileInput : IInput {
         if (Input.touchCount == 1 && !wManager.isSwipingTwoFingers) {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.position.y > Screen.height * 0.6f)
+            if (touch.position.y > Screen.height * 0.8f || touch.position.y < Screen.height * 0.1f)
                 return;
 
             if (wManager.currentGun) {
@@ -40,7 +40,7 @@ public class MobileInput : IInput {
     private void HandleReloadInput(WeaponManager wManager) {
         Vector3 acc = Input.acceleration;
         if (acc.sqrMagnitude > wManager.shakeIntensity) {
-            wManager.currentGun.Reload();
+            wManager.currentGun.Reload(wManager.currentGun.reloadDuration);
         }
     }
     private void HandleSwitchWeaponInput(WeaponManager wManager) {

@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -6,6 +7,7 @@ using UnityEngine.UIElements;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
+    public RectTransform ammoUI;
 
     [Header("Global Time Control")]
     [SerializeField] private bool isPaused = false;
@@ -38,7 +40,14 @@ public class SceneController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void NextLevel() => SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    public void NextLevel()
+    {
+        foreach (Transform child in ammoUI)
+        {
+            Destroy(child.gameObject);
+        }
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     private void InitTimeScales()
     {
         playerTimeScale = 1f;

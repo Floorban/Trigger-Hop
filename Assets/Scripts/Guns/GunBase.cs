@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GunBase : MonoBehaviour {
     public enum FireMode {
@@ -19,17 +21,22 @@ public class GunBase : MonoBehaviour {
     [SerializeField] protected float bulletLifetime = 1f;
     public int baseDamage;
 
+    [Header("UI")]
+    [SerializeField] private RectTransform uiCanvas;
+    [SerializeField] protected GameObject bulletUI;
+    protected List<GameObject> bulletUIList = new List<GameObject>();
+
     [Header("References")]
     [SerializeField] protected GameObject bulletPrefab;
     public Transform shootPoint;
 
     protected int currentAmmo;
-    public bool canShoot = true;
+    public bool canShoot = false;
     protected float lastShotTime;
     protected bool isReloading = false;
     [HideInInspector] public  Vector2 aimDir;
     private void Awake() {
-        canShoot = true;
+        uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;
         inputAimDIr = GetInputDir(reverseAimDir);
     }
@@ -71,6 +78,7 @@ public class GunBase : MonoBehaviour {
         // - used amount of ammo
         if (fireMode != FireMode.Charge) {
             currentAmmo -= consumedAmmo;
+            UpdateAmmoUI();
             Debug.Log(currentAmmo + " left");
         }
 
@@ -104,7 +112,55 @@ public class GunBase : MonoBehaviour {
     protected void FinishReload() {
         currentAmmo = clipSize;
         isReloading = false;
-        canShoot = true;
+        ReloadAmmoUI();
         Debug.Log("finish reload");
+    }
+    protected void UpdateAmmoUI()
+    {
+        if (bulletUIList == null || bulletUIList.Count == 0) return;
+
+        int indexToRemove = currentAmmo;
+        if (indexToRemove >= 0 && indexToRemove < bulletUIList.Count)
+        {
+            GameObject bullet = bulletUIList[indexToRemove];
+
+            // Animate out or hide
+            bullet.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack)
+                .OnComplete(() => bullet.SetActive(false));
+        }
+    }
+    protected void ReloadAmmoUI()
+    {
+        if (!uiCanvas || !bulletUI) return;
+
+        foreach (var b in bulletUIList)
+        {
+            Destroy(b);
+        }
+        bulletUIList.Clear();
+
+        for (int i = 0; i < clipSize; i++)
+        {
+            GameObject bullet = Instantiate(bulletUI);
+            bullet.transform.SetParent(uiCanvas, false);
+
+            RectTransform rect = bullet.GetComponent<RectTransform>();
+            float xOffset = Random.Range(-5f, 5f);
+            float yOffset = Random.Range(-10f, 10f);
+            float randomZRotation = Random.Range(-10f, 10f);
+
+            rect.anchoredPosition = new Vector2(i * 45f + xOffset, yOffset);
+            rect.localRotation = Quaternion.Euler(0, 0, randomZRotation + 90f);
+
+            rect.localScale = Vector3.zero;
+
+            // Animate scale up with delay
+            rect.DOScale(Vector3.one, 0.2f)
+                .SetEase(Ease.OutBack)
+                .SetDelay(i * 0.15f);
+
+            bulletUIList.Add(bullet);
+            canShoot = true;
+        }
     }
 }

@@ -38,7 +38,10 @@ public class WeaponManager : MonoBehaviour
         if (aimLine) aimLine.enabled = false;
         if (allGuns.Length > 0) currentGun = allGuns[0];
         if (currentGun)
+        {
             currentGun.Setup(player);
+            currentGun.Reload();
+        }
 
         input = new MobileInput();
 
@@ -86,6 +89,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void UpdateAimLine(Vector2 touchWorldPos) {
         if (!aimLine) return;
+        player.transform.right = touchWorldPos.normalized;
         aimLine.positionCount = 2;
         aimLine.SetPosition(0, transform.position);
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, currentGun.aimDir, maxRayDistance, layerDetection);

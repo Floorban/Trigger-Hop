@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Wall"))
+/*        if (collision.collider.CompareTag("Wall"))
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
                     break;
                 }
             }
-        }
+        }*/
         if (((1 << collision.gameObject.layer) & platformLayer) != 0)
         {
             isOnPlatform = true;

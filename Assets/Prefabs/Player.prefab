@@ -210,7 +210,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6095412779133782044}
@@ -260,12 +260,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4011165979584494121, guid: b3521feadb1405544a0ea3bc9419ea07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.8125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -284,7 +284,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.2
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -332,17 +332,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.49999997, y: 0.614757}
+    oldSize: {x: 1, y: 0.8125}
+    newSize: {x: 1, y: 0.8125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.55}
   m_EdgeRadius: 0
 --- !u!114 &4424088126918094243
 MonoBehaviour:
@@ -420,6 +420,14 @@ PrefabInstance:
       value: Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: bulletUI
+      value: 
+      objectReference: {fileID: 3558773299328921602, guid: 241d789cd85a7ce41a1a62e355cf77e7, type: 3}
+    - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: canShoot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: clipSize
       value: 20
       objectReference: {fileID: 0}
@@ -438,6 +446,10 @@ PrefabInstance:
     - target: {fileID: 4018397759576661765, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: recoilForce
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421146849141875424, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -513,6 +525,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: bulletUI
+      value: 
+      objectReference: {fileID: 3558773299328921602, guid: 241d789cd85a7ce41a1a62e355cf77e7, type: 3}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: canShoot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
       propertyPath: clipSize
       value: 24
       objectReference: {fileID: 0}
@@ -548,6 +568,10 @@ PrefabInstance:
       propertyPath: reverseAimDir
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6595598600655403628, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -577,6 +601,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6095412779133782044}
     m_Modifications:
+    - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: bulletUI
+      value: 
+      objectReference: {fileID: 3558773299328921602, guid: 241d789cd85a7ce41a1a62e355cf77e7, type: 3}
+    - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: canShoot
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: cooldown
       value: 0.5
@@ -636,6 +668,10 @@ PrefabInstance:
     - target: {fileID: 1326202621125582526, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495050144286252291, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

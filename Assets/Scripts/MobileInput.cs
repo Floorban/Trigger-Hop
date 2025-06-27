@@ -9,6 +9,10 @@ public class MobileInput : IInput {
     private void HandleShootInput(WeaponManager wManager) {
         if (Input.touchCount == 1 && !wManager.isSwipingTwoFingers) {
             Touch touch = Input.GetTouch(0);
+
+            if (touch.position.y > Screen.height * 0.6f)
+                return;
+
             if (wManager.currentGun) {
                 GunController gun = wManager.currentGun;
                 switch (touch.phase) {

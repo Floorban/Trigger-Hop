@@ -224,11 +224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9053712796046184020, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_Sprite
@@ -975,7 +975,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.09411766, g: 0.078431375, b: 0.14117648, a: 1}
+  m_BackGroundColor: {r: 0.500267, g: 0.49092203, b: 0.5283019, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1000,7 +1000,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1025,7 +1025,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9683318, y: -2.5704598, z: -10}
+  m_LocalPosition: {x: -6.5, y: -2.22, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1165,11 +1165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1177,7 +1177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1213,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9053712796046184020, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_Sprite
@@ -2460,7 +2460,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 15
+    OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -3003,11 +3003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3015,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3051,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703896467572234133, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9053712796046184020, guid: ea3061e6dc5046046ac34981f6fb874a, type: 3}
       propertyPath: m_Sprite
@@ -3373,6 +3373,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1865629922 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8710219848955722271, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}
+  m_PrefabInstance: {fileID: 9141938216982161855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61d567c1214d2640b81a828e403c519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1891046159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,9 +3676,9 @@ PrefabInstance:
       value: Canvas_Gameplay
       objectReference: {fileID: 0}
     - target: {fileID: 5446887567741084375, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: playerTimeScale
-      value: 0.749
-      objectReference: {fileID: 0}
+      propertyPath: ammoUI
+      value: 
+      objectReference: {fileID: 2612574490368125695}
     - target: {fileID: 7821957845788368386, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3748,11 +3759,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8959368911720621441, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1865629922}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+--- !u!1 &2612574490368125695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3053173744872110525, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+  m_PrefabInstance: {fileID: 2612574490368125694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3691734979014509078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3862,17 +3882,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6259027585329007709, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}
-      propertyPath: m_LinearDamping
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 7913725524309860818, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710219848955722271, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}
-      propertyPath: recoilForce
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

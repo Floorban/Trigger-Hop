@@ -14,8 +14,19 @@ public class ProjectileController : MonoBehaviour
         direction = dir.normalized;
         speed = spd;
         maxLifetime = lifetime;
-        GameObject bul = Instantiate(physBullet, transform.position, transform.rotation);
-        bul.GetComponent<Rigidbody2D>().AddForce(Vector2.up, ForceMode2D.Impulse);
+
+        float randomZ = Random.Range(-10f, 10f);
+        Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZ + 90f);
+        GameObject bul = Instantiate(physBullet, transform.position, randomRotation);
+        Rigidbody2D rb = bul.GetComponent<Rigidbody2D>();
+
+        float angleOffset = Random.Range(-5f, 5f);
+        Vector2 forceDirection = Quaternion.Euler(0, 0, angleOffset) * Vector2.up;
+        float forcePower = 1f;
+
+        Vector2 localRandomPoint = Random.insideUnitCircle * 0.5f; // radius from center
+        Vector2 worldPoint = rb.transform.TransformPoint(localRandomPoint);
+        rb.AddForceAtPosition(forceDirection * forcePower, worldPoint, ForceMode2D.Impulse);
     }
 
     private void Awake()

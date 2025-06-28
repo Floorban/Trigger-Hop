@@ -40,7 +40,6 @@ public class SceneController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             InitTimeScales();
-            LevelEnd.OnLevelFinished += FinalScreen;
             finalScreen.SetActive(false);
         }
         else
@@ -50,6 +49,7 @@ public class SceneController : MonoBehaviour
     }
     public void FinalScreen(LevelEnd end)
     {
+        player.Stop();
         currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         CameraLock(end.lookAt);
     }
@@ -85,14 +85,25 @@ public class SceneController : MonoBehaviour
              finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
          });
     }
-    public void NextLevel()
+    public void NextLevel(bool restart)
     {
+        player = null;
         foreach (Transform child in ammoUI)
         {
             Destroy(child.gameObject);
         }
         finalScreen.SetActive(false);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if (!restart)
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        else
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void BackToMenu()
+    {
+        player = null;
+        SceneManager.LoadSceneAsync(0);
+        Destroy(gameObject);
     }
     private void InitTimeScales()
     {
@@ -114,5 +125,13 @@ public class SceneController : MonoBehaviour
     {
         Time.timeScale = timeScale * scale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
-    } 
+    }
+    private void OnEnable()
+    {
+        LevelEnd.OnLevelFinished += FinalScreen;
+    }
+    private void OnDisable()
+    {
+        LevelEnd.OnLevelFinished -= FinalScreen;
+    }
 }

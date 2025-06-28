@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb { get; private set; }
@@ -89,6 +90,20 @@ public class PlayerController : MonoBehaviour {
         // using unscaled time here
         yield return new WaitForSecondsRealtime(movePauseDuration);
         canMove = true;
+    }
+    public void Stop()
+    {
+        DOTween.Kill(rb);
+        Vector2 currentVelocity = rb.linearVelocity;
+
+        DOTween.To(() => currentVelocity, x =>
+        {
+            currentVelocity = x;
+            rb.linearVelocity = currentVelocity;
+        }, Vector2.zero, 0.5f)
+        .SetEase(Ease.OutQuad)
+        .SetTarget(rb)
+        .OnComplete(() => rb.bodyType = RigidbodyType2D.Kinematic);
     }
 
     /*    private void ApplyCustomGravity()

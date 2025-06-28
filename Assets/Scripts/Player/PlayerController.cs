@@ -11,11 +11,7 @@ public class PlayerController : MonoBehaviour {
     public bool canMove = false;
     [SerializeField] private float moveSpeed = 3f;
     private int moveDir = 1; // 1 for right, -1 for left
-    [SerializeField] private bool isOnPlatform;
     [SerializeField] private LayerMask playerLayer, platformLayer;
-    [SerializeField] private float fallThroughDuration = 0.25f;
-    private float lastTapTime = 0f;
-    private float doubleTapThreshold = 0.3f;
 
     [Header("RecoilEffect")]
     private Vector3 oriScale;
@@ -32,9 +28,9 @@ public class PlayerController : MonoBehaviour {
     }
     private void FixedUpdate() => HorizonMove();
     
-    private void OnCollisionEnter2D(Collision2D collision)
+/*    private void OnCollisionEnter2D(Collision2D collision)
     {
-/*        if (collision.collider.CompareTag("Wall"))
+*//*        if (collision.collider.CompareTag("Wall"))
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
@@ -45,7 +41,7 @@ public class PlayerController : MonoBehaviour {
                     break;
                 }
             }
-        }*/
+        }*//*
         if (((1 << collision.gameObject.layer) & platformLayer) != 0)
         {
             isOnPlatform = true;
@@ -57,7 +53,7 @@ public class PlayerController : MonoBehaviour {
         {
             isOnPlatform = false;
         }
-    }
+    }*/
     private void HorizonMove() {
         if (!canMove) return;
         rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);

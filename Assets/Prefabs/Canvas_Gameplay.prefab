@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  deadZone: {fileID: 0}
   ammoUI: {fileID: 429900798731190742}
   finalScreen: {fileID: 6034569825406330380}
   currentLevelText: {fileID: 5417819100628773370}

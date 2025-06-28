@@ -50,6 +50,8 @@ public class SceneController : MonoBehaviour
     public void FinalScreen(LevelEnd end)
     {
         player.Stop();
+        //deadZone.SetActive(false);
+        FindFirstObjectByType<WeaponManager>().StopAiming();
         currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         CameraLock(end.lookAt);
     }
@@ -85,7 +87,7 @@ public class SceneController : MonoBehaviour
              finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
          });
     }
-    public void NextLevel(bool restart)
+    public void NextLevel(bool next)
     {
         player = null;
         foreach (Transform child in ammoUI)
@@ -94,10 +96,10 @@ public class SceneController : MonoBehaviour
         }
         finalScreen.SetActive(false);
 
-        if (!restart)
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        if (next)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void BackToMenu()
     {
@@ -115,7 +117,6 @@ public class SceneController : MonoBehaviour
     {
         isPaused = !isPaused;
     }
-
     public void PauseGame() => isPaused = true;
     public void ResumeGame() => isPaused = false;
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb { get; private set; }
@@ -26,7 +25,10 @@ public class PlayerController : MonoBehaviour {
         col = GetComponent<Collider2D>();
         oriScale = transform.localScale;
     }
-
+    private void Start()
+    {
+        SceneController.instance.player = this;
+    }
     private void FixedUpdate() => HorizonMove();
     
     private void OnCollisionEnter2D(Collision2D collision)

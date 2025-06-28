@@ -1,13 +1,17 @@
 using System;
-using Unity.VisualScripting;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
+    public PlayerController player;
+
+    [Header("UI")]
     public RectTransform ammoUI;
+    public GameObject finalScreen;
 
     [Header("Global Time Control")]
     [SerializeField] private bool isPaused = false;
@@ -34,11 +38,42 @@ public class SceneController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             InitTimeScales();
+            LevelEnd.OnLevelFinished += FinalScreen;
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+    public void FinalScreen(LevelEnd end)
+    {
+        CameraLock(end.lookAt);
+    }
+    private void CameraLock(Transform lookAt)
+    {
+        CameraTarget cameraTarget = new CameraTarget
+        {
+            TrackingTarget = lookAt,
+            LookAtTarget = lookAt,
+        };
+
+        var weaponManager = FindFirstObjectByType<WeaponManager>();
+        var cam = FindFirstObjectByType<CinemachineCamera>();
+
+        weaponManager.inputLocked = true;
+        cam.Target = cameraTarget;
+
+        float targetSize = 5f;
+        float duration = 2f;
+
+        DOTween.Kill(cam);
+        DOTween.To(
+            () => cam.Lens.OrthographicSize,
+            x => cam.Lens.OrthographicSize = x,
+            targetSize,
+            duration
+        ).SetEase(Ease.InOutQuad)
+         .SetTarget(cam);
     }
     public void NextLevel()
     {

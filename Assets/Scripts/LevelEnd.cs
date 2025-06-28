@@ -1,15 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
+    public Transform lookAt;
+    public static UnityAction<LevelEnd> OnLevelFinished;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             UnlockNewLevel();
-            // open final panel
-            SceneController.instance.NextLevel();
+            OnLevelFinished?.Invoke(this);
+            //SceneController.instance.NextLevel();
         }
     }
     private void UnlockNewLevel()

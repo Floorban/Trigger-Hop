@@ -4,6 +4,7 @@ using TouchPhase = UnityEngine.TouchPhase;
 
 public class WeaponManager : MonoBehaviour
 {
+    public bool inputLocked;
     private PlayerController player;
     private IInput input;
 
@@ -53,6 +54,7 @@ public class WeaponManager : MonoBehaviour
     }
     private void Update() {
         // organize desktop and mobile input with seperate scripts (MobileInput and DesktopInput) now (using IInput Interface)
+        if (inputLocked) return;
         input?.HandleInput(this);
         //HandleShootInput();
         //HandleReloadInput();

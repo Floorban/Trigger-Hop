@@ -1843,7 +1843,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 849c99975d1c36f44addb4327b61f3eb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3678,7 +3678,7 @@ PrefabInstance:
     - target: {fileID: 5446887567741084375, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: ammoUI
       value: 
-      objectReference: {fileID: 2612574490368125695}
+      objectReference: {fileID: 2612574490368125696}
     - target: {fileID: 7821957845788368386, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3768,9 +3768,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
---- !u!1 &2612574490368125695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3053173744872110525, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+--- !u!224 &2612574490368125696 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 429900798731190742, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
   m_PrefabInstance: {fileID: 2612574490368125694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3691734979014509078

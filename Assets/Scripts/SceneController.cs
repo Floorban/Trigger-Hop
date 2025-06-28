@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SceneController : MonoBehaviour
     [Header("UI")]
     public RectTransform ammoUI;
     public GameObject finalScreen;
+    public TextMeshProUGUI currentLevelText;
 
     [Header("Global Time Control")]
     [SerializeField] private bool isPaused = false;
@@ -39,6 +41,7 @@ public class SceneController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             InitTimeScales();
             LevelEnd.OnLevelFinished += FinalScreen;
+            finalScreen.SetActive(false);
         }
         else
         {
@@ -47,6 +50,7 @@ public class SceneController : MonoBehaviour
     }
     public void FinalScreen(LevelEnd end)
     {
+        currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         CameraLock(end.lookAt);
     }
     private void CameraLock(Transform lookAt)
@@ -64,7 +68,7 @@ public class SceneController : MonoBehaviour
         cam.Target = cameraTarget;
 
         float targetSize = 5f;
-        float duration = 2f;
+        float duration = 1f;
 
         DOTween.Kill(cam);
         DOTween.To(
@@ -73,7 +77,13 @@ public class SceneController : MonoBehaviour
             targetSize,
             duration
         ).SetEase(Ease.InOutQuad)
-         .SetTarget(cam);
+         .SetTarget(cam)
+         .OnComplete(() =>
+         {
+             finalScreen.SetActive(true);
+             finalScreen.transform.localScale = Vector3.one;
+             finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
+         });
     }
     public void NextLevel()
     {
@@ -81,6 +91,7 @@ public class SceneController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        finalScreen.SetActive(false);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
     private void InitTimeScales()

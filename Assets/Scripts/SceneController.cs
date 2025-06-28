@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
     public PlayerController player;
+    public CameraController cam;
 
     [Header("UI")]
     public RectTransform ammoUI;
@@ -57,25 +58,18 @@ public class SceneController : MonoBehaviour
     }
     private void CameraLock(Transform lookAt)
     {
-        CameraTarget cameraTarget = new CameraTarget
-        {
-            TrackingTarget = lookAt,
-            LookAtTarget = lookAt,
-        };
-
         var weaponManager = FindFirstObjectByType<WeaponManager>();
-        var cam = FindFirstObjectByType<CinemachineCamera>();
 
         weaponManager.inputLocked = true;
-        cam.Target = cameraTarget;
+        cam.target = lookAt;
 
         float targetSize = 5f;
         float duration = 1f;
 
         DOTween.Kill(cam);
         DOTween.To(
-            () => cam.Lens.OrthographicSize,
-            x => cam.Lens.OrthographicSize = x,
+            () => cam.Size,
+            x => cam.Size = x,
             targetSize,
             duration
         ).SetEase(Ease.InOutQuad)
@@ -87,6 +81,7 @@ public class SceneController : MonoBehaviour
              finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
          });
     }
+
     public void NextLevel(bool next)
     {
         player = null;

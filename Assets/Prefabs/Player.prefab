@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1131b86329d9eb148afdc2ca3e333f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputLocked: 0
   allGuns:
   - {fileID: 8710219848955722271}
   - {fileID: 2609547342576380772}
@@ -191,8 +192,8 @@ GameObject:
   - component: {fileID: 952903883643036353}
   - component: {fileID: 7286318222298295889}
   - component: {fileID: 6259027585329007709}
-  - component: {fileID: 4826800976130800322}
   - component: {fileID: 4424088126918094243}
+  - component: {fileID: 6701561456797159481}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -298,8 +299,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4826800976130800322
-BoxCollider2D:
+--- !u!114 &4424088126918094243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913725524309860818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083a4d4a3f9ff9c40ac33b79ec6cc4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 0
+  moveSpeed: 150
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  movePauseDuration: 0.35
+--- !u!70 &6701561456797159481
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -332,41 +354,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: 0.614757}
-    oldSize: {x: 1, y: 0.8125}
-    newSize: {x: 1, y: 0.8125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.55}
-  m_EdgeRadius: 0
---- !u!114 &4424088126918094243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7913725524309860818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083a4d4a3f9ff9c40ac33b79ec6cc4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canMove: 0
-  moveSpeed: 150
-  isOnPlatform: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  fallThroughDuration: 0.5
-  movePauseDuration: 0.35
+  m_Offset: {x: 0.000000014901161, y: -0.09324002}
+  m_Size: {x: 1, y: 0.5}
+  m_Direction: 1
 --- !u!1001 &1437437746504184929
 PrefabInstance:
   m_ObjectHideFlags: 0

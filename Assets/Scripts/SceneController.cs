@@ -13,16 +13,18 @@ public class SceneController : MonoBehaviour
 
     [Header("UI")]
     public RectTransform ammoUI;
+    public int numOfCoin;
+    public TextMeshProUGUI coinText, timerText;
     public GameObject finalScreen;
     public TextMeshProUGUI currentLevelText;
 
     [Header("Global Time Control")]
+    public float currentTime;
     [SerializeField] private bool isPaused = false;
     private float playerTimeScale = 1f;
     private float enemyTimeScale = 1f;
     [SerializeField] [Range(0f, 1.5f)] private float timeScale = 1f;
 
-    public bool IsPaused => isPaused;
     public float GameTime => isPaused ? 0f : 1f;
 
     public float TimeScale
@@ -48,20 +50,36 @@ public class SceneController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void FinalScreen(LevelEnd end)
+    private void FixedUpdate()
     {
-        player.Stop();
-        //deadZone.SetActive(false);
-        FindFirstObjectByType<WeaponManager>().StopAiming();
-        currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
-        CameraLock(end.lookAt);
+        if (isPaused) return;
+
+        currentTime += Time.fixedDeltaTime;
+        timerText.text = currentTime.ToString("0.00");
     }
-    private void CameraLock(Transform lookAt)
+    public void LevelStarted(PlayerController p)
+    {
+        player = p;
+        numOfCoin = 0;
+        CoinCollected(0);
+        currentTime = 0;
+        isPaused = false;
+    }
+    public void LevelFinished(LevelEnd end)
+    {
+        isPaused = true;
+        player.Stop();
+        FindFirstObjectByType<WeaponManager>().StopAiming();
+
+        currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        CameraLock(end);
+    }
+    private void CameraLock(LevelEnd end)
     {
         var weaponManager = FindFirstObjectByType<WeaponManager>();
 
         weaponManager.inputLocked = true;
-        cam.target = lookAt;
+        cam.target = end.lookAt;
 
         float targetSize = 5f;
         float duration = 1f;
@@ -79,9 +97,37 @@ public class SceneController : MonoBehaviour
              finalScreen.SetActive(true);
              finalScreen.transform.localScale = Vector3.one;
              finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
+             DOVirtual.DelayedCall(0.3f, () => TextEffects(end));
          });
     }
+    private void TextEffects(LevelEnd end)
+    {
+        if (currentTime <= end.timeRequirement)
+        {
+            timerText.color = Color.green;
+            timerText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+        }
+        else
+        {
+            timerText.color = Color.red;
+            timerText.rectTransform.DOShakePosition(0.3f, strength: new Vector3(5f, 0f, 0f));
+            timerText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
 
+            cam.Shake();
+        }
+
+        if (numOfCoin == end.coinRequirement)
+        {
+            coinText.color = Color.green;
+            coinText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+        }
+        else
+        {
+            coinText.color = Color.red;
+            coinText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
+            cam.Shake();
+        }
+    }
     public void NextLevel(bool next)
     {
         player = null;
@@ -107,14 +153,12 @@ public class SceneController : MonoBehaviour
         playerTimeScale = 1f;
         enemyTimeScale = 1f;
     }
-
     public void ToggleGameState()
     {
         isPaused = !isPaused;
     }
     public void PauseGame() => isPaused = true;
     public void ResumeGame() => isPaused = false;
-
     public float GetPlayerTime() => GameTime * playerTimeScale * timeScale;
     public float GetEnemyTime() => GameTime * enemyTimeScale * timeScale;
     public void SetScaledTime(float scale = 1f)
@@ -122,12 +166,23 @@ public class SceneController : MonoBehaviour
         Time.timeScale = timeScale * scale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
+    private void CoinCollected(int amount)
+    {
+        numOfCoin += amount;
+        coinText.text = numOfCoin.ToString();
+    }
+    public int GetCoins() => numOfCoin;
+    public void ConsumeCoins(int amount) => numOfCoin -= amount;
     private void OnEnable()
     {
-        LevelEnd.OnLevelFinished += FinalScreen;
+        LevelEnd.OnLevelFinished += LevelFinished;
+        PlayerController.OnLevelStarted += LevelStarted;
+        Coin.OnCoinCollected += CoinCollected;
     }
     private void OnDisable()
     {
-        LevelEnd.OnLevelFinished -= FinalScreen;
+        LevelEnd.OnLevelFinished -= LevelFinished;
+        PlayerController.OnLevelStarted -= LevelStarted;
+        Coin.OnCoinCollected -= CoinCollected;
     }
 }

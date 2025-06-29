@@ -29,7 +29,6 @@ public class MobileInput : IInput {
                     case TouchPhase.Canceled:
                         gun.OnTouchEnd();
                         wManager.StopAiming();
-                        SceneController.instance.cam.Shake();
                         break;
                 }
             }

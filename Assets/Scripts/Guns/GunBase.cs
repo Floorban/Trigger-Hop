@@ -80,6 +80,7 @@ public class GunBase : MonoBehaviour {
         if (fireMode != FireMode.Charge) {
             currentAmmo -= consumedAmmo;
             UpdateAmmoUI();
+            SceneController.instance.cam.Shake();
             Debug.Log(currentAmmo + " left");
         }
 

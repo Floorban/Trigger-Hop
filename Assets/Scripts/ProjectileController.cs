@@ -9,12 +9,13 @@ public class ProjectileController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private GameObject physBullet, colEffect;
 
-    public void Init(Vector2 dir, float spd, float lifetime)
+    public void Init(Vector2 dir, float spd, float lifetime, bool isPhysical)
     {
         direction = dir.normalized;
         speed = spd;
         maxLifetime = lifetime;
 
+        if (!isPhysical) return;
         float randomZ = Random.Range(-10f, 10f);
         Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZ + 90f);
         GameObject bul = Instantiate(physBullet, transform.position, randomRotation);

@@ -1,6 +1,8 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour {
@@ -17,15 +19,14 @@ public class PlayerController : MonoBehaviour {
     private Vector3 oriScale;
     [SerializeField] private float movePauseDuration = 0.2f;
 
+    static public UnityAction<PlayerController> OnLevelStarted;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         oriScale = transform.localScale;
     }
-    private void Start()
-    {
-        SceneController.instance.player = this;
-    }
+    private void Start() => OnLevelStarted?.Invoke(this);
     private void FixedUpdate() => HorizonMove();
     
 /*    private void OnCollisionEnter2D(Collision2D collision)

@@ -48,8 +48,11 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 0}
   ammoUI: {fileID: 1575729690522992419}
+  coinText: {fileID: 4000530033050556308}
+  timerText: {fileID: 8770544852091066008}
   finalScreen: {fileID: 4870173476059453689}
   currentLevelText: {fileID: 6559132723634689807}
+  currentTime: 0
   isPaused: 0
   timeScale: 1
 --- !u!1001 &1164547404422135541
@@ -166,6 +169,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 429900798731190742, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
   m_PrefabInstance: {fileID: 1164547404422135541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4000530033050556308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2859206798331455841, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+  m_PrefabInstance: {fileID: 1164547404422135541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4870173476059453689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6034569825406330380, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
@@ -174,6 +188,17 @@ GameObject:
 --- !u!114 &6559132723634689807 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5417819100628773370, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+  m_PrefabInstance: {fileID: 1164547404422135541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8770544852091066008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7610645363706030189, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
   m_PrefabInstance: {fileID: 1164547404422135541}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

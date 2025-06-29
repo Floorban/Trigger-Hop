@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelEnd : MonoBehaviour
 {
     public Transform lookAt;
+    public float coinRequirement, timeRequirement;
     public static UnityAction<LevelEnd> OnLevelFinished;
     private void OnTriggerEnter2D(Collider2D collision)
     {

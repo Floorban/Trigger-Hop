@@ -17,7 +17,7 @@ public class ProjectileController : MonoBehaviour
 
         if (!isPhysical) return;
         float randomZ = Random.Range(-10f, 10f);
-        Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZ + 90f);
+        Quaternion randomRotation = Quaternion.Euler(0f, 0f, randomZ);
         GameObject bul = Instantiate(physBullet, transform.position, randomRotation);
         Rigidbody2D rb = bul.GetComponent<Rigidbody2D>();
 

@@ -64,6 +64,9 @@ public class SceneController : MonoBehaviour
         CoinCollected(0);
         currentTime = 0;
         isPaused = false;
+        coinText.color = Color.white;
+        coinText.color = Color.white;
+
     }
     public void LevelFinished(LevelEnd end)
     {

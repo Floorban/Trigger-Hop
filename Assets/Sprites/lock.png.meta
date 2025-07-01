@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 18a1f636fcc27ad4082ce5f37662c48d
+guid: 29d1bc4f17461c846abb355ee9ac24c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7670485267309540912
-    second: lock_0
+      213: -288685847227352361
+    second: lock 1_0
+  - first:
+      213: 7081638610322833973
+    second: lock 1_1
+  - first:
+      213: 6979368815214718655
+    second: lock 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -126,23 +132,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lock_0
+      name: lock 1_0
       rect:
         serializedVersion: 2
-        x: 132
-        y: 23
-        width: 539
-        height: 730
+        x: 491
+        y: 237
+        width: 98
+        height: 131
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 10, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dab45060c16efbf0800000000000000
+      internalID: -288685847227352361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock 1_1
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 247
+        width: 100
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d9c5231a46fc8590800000000000000
-      internalID: -7670485267309540912
+      spriteID: 532cbf3cbc8074260800000000000000
+      internalID: 7081638610322833973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock 1_2
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 242
+        width: 104
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbeef4b85f2bbd060800000000000000
+      internalID: 6979368815214718655
       vertices: []
       indices: 
       edges: []
@@ -151,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ac9e8f4c15c06ec4dbdc3accf9093f0c
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lock_0: -7670485267309540912
+      lock 1_0: -288685847227352361
+      lock 1_1: 7081638610322833973
+      lock 1_2: 6979368815214718655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

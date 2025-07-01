@@ -48,10 +48,8 @@ public class WeaponManager : MonoBehaviour
             currentGun.Reload(0f);
         }
 
-        //input = new MobileInput();
-        input = new DesktopInput();
-
 #if UNITY_EDITOR || UNITY_STANDALONE
+        input = new MobileInput();
         //input = new DesktopInput();
 #elif UNITY_IOS || UNITY_ANDROID
         input = new MobileInput();

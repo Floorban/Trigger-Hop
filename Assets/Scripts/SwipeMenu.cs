@@ -22,7 +22,6 @@ public class SwipeMenu : MonoBehaviour
     [SerializeField] Image[] pageImage;
     //[SerializeField] Sprite pageEnabled, pageDisabled;
     [SerializeField] Button nextButton, previousButton;
-    [SerializeField] GameObject lvlLock;
 
     private void Awake()
     {
@@ -144,12 +143,16 @@ public class SwipeMenu : MonoBehaviour
         for (int i = 0; i < levelButtons.Count; i++)
         {
             //levelButtons[i].interactable = false;
+            levelButtons[i].GetComponent<Image>().enabled = false;
             levelButtons[i].transform.GetChild(0).gameObject.SetActive(true);
+            levelButtons[i].transform.GetChild(1).gameObject.SetActive(false);
         }
         for (int i = 0; i < unlockedLvl; i++)
         {
             levelButtons[i].interactable = true;
+            levelButtons[i].GetComponent<Image>().enabled = true;
             levelButtons[i].transform.GetChild(0).gameObject.SetActive(false);
+            levelButtons[i].transform.GetChild(1).gameObject.SetActive(true);
         }
     }
     private void GetLevelButtons()

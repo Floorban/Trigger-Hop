@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 132d2931f6c46d040bd3ab26dc8a8a01
+guid: 83a6537f8b2d38b42a1fc12f483396a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 762456511582842315
-    second: bullet_1_0
+      213: -3576610453390998246
+    second: cylinder 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bullet_1_0
+      name: cylinder 1_0
       rect:
         serializedVersion: 2
-        x: 487
-        y: 250
-        width: 89
-        height: 187
+        x: 301
+        y: 78
+        width: 474
+        height: 438
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bcd2499582ac49a00800000000000000
-      internalID: 762456511582842315
+      spriteID: a154ea90eb35d5ec0800000000000000
+      internalID: -3576610453390998246
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bullet_1_0: 762456511582842315
+      cylinder 1_0: -3576610453390998246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

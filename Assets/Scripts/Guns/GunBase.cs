@@ -45,6 +45,7 @@ public class GunBase : MonoBehaviour {
         player = p;
         inputAimDIr = GetInputDir(reverseAimDir);
         lastShotTime = -1;
+        gameObject.SetActive(true);
         Debug.Log(name + " in hand");
     }
 

@@ -38,13 +38,18 @@ public class WeaponManager : MonoBehaviour
         aimLine = GetComponent<LineRenderer>();
         if (aimLine) aimLine.enabled = false;
         if (allGuns.Length > 0) currentGun = allGuns[0];
+        foreach (var g in allGuns)
+        {
+            g.gameObject.SetActive(false);
+        }
         if (currentGun)
         {
             currentGun.Setup(player);
             currentGun.Reload(0f);
         }
 
-        input = new MobileInput();
+        //input = new MobileInput();
+        input = new DesktopInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         //input = new DesktopInput();
@@ -72,7 +77,7 @@ public class WeaponManager : MonoBehaviour
             else
                 currentIndex = allGuns.Length - 1;
         }
-
+        currentGun.gameObject.SetActive(false);
         currentGun = allGuns[currentIndex];
         if (currentGun)
             currentGun.Setup(player);

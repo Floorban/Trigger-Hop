@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 439522cc1a0636345b93be680ff89d1d
+guid: 7073fe3602df01646b763d76f123ba25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8271715202566429118
-    second: AK47_0
+      213: 7499154508442906066
+    second: box_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AK47_0
+      name: box_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 32
-        height: 14
+        x: 405
+        y: 201
+        width: 216
+        height: 204
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb99b2cb6290bc270800000000000000
-      internalID: 8271715202566429118
+      spriteID: 2dd228f0b49521860800000000000000
+      internalID: 7499154508442906066
       vertices: []
       indices: 
       edges: []

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c202c9b3e0a77914aa2fcf7e55ca360c
+guid: 57ec163b9362538418ae721556ad87f5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8890855176392135699
-    second: ShotgunShellBig_0
+      213: -2368343287490602718
+    second: shotgun_trigger_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShotgunShellBig_0
+      name: shotgun_trigger_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 16
-        height: 8
+        x: 523
+        y: 263
+        width: 126
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: deb24b5a2565d9480800000000000000
-      internalID: -8890855176392135699
+      spriteID: 22911faf354f12fd0800000000000000
+      internalID: -2368343287490602718
       vertices: []
       indices: 
       edges: []

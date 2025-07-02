@@ -48,6 +48,7 @@ MonoBehaviour:
   player: {fileID: 0}
   cam: {fileID: 0}
   ammoUI: {fileID: 1575729690522992419}
+  numOfCoin: 0
   coinText: {fileID: 4000530033050556308}
   timerText: {fileID: 8770544852091066008}
   finalScreen: {fileID: 4870173476059453689}

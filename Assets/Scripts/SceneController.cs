@@ -140,6 +140,8 @@ public class SceneController : MonoBehaviour
         }
         finalScreen.SetActive(false);
 
+        int unlockedLvl = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
         if (next)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else

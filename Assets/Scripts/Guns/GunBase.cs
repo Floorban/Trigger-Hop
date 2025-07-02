@@ -149,11 +149,11 @@ public class GunBase : MonoBehaviour {
 
             RectTransform rect = bullet.GetComponent<RectTransform>();
             float xOffset = Random.Range(-5f, 5f);
-            float yOffset = Random.Range(-10f, 10f);
+            float yOffset = Random.Range(-8f, 8f);
             float randomZRotation = Random.Range(-10f, 10f);
 
             rect.anchoredPosition = new Vector2(i * 45f + xOffset, yOffset);
-            rect.localRotation = Quaternion.Euler(0, 0, randomZRotation + 90f);
+            rect.localRotation = Quaternion.Euler(0, 0, randomZRotation);
 
             rect.localScale = Vector3.zero;
 

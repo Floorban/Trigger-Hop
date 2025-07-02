@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{876498fc-362c-4a3c-9b8b-3e99b2cf37b8}">
+		<property name="name">
+			<value>Barrel Length</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8fe66c80-2d4f-45ba-8602-9ae0b21a881a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{74cee264-5d75-44d3-bf09-11c49e3b3398}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{74cee264-5d75-44d3-bf09-11c49e3b3398}">
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="initialValue">
+			<value>15</value>
+		</property>
+	</object>
+</objects>

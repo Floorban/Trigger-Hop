@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{03d4808f-d8e1-4838-9348-dc7c4161ca08}">
+		<property name="name">
+			<value>Muzzle</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8fe66c80-2d4f-45ba-8602-9ae0b21a881a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a05c8add-2f75-46d5-b90a-77b070d4b40a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a05c8add-2f75-46d5-b90a-77b070d4b40a}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Suppressor</value>
+			<value>Muzzle Break</value>
+			<value>Normal</value>
+		</property>
+		<property name="initialValue">
+			<value>2</value>
+		</property>
+	</object>
+</objects>

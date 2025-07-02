@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{2753843e-655a-4366-b701-5d178d41b487}">
+		<property name="name">
+			<value>Ammo Size</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8fe66c80-2d4f-45ba-8602-9ae0b21a881a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{405931e4-147a-4015-88e5-97e2857ca34b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{405931e4-147a-4015-88e5-97e2857ca34b}">
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>30</value>
+		</property>
+		<property name="initialValue">
+			<value>9</value>
+		</property>
+	</object>
+</objects>

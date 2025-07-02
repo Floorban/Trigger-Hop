@@ -166,9 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputLocked: 0
   allGuns:
+  - {fileID: 5946880597954136939}
   - {fileID: 8710219848955722271}
   - {fileID: 2609547342576380772}
-  - {fileID: 5946880597954136939}
   currentGun: {fileID: 0}
   slowMotionScale: 0.3
   cycleCooldown: 0.3
@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: recoilForce
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4558864564970490992, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5421146849141875424, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -394,9 +398,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985826111290105667, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: m_Size.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985826111290105667, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985826111290105667, guid: d3bb7e68368c3624f9457f5a801b69d0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8333481726314500824, guid: ac4ba1aa8f742474d9e46039f245ada4, type: 3}
+      objectReference: {fileID: 21300000, guid: a4729ddca8a56264a8a8282ea40fe238, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -511,12 +523,28 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 8960536926405029604, guid: 5442e0dd821fbb44e9951013da47dc7e, type: 3}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
       propertyPath: reverseAimDir
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6595598600655403628, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419633884634546112, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419633884634546112, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784362623282497487, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

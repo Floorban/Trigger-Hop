@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: cc39a2ec1bb4ca442bd328f776e8ab4a
+guid: 3472016ab539a754d856d9419ff141ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2370632257197220318
-    second: shotgun_body_0
+      213: 7109954019355724168
+    second: shotgun_body 1_0
   - first:
-      213: 2591874831054389647
-    second: shotgun_body_1
+      213: 3685878499187996326
+    second: shotgun_body 1_1
   - first:
-      213: -1371225284624593543
-    second: shotgun_body_2
+      213: 5428801625473897926
+    second: shotgun_body 1_2
   - first:
-      213: 1494544167205967303
-    second: shotgun_body_3
+      213: -333730686085947438
+    second: shotgun_body 1_3
   - first:
-      213: -5708716969354467964
-    second: shotgun_body_4
+      213: -3291894679014300673
+    second: shotgun_body 1_4
   - first:
-      213: -8859550421274148805
-    second: shotgun_body_5
+      213: -4626114635159407887
+    second: shotgun_body 1_5
   - first:
-      213: 1171288300713874129
-    second: shotgun_body_6
+      213: 1671097006146996708
+    second: shotgun_body 1_6
   - first:
-      213: 8202800574752789317
-    second: shotgun_body_7
+      213: -4874763766833551766
+    second: shotgun_body 1_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,12 +67,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shotgun_body_0
+      name: shotgun_body 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed1a25f4a7d26e020800000000000000
-      internalID: 2370632257197220318
+      spriteID: 8890f0da281aba260800000000000000
+      internalID: 7109954019355724168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_1
+      name: shotgun_body 1_1
       rect:
         serializedVersion: 2
         x: 37
         y: 138
-        width: 158
-        height: 192
+        width: 144
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,42 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f81c54f2d6038f320800000000000000
-      internalID: 2591874831054389647
+      spriteID: 6a6b95567fed62330800000000000000
+      internalID: 3685878499187996326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_2
+      name: shotgun_body 1_2
       rect:
         serializedVersion: 2
-        x: 190
-        y: 213
-        width: 119
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 97dcae26edd68fce0800000000000000
-      internalID: -1371225284624593543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shotgun_body_3
-      rect:
-        serializedVersion: 2
-        x: 219
-        y: 208
+        x: 196
+        y: 257
         width: 11
-        height: 7
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,14 +206,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c5917b6000bdb410800000000000000
-      internalID: 1494544167205967303
+      spriteID: 6c55f6ab05af65b40800000000000000
+      internalID: 5428801625473897926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_4
+      name: shotgun_body 1_3
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 210
+        width: 89
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df133d85b95e5bf0800000000000000
+      internalID: -333730686085947438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shotgun_body 1_4
       rect:
         serializedVersion: 2
         x: 288
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 485e166992096c0b0800000000000000
-      internalID: -5708716969354467964
+      spriteID: ff3aa5b0b37d052d0800000000000000
+      internalID: -3291894679014300673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_5
+      name: shotgun_body 1_5
       rect:
         serializedVersion: 2
         x: 332
@@ -272,14 +272,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b30ca4ee4dd8c0580800000000000000
-      internalID: -8859550421274148805
+      spriteID: 1f27611ef3dbccfb0800000000000000
+      internalID: -4626114635159407887
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_6
+      name: shotgun_body 1_6
       rect:
         serializedVersion: 2
         x: 283
@@ -294,14 +294,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d21f95f080414010800000000000000
-      internalID: 1171288300713874129
+      spriteID: 4e94c9c8fdde03710800000000000000
+      internalID: 1671097006146996708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shotgun_body_7
+      name: shotgun_body 1_7
       rect:
         serializedVersion: 2
         x: 308
@@ -316,8 +316,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 543928599a336d170800000000000000
-      internalID: 8202800574752789317
+      spriteID: a66e0f18e2c595cb0800000000000000
+      internalID: -4874763766833551766
       vertices: []
       indices: 
       edges: []
@@ -326,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -335,7 +335,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shotgun_body 1_0: 7109954019355724168
+      shotgun_body 1_1: 3685878499187996326
+      shotgun_body 1_2: 5428801625473897926
+      shotgun_body 1_3: -333730686085947438
+      shotgun_body 1_4: -3291894679014300673
+      shotgun_body 1_5: -4626114635159407887
+      shotgun_body 1_6: 1671097006146996708
+      shotgun_body 1_7: -4874763766833551766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

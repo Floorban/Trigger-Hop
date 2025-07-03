@@ -109,27 +109,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spiky_1_0
+      name: spiky_1_1
       rect:
         serializedVersion: 2
-        x: 158
-        y: 35
-        width: 697
-        height: 528
+        x: 116
+        y: 0
+        width: 779
+        height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b4b4f50fdcd75c380800000000000000
-      internalID: -8951610360874448053
+      spriteID: b9f1eaada11a32e41b739ab337112b20
+      internalID: -1834783869
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 19590ac10631b4e4e974071186f69289
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +160,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spiky_1_0: -8951610360874448053
+      spiky_1_1: -1834783869
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

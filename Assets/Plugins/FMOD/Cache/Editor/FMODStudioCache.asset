@@ -147,7 +147,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 8060194288005404460}
   cacheVersion: 131848
-  cacheTime: 638871412220348771
+  cacheTime: 638870946698530802
   SerializableEventsDict:
   - key: event:/Procedural_Gun
     index: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   Path: Assets/Procedural Gun FMOD/Banks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638871412220348771
+  lastModified: 638870946698530802
   FileSizes:
   - Name: 
     Value: 1116
@@ -244,7 +244,7 @@ MonoBehaviour:
   Path: Assets/Procedural Gun FMOD/Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638871412220328758
+  lastModified: 638870946698530802
   FileSizes: []
   Exists: 1
 --- !u!114 &8754922520921168671

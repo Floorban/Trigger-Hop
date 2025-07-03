@@ -5,8 +5,8 @@ using DG.Tweening;
 using static Unity.VisualScripting.Member;
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button startButton, settingsButton, quitButton;
-    [SerializeField] private GameObject mainMenu, levelSelectionMenu, settingsMenu;
+    [SerializeField] private Button startButton, settingsButton, creditsButton, quitButton;
+    [SerializeField] private GameObject mainMenu, levelSelectionMenu, settingsMenu, creditsMenu;
     [SerializeField] private AudioSource buttonSound;
     [SerializeField] private AudioClip buttonClickClip;
     private void Awake()
@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
             settingsMenu.SetActive(false);
             settingsMenu.transform.localScale = Vector3.zero; // Start scaled down for animation
         }
+        if (creditsMenu)
+        {
+            creditsMenu.SetActive(false);
+            creditsMenu.transform.localScale = Vector3.zero;
+        }
         if (levelSelectionMenu)
         {
             levelSelectionMenu.SetActive(false);
@@ -31,8 +36,9 @@ public class MainMenu : MonoBehaviour
     private void InitButtons()
     {
         RegisterButtonClick(startButton, StartGame);
-        RegisterButtonClick(settingsButton, SettingsMenu);
+        RegisterButtonClick(settingsButton, () => SubMenu(settingsButton, settingsMenu));
         RegisterButtonClick(quitButton, QuitGame);
+        RegisterButtonClick(creditsButton, () => SubMenu(creditsButton, creditsMenu));
     }
     private void RegisterButtonClick(Button button, UnityAction onClickEvent)
     {
@@ -60,16 +66,16 @@ public class MainMenu : MonoBehaviour
             }
         });
     }
-    private void SettingsMenu()
+    private void SubMenu(Button btn, GameObject menu)
     {
         PlayButtonSfx(buttonSound, buttonClickClip);
-        PlayButtonAnim(settingsButton.gameObject, () =>
+        PlayButtonAnim(btn.gameObject, () =>
         {
             mainMenu.SetActive(false);
-            if (settingsMenu)
+            if (menu)
             {
-                settingsMenu.SetActive(true);
-                settingsMenu.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+                menu.SetActive(true);
+                menu.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
             }
         });
     }

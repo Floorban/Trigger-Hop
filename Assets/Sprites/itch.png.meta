@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: a8b764f0ecfba034f956e7bbf724e82b
+guid: 9365666b409ee7444931ea48459e3685
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8483731395159641348
-    second: bg2_0
+      213: -7959642762351876000
+    second: itch 1_0
+  - first:
+      213: -1886324969604005949
+    second: itch 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,30 +112,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg2_0
+      name: itch 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1600
-        height: 1688
+        x: 378
+        y: 146
+        width: 266
+        height: 287
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf23eadae3bb34a80800000000000000
-      internalID: -8483731395159641348
+      spriteID: 068e103641ba98190800000000000000
+      internalID: -7959642762351876000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itch 1_1
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 258
+        width: 270
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfbdcf2f6d62d5e0800000000000000
+      internalID: -1886324969604005949
       vertices: []
       indices: 
       edges: []
@@ -161,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg2_0: -8483731395159641348
+      itch 1_0: -7959642762351876000
+      itch 1_1: -1886324969604005949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

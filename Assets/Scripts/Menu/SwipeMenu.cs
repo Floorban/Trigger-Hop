@@ -87,7 +87,7 @@ public class SwipeMenu : MonoBehaviour
         foreach(var page in pageImage)
         {
             //page.sprite = pageDisabled;
-            page.color = Color.gray;
+            page.color = Color.white;
             RectTransform buttonRect = page.GetComponent<RectTransform>();
             buttonRect.DOKill();
             buttonRect.DOScale(1f, 0.1f).SetEase(Ease.InQuad);

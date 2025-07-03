@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 13e6a92ee4b7ff9459a904ef9f3917ce
+guid: 168d5c55cdaf3cf498fb9a6e6f8ec380
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4345969612696422427
-    second: right_0
+      213: -4065251005158667910
+    second: hoes_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: right_0
+      name: hoes_2_0
       rect:
         serializedVersion: 2
-        x: 458
-        y: 146
-        width: 140
-        height: 304
+        x: 461
+        y: 247
+        width: 101
+        height: 101
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e77696c9a300b3c0800000000000000
-      internalID: -4345969612696422427
+      spriteID: a79c7badfb35597c0800000000000000
+      internalID: -4065251005158667910
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8e3dccc3900b7754cabf0a3025439f35
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      right_0: -4345969612696422427
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

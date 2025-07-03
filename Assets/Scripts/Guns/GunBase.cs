@@ -30,6 +30,7 @@ public class GunBase : MonoBehaviour {
     [Header("References")]
     [SerializeField] protected GameObject bulletPrefab;
     public Transform shootPoint;
+    public Animator muzzle;
 
     protected int currentAmmo;
     public bool canShoot = false;
@@ -97,6 +98,7 @@ public class GunBase : MonoBehaviour {
             }
         }
 
+        muzzle.SetTrigger("Fire");
         // activate cooldown
         lastShotTime = Time.time;
         return true;

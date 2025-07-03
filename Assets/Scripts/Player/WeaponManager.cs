@@ -47,6 +47,7 @@ public class WeaponManager : MonoBehaviour
             currentGun.Setup(player);
             currentGun.Reload(0f);
         }
+        input = new MobileInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         input = new MobileInput();

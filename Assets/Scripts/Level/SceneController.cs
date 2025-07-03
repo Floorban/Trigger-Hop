@@ -140,12 +140,10 @@ public class SceneController : MonoBehaviour
         }
         finalScreen.SetActive(false);
 
-        int unlockedLvl = PlayerPrefs.GetInt("UnlockedLevel", 1);
-
         if (next)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         else
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
     public void BackToMenu()
     {

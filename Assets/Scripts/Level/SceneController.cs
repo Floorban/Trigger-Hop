@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     public static SceneController instance;
     public PlayerController player;
     public CameraController cam;
+    public bool inLevel;
 
     [Header("UI")]
     public RectTransform ammoUI;
@@ -59,6 +60,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelStarted(PlayerController p)
     {
+        inLevel = true;
         player = p;
         numOfCoin = 0;
         CoinCollected(0);
@@ -70,6 +72,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelFinished(LevelEnd end)
     {
+        inLevel = false;
         isPaused = true;
         player.Stop();
         FindFirstObjectByType<WeaponManager>().StopAiming();

@@ -1,13 +1,16 @@
 using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
+using FMOD.Studio;
+using FMODUnity;
+using System.Collections.Generic;
 
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
+    public AudioManager gameAudio;
     public PlayerController player;
     public CameraController cam;
     public bool inLevel;

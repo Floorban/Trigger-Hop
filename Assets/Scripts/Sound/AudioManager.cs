@@ -1,14 +1,25 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
-
-using FMOD.Studio;
-using System;
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    [Header("Unity Audio")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
 
-    [Header("Volume Control")]
+    [Header("Audio Clip")]
+    [SerializeField]
+    private AudioClip bgm,
+                      btnSelect,
+                      btnConfirm,
+                      gameStart,
+                      gameOver,
+                      coinCollect,
+                      lvlFinished;
+    public void PlaySfx(AudioClip clip) => sfxSource.PlayOneShot(clip);
+
+    [Header("FMOD")]
     [Tooltip("The value that controls the volume for the master mixer, which contains all the sound in the game. You can only change the volume before playing.")]
     [Range(0, 100)] public float MasterVolume = 50;
 
@@ -27,7 +38,6 @@ public class AudioManager : MonoBehaviour
 
     [Tooltip("A list of custom parameters that can be used to change the intensities for sounds, add your own custom parameter(s) here that you would like to be able to change")]
     public List<string> CustomParameter = new List<string>();
-    //TODO: Dictionary for CustomParameter
 
     [Header("Developer Attributes")]
     [SerializeField] bool developerMode = false;
@@ -38,40 +48,15 @@ public class AudioManager : MonoBehaviour
     public enum GameState { MainMenu, Play, Pause }
     public GameState gameState = GameState.Play;
 
-    /// Local Attributes
-    // FMOD Parameters
     private string RandomnessIntensity = "RandomnessIntensity";
-    //private string IndoorIntensity = "IndoorIntensity";
 
-    // Audio Mixer
     private Bus MasterBus;
     private Bus AmbientBus;
     private Bus MusicBus;
     private Bus SFXBus;
 
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-        }
-        else {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    /*private void Start() {
-        MasterBus = RuntimeManager.GetBus("bus:/");
-        AmbientBus = RuntimeManager.GetBus("bus:/Ambient");
-        MusicBus = RuntimeManager.GetBus("bus:/Music");
-        SFXBus = RuntimeManager.GetBus("bus:/SFX");
-
-        MasterBus.setVolume(MasterVolume / 100f);
-        AmbientBus.setVolume(AmbientVolume / 100f);
-        MusicBus.setVolume(MusicVolume / 100f);
-        SFXBus.setVolume(SFXVolume / 100f);
-    }*/
-
-    private void Update() {
+    private void Update()
+    {
         if (developerMode) if (Input.GetKeyDown(KeyCode.P)) proc.PlaySound(transform.position);
         if (developerMode) if (Input.GetKeyDown(KeyCode.R)) proc.RandomizeSound(transform.position);
     }
@@ -85,9 +70,10 @@ public class AudioManager : MonoBehaviour
 
         string customParameter2 = null,
         float customParameter2Value = 0f
-
-    ) {
-        if (!sfx.IsNull) {
+    )
+    {
+        if (!sfx.IsNull)
+        {
             EventInstance sfxInstance = CreateInstance(sfx, playPosition);
             sfxInstance = CreateInstance(sfx, playPosition);
 
@@ -106,8 +92,10 @@ public class AudioManager : MonoBehaviour
         Vector3 playPosition,
         GameObject gameObject,
         int randomnessIntensityValue = -1
-    ) {
-        if (!sound.IsNull) {
+    )
+    {
+        if (!sound.IsNull)
+        {
             EventInstance loopInstance = CreateInstance(sound, playPosition);
             RuntimeManager.AttachInstanceToGameObject(loopInstance, gameObject);
             if (randomnessIntensityValue != 0) loopInstance.setParameterByName(RandomnessIntensity, randomnessIntensityValue);
@@ -119,76 +107,80 @@ public class AudioManager : MonoBehaviour
         return default(EventInstance);
     }
 
-    public EventInstance CreateInstance(EventReference audio, Vector3 eventPosition) {
+    public EventInstance CreateInstance(EventReference audio, Vector3 eventPosition)
+    {
         EventInstance audioInstance = RuntimeManager.CreateInstance(audio);
         audioInstance.set3DAttributes(RuntimeUtils.To3DAttributes(eventPosition));
         return audioInstance;
-
     }
 
-    public void ContinueInstance(params EventInstance[] audioInstances) {
-        foreach (var instance in audioInstances) {
+    public void ContinueInstance(params EventInstance[] audioInstances)
+    {
+        foreach (var instance in audioInstances)
+        {
             instance.setPaused(false);
         }
     }
-    public void PauseInstance(params EventInstance[] audioInstances) {
-        foreach (var instance in audioInstances) {
+    public void PauseInstance(params EventInstance[] audioInstances)
+    {
+        foreach (var instance in audioInstances)
+        {
             instance.setPaused(true);
         }
     }
 
-    public void StopInstance(params EventInstance[] audioInstances) {
-        foreach (var instance in audioInstances) {
+    public void StopInstance(params EventInstance[] audioInstances)
+    {
+        foreach (var instance in audioInstances)
+        {
             instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
     }
 
-    public void ClearInstance(params EventInstance[] audioInstances) {
-        foreach (EventInstance instance in audioInstances) {
+    public void ClearInstance(params EventInstance[] audioInstances)
+    {
+        foreach (EventInstance instance in audioInstances)
+        {
             instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             instance.release();
         }
     }
 
-    public bool IsAudioPlaying(params EventInstance[] audioInstances) {
-        foreach (EventInstance instance in audioInstances) {
+    public bool IsAudioPlaying(params EventInstance[] audioInstances)
+    {
+        foreach (EventInstance instance in audioInstances)
+        {
             instance.getPaused(out bool paused);
             if (paused) return false;
         }
         return true;
     }
 
-
     public void SetParameter(EventInstance audioInstance, string parameterName, float value) => audioInstance.setParameterByName(parameterName, value);
 
-    void RefreshMixer() { // Refreshes the mixer to its' default values
+    void RefreshMixer()
+    {
         AmbientBus.setMute(false); AmbientBus.setPaused(false);
         MusicBus.setMute(false); MusicBus.setPaused(false);
         SFXBus.setMute(false); SFXBus.setPaused(false);
-
-        //MuffleAudio(false);
     }
 
-    public void AdjustAudioToState(GameState state) { // Global parameters that change all SFX according to player state
+    public void AdjustAudioToState(GameState state)
+    {
         gameState = state;
-
-        switch (gameState) {
+        switch (gameState)
+        {
             case GameState.Play:
                 RefreshMixer();
                 break;
-
             case GameState.Pause:
                 RefreshMixer();
                 SFXBus.setPaused(true);
                 AmbientBus.setPaused(true);
-                //MuffleAudio(true);
                 break;
-
             case GameState.MainMenu:
                 RefreshMixer();
                 break;
         }
-
     }
-
 }

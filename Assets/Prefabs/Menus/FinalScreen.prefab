@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingAngle: 10
-  swingDuration: 3
+  swingDuration: 4
 --- !u!1 &2000526560295237913
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 6732185992183936977}
   - component: {fileID: 3785999210306419094}
   m_Layer: 5
-  m_Name: coin
+  m_Name: time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 8545125007376636419}
   - component: {fileID: 1793770483144035514}
   m_Layer: 5
-  m_Name: time
+  m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,10 +7,16 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button startButton, settingsButton, creditsButton, quitButton;
     [SerializeField] private GameObject mainMenu, levelSelectionMenu, settingsMenu, creditsMenu;
-    [SerializeField] private AudioSource buttonSound;
-    [SerializeField] private AudioClip buttonClickClip;
+    [SerializeField] private AudioSource musicSound, buttonSound;
+    [SerializeField] private AudioClip bgmClip, buttonClickClip;
     private void Awake()
     {
+        if (musicSound && bgmClip)
+        {
+            musicSound.clip = bgmClip;
+            musicSound.Play();
+        }
+        
         InitSubMenus();
         InitButtons();
     }

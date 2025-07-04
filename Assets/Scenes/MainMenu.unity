@@ -414,13 +414,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d639ac9e4f5be75428661c61f3d035a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  bgm: {fileID: 0}
+  btnSelect: {fileID: 0}
+  btnConfirm: {fileID: 0}
+  gameStart: {fileID: 0}
+  gameOver: {fileID: 0}
+  coinCollect: {fileID: 0}
+  lvlFinished: {fileID: 0}
   MasterVolume: 50
   AmbientVolume: 100
   MusicVolume: 100
   SFXVolume: 100
   GlobalRandomnessIntensityValue: 50
   CustomParameter: []
-  developerMode: 1
+  developerMode: 0
   SFX_TestAudio:
     Guid:
       Data1: 0
@@ -428,7 +437,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
-  proc: {fileID: 11400000, guid: 1b6e19e2207c4c143a6f510e7c965b3f, type: 2}
+  proc: {fileID: 0}
   gameState: 1
 --- !u!1 &1098768528
 GameObject:
@@ -604,6 +613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 682016604132989033, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -5252446077229138079, guid: 5290f4a3bc798ef468534e9a8465ffbd, type: 2}
     - target: {fileID: 759711140487291317, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -684,6 +697,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6134192686641057747, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 123954906992820631, guid: 5290f4a3bc798ef468534e9a8465ffbd, type: 2}
     - target: {fileID: 7274038027339616767, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_Name
       value: Canvas_MainMenu

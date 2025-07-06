@@ -172,7 +172,7 @@ public class SceneController : MonoBehaviour
     public void NextLevel(bool next)
     {
         player = null;
-        if (ammoUI.childCount > 0)
+        if (ammoUI.GetChild(0))
         {
             foreach (Transform child in ammoUI)
             {

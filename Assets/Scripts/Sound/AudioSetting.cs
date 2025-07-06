@@ -1,46 +1,60 @@
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioSetting : MonoBehaviour
 {
     private AudioManager audioManager;
-    public Slider masterVolume;
-    public Slider musicVolume;
-    public Slider SFXVolume;
-    public Slider ambientVolume;
-
-    // Audio Mixer
-    private Bus MasterBus;
-    private Bus AmbientBus;
     private Bus MusicBus;
     private Bus SFXBus;
 
-    private void Start()
+    [SerializeField] AudioMixer audioMixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+
+    private void Awake()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
-        MasterBus = RuntimeManager.GetBus("bus:/");
-        AmbientBus = RuntimeManager.GetBus("bus:/Ambient");
-        MusicBus = RuntimeManager.GetBus("bus:/Music");
-        SFXBus = RuntimeManager.GetBus("bus:/SFX");
+        if (audioManager)
+        {
+            MusicBus = RuntimeManager.GetBus("bus:/Music");
+            SFXBus = RuntimeManager.GetBus("bus:/SFX");
+        }
 
-        UpdateVolume();
+        LoadVolume();
     }
 
     public void UpdateVolume()
     {
+        float mVolume = musicSlider.value;
+        float sVolume = sfxSlider.value;
+
         if (audioManager)
         {
-            audioManager.MasterVolume = masterVolume.value;
-            audioManager.MusicVolume = musicVolume.value;
-            audioManager.SFXVolume = SFXVolume.value;
-            audioManager.AmbientVolume = ambientVolume.value;
+            audioManager.MusicVolume = mVolume;
+            audioManager.SFXVolume = sVolume;
 
-            MasterBus.setVolume(audioManager.MasterVolume / 100f);
-            AmbientBus.setVolume(audioManager.AmbientVolume / 100f);
-            MusicBus.setVolume(audioManager.MusicVolume / 100f);
-            SFXBus.setVolume(audioManager.SFXVolume / 100f);
+            MusicBus.setVolume(mVolume / 100f);
+            SFXBus.setVolume(sVolume / 100f);
         }
+        if (audioMixer)
+        {
+            audioMixer.SetFloat("music", Mathf.Log10(mVolume) * 20);
+            audioMixer.SetFloat("sfx", Mathf.Log10(sVolume) * 20);
+        }
+
+        PlayerPrefs.SetFloat("musicVolume", mVolume);
+        PlayerPrefs.SetFloat("sfxVolume", sVolume);
+    }
+
+    private void LoadVolume()
+    {
+        if (musicSlider)
+            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        if (sfxSlider)
+            sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        UpdateVolume();
     }
 }

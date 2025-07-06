@@ -1,37 +1,10 @@
 fileFormatVersion: 2
-guid: 3fbd48714e6de014eb15ab3e100cfe7b
+guid: c07473e6a346ddd459ab457e8fc3f8c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6799610613322061167
-    second: screen_lose_0
-  - first:
-      213: -8858103752561058379
-    second: screen_lose_1
-  - first:
-      213: -58704982229613209
-    second: screen_lose_2
-  - first:
-      213: 6431870806173803941
-    second: screen_lose_3
-  - first:
-      213: 6579376817989281145
-    second: screen_lose_4
-  - first:
-      213: -7078973602769857388
-    second: screen_lose_5
-  - first:
-      213: 1876037424983544229
-    second: screen_lose_6
-  - first:
-      213: 5414328945252740583
-    second: screen_lose_7
-  - first:
-      213: 6451053864822439850
-    second: screen_lose_8
-  - first:
-      213: -458823653991623411
-    second: screen_lose_9
+      213: -2864234270771263661
+    second: screen_win 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,221 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: screen_lose_0
+      name: screen_win 1_0
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 538
-        height: 545
+        x: 193
+        y: 15
+        width: 623
+        height: 558
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19a66fd4c2ee2a1a0800000000000000
-      internalID: -6799610613322061167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_1
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 543
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5bd1b0db191b11580800000000000000
-      internalID: -8858103752561058379
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_2
-      rect:
-        serializedVersion: 2
-        x: 597
-        y: 542
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76588a331207f2ff0800000000000000
-      internalID: -58704982229613209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_3
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 544
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a5e133bb68924950800000000000000
-      internalID: 6431870806173803941
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_4
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 204
-        width: 8
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 975e0bf5b54ae4b50800000000000000
-      internalID: 6579376817989281145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_5
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 200
-        width: 9
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4941988a30f62cd90800000000000000
-      internalID: -7078973602769857388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_6
-      rect:
-        serializedVersion: 2
-        x: 254
-        y: 180
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a19b7d2916090a10800000000000000
-      internalID: 1876037424983544229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_7
-      rect:
-        serializedVersion: 2
-        x: 259
-        y: 163
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7eda7e64d7f832b40800000000000000
-      internalID: 5414328945252740583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_8
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 78
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aaff6a79f4fb68950800000000000000
-      internalID: 6451053864822439850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: screen_lose_9
-      rect:
-        serializedVersion: 2
-        x: 813
-        y: 62
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d055841515ee1a9f0800000000000000
-      internalID: -458823653991623411
+      spriteID: 357cd292b123048d0800000000000000
+      internalID: -2864234270771263661
       vertices: []
       indices: 
       edges: []
@@ -376,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 73c5b47bcdae0594c84673bc3962e88e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -386,16 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      screen_lose_0: -6799610613322061167
-      screen_lose_1: -8858103752561058379
-      screen_lose_2: -58704982229613209
-      screen_lose_3: 6431870806173803941
-      screen_lose_4: 6579376817989281145
-      screen_lose_5: -7078973602769857388
-      screen_lose_6: 1876037424983544229
-      screen_lose_7: 5414328945252740583
-      screen_lose_8: 6451053864822439850
-      screen_lose_9: -458823653991623411
+      screen_win 1_0: -2864234270771263661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,46 +1,10 @@
 fileFormatVersion: 2
-guid: aacab41151d69eb40be758e5288bc20f
+guid: aebd513e75071c74c9a82fcf36b16014
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5066641519059666546
-    second: screen_lose 1_0
-  - first:
-      213: 133080340354670089
-    second: screen_lose 1_1
-  - first:
-      213: 6702388503334524246
-    second: screen_lose 1_2
-  - first:
-      213: 7783142534607188572
-    second: screen_lose 1_3
-  - first:
-      213: 930197191901806959
-    second: screen_lose 1_4
-  - first:
-      213: -6777195636075622454
-    second: screen_lose 1_5
-  - first:
-      213: 2598885379416845917
-    second: screen_lose 1_6
-  - first:
-      213: 344575911739362613
-    second: screen_lose 1_7
-  - first:
-      213: 3012521415596143890
-    second: screen_lose 1_8
-  - first:
-      213: -6074064785992675451
-    second: screen_lose 1_9
-  - first:
-      213: 2385947351884447859
-    second: screen_lose 1_10
-  - first:
-      213: -7751339201143665369
-    second: screen_lose 1_11
-  - first:
-      213: 864897567072816568
-    second: screen_lose 1_12
+      213: 4814481865664215853
+    second: title_lose_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -162,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: screen_lose 1_5
+      name: title_lose_0
       rect:
         serializedVersion: 2
-        x: 257
-        y: 25
-        width: 536
-        height: 539
+        x: 321
+        y: 259
+        width: 332
+        height: 112
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: acf8262e97092f1a0800000000000000
-      internalID: -6777195636075622454
+      spriteID: d2bb974afb970d240800000000000000
+      internalID: 4814481865664215853
       vertices: []
       indices: 
       edges: []
@@ -187,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: db831778b57c6ea44822fa377d180eaa
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -196,20 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      screen_lose 1_0: 5066641519059666546
-      screen_lose 1_1: 133080340354670089
-      screen_lose 1_10: 2385947351884447859
-      screen_lose 1_11: -7751339201143665369
-      screen_lose 1_12: 864897567072816568
-      screen_lose 1_2: 6702388503334524246
-      screen_lose 1_3: 7783142534607188572
-      screen_lose 1_4: 930197191901806959
-      screen_lose 1_5: -6777195636075622454
-      screen_lose 1_6: 2598885379416845917
-      screen_lose 1_7: 344575911739362613
-      screen_lose 1_8: 3012521415596143890
-      screen_lose 1_9: -6074064785992675451
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

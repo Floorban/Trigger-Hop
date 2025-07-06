@@ -1,10 +1,31 @@
 fileFormatVersion: 2
-guid: 338fd34b29eae844b81c8076767b81aa
+guid: ca2f81a068a085f42baef03aca60ac2f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5154189640090123692
-    second: flag_0
+      213: -7938672479458495332
+    second: flag 1_0
+  - first:
+      213: -2509188396341147701
+    second: flag 1_1
+  - first:
+      213: -1131471246304349252
+    second: flag 1_2
+  - first:
+      213: -7734399185767051906
+    second: flag 1_3
+  - first:
+      213: 2098719295735994206
+    second: flag 1_4
+  - first:
+      213: 9000171411583855743
+    second: flag 1_5
+  - first:
+      213: 8805244078051050276
+    second: flag 1_6
+  - first:
+      213: 6091622653108593886
+    second: flag 1_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,20 +150,174 @@ TextureImporter:
       name: flag_0
       rect:
         serializedVersion: 2
-        x: 213
-        y: 50
-        width: 409
-        height: 473
+        x: 0
+        y: 0
+        width: 1024
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4520e6594d3a878b0800000000000000
-      internalID: -5154189640090123692
+      spriteID: f7fa71fdabd4fda4780195f1774e2b12
+      internalID: -1397842051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90851f10127e9fc4f9ab86aa8b952b77
+      internalID: -698843993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5407c4ccc08b7674eb10710f4e6056ba
+      internalID: -1948648753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca26368401381004b9e42fbec479cb56
+      internalID: -405308361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_4
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1caa05af220ddca4486b03de31939c29
+      internalID: 1440563432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_5
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6643dfce70375054787394b898434aef
+      internalID: 823860835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_6
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96a009eed8814148999070aafc75d0c
+      internalID: 1299330064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag_7
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 0
+        width: 1024
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffe9bfbc195a71409e6556de10594d4
+      internalID: -895473823
       vertices: []
       indices: 
       edges: []
@@ -151,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: eba305f4faa15cd469e6f52581e3bed7
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      flag_0: -5154189640090123692
+      flag_0: -1397842051
+      flag_1: -698843993
+      flag_2: -1948648753
+      flag_3: -405308361
+      flag_4: 1440563432
+      flag_5: 823860835
+      flag_6: 1299330064
+      flag_7: -895473823
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

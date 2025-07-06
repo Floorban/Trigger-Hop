@@ -221,6 +221,7 @@ public class SceneController : MonoBehaviour
     }
     private void CoinCollected(int amount)
     {
+        Debug.Log("a");
         numOfCoin += amount;
         coinText.text = numOfCoin.ToString();
     }

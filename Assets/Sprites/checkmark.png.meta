@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f8fe11836160a31438c68d9fc74ab93b
+guid: 0389e5da10863a34a9c061e83b22e77d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5044122071167073304
-    second: music_0
+      213: 5744904054898057027
+    second: checkmark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: music_0
+      name: checkmark_0
       rect:
         serializedVersion: 2
-        x: 286
-        y: 128
-        width: 391
-        height: 364
+        x: 346
+        y: 184
+        width: 269
+        height: 253
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cdccdd075f8adc64bbbee400a3228270
-      internalID: 1979147292
+      spriteID: 34f56e4dccff9bf40800000000000000
+      internalID: 5744904054898057027
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f8835f578a58c4147ba909abc08d9030
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      music_0: 1979147292
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

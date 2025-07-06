@@ -701,6 +701,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1061982165931452807, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.85711104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061982165931452807, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.85711104
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061982165931452807, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061982165931452807, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292598776
+      objectReference: {fileID: 0}
     - target: {fileID: 1932250626380072265, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -733,6 +749,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1405
       objectReference: {fileID: 0}
+    - target: {fileID: 3319211351430062650, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_characterSpacing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3937045825665366803, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -764,6 +784,14 @@ PrefabInstance:
     - target: {fileID: 4235240847896793663, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839628856314462020, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839628856314462020, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5672951707782802318, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_AnchorMax.y

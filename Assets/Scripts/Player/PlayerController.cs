@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour {
     }
     public void Stop()
     {
+        GetComponentInChildren<WeaponManager>().inputLocked = true;
         DOTween.Kill(rb);
         Vector2 currentVelocity = rb.linearVelocity;
 

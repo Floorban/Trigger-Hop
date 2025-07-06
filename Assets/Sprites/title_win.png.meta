@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: cc26c202971503d4185205e2e6172017
+guid: 39fde101aabf06449b459724bcc396cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4665686187047379928
-    second: cancel_0
+      213: -8090446124937283995
+    second: title_win_0
+  - first:
+      213: 4062887689407468856
+    second: title_win_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cancel_1
+      name: title_win_0
       rect:
         serializedVersion: 2
-        x: 387
-        y: 188
-        width: 243
-        height: 229
+        x: 370
+        y: 239
+        width: 304
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e8f8c502530386a4e832f6f1d906fd30
-      internalID: 2076758792
+      spriteID: 5667da84d16f8bf80800000000000000
+      internalID: -8090446124937283995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title_win_1
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 100
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8359071d3d6426830800000000000000
+      internalID: 4062887689407468856
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d26dae493a0380e4dbae9d4ef5f4608f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,9 +185,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      cancel_0: -4665686187047379928
-      cancel_1: 2076758792
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

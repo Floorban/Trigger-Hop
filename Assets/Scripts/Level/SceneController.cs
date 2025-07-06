@@ -17,9 +17,10 @@ public class SceneController : MonoBehaviour
 
     [Header("UI")]
     public RectTransform ammoUI;
+    public Animator timerAnim;
     public int numOfCoin;
     public TextMeshProUGUI coinText, timerText;
-    public GameObject finalScreen;
+    public GameObject finalScreen, pauseScreen;
     public TextMeshProUGUI currentLevelText;
 
     [Header("Global Time Control")]
@@ -48,6 +49,7 @@ public class SceneController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             InitTimeScales();
             finalScreen.SetActive(false);
+            pauseScreen.SetActive(false);
         }
         else
         {
@@ -60,6 +62,35 @@ public class SceneController : MonoBehaviour
 
         currentTime += Time.fixedDeltaTime;
         timerText.text = currentTime.ToString("0.00");
+    }
+    public void PauseMenu()
+    {
+        if (isPaused) return;
+
+        PauseGame();
+        player.GetComponentInChildren<WeaponManager>().inputLocked = true;
+        pauseScreen.SetActive(true);
+        pauseScreen.transform.localScale = Vector3.zero;
+        pauseScreen.transform
+          .DOScale(Vector3.one, 0.5f)
+          .SetEase(Ease.OutBack)
+          .SetUpdate(true);
+    }
+    public void Unpause()
+    {
+        if (!isPaused) return;
+
+        ResumeGame();
+
+        pauseScreen.transform
+          .DOScale(Vector3.zero, 0.2f)
+          .SetEase(Ease.InOutQuad)
+          .SetUpdate(true)
+          .OnComplete(() =>
+            {
+                player.GetComponentInChildren<WeaponManager>().inputLocked = false;
+                pauseScreen.SetActive(false);
+            });
     }
     public void LevelStarted(PlayerController p)
     {
@@ -81,6 +112,7 @@ public class SceneController : MonoBehaviour
         FindFirstObjectByType<WeaponManager>().StopAiming();
 
         currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        timerAnim.SetBool("LevelEnd", true);
         CameraLock(end);
     }
     private void CameraLock(LevelEnd end)
@@ -140,10 +172,14 @@ public class SceneController : MonoBehaviour
     public void NextLevel(bool next)
     {
         player = null;
-        foreach (Transform child in ammoUI)
+        if (ammoUI.childCount > 0)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in ammoUI)
+            {
+                Destroy(child.gameObject);
+            }
         }
+
         finalScreen.SetActive(false);
 
         if (next)
@@ -166,8 +202,16 @@ public class SceneController : MonoBehaviour
     {
         isPaused = !isPaused;
     }
-    public void PauseGame() => isPaused = true;
-    public void ResumeGame() => isPaused = false;
+    public void PauseGame()
+    {
+         isPaused = true;
+         SetScaledTime(0f);
+    }
+    public void ResumeGame()
+    {
+         isPaused = false;
+         SetScaledTime(1f);
+    }
     public float GetPlayerTime() => GameTime * playerTimeScale * timeScale;
     public float GetEnemyTime() => GameTime * enemyTimeScale * timeScale;
     public void SetScaledTime(float scale = 1f)

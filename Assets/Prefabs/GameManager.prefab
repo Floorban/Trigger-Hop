@@ -85,42 +85,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Gameplay
       objectReference: {fileID: 0}
-    - target: {fileID: 3343387378476575386, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3343387378476575386, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099767574771566128, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099767574771566128, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4099767574771566128, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6741998230895345429, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6406224725222281349}
-    - target: {fileID: 7160823419963899848, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160823419963899848, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7160823419963899848, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7405618616918168769, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -217,14 +185,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6995943440937449176}
-    - target: {fileID: 8487215216597088884, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8487215216597088884, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8504424654136607428, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

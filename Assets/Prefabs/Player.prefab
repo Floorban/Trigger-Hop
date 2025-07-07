@@ -471,13 +471,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: hapticPattern.IOS_HapticPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: hapticPattern.IOS_HapticPattern.Array.data[0].PulseType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseTime
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseStrength
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5564977014879158713, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_Name
       value: Pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 5564977014879158713, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

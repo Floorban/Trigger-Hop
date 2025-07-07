@@ -140,7 +140,7 @@ MonoBehaviour:
   inputAimDIr: 1
   autoReload: 1
   clipSize: 8
-  cooldown: 0.5
+  cooldown: 0.2
   reloadDuration: 1
   bulletSpeed: 20
   recoilForce: 6
@@ -158,11 +158,11 @@ MonoBehaviour:
   hapticPattern:
     IOS_HapticPattern:
     - Delay: 0
-      PulseType: 4
+      PulseType: 5
     Android_HapticPattern:
     - Delay: 0
-      PulseTime: 50
-      PulseStrength: 100
+      PulseTime: 80
+      PulseStrength: 150
   canShoot: 0
   aimDir: {x: 0, y: 0}
   isPickup: 1

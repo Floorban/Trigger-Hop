@@ -387,11 +387,11 @@ MonoBehaviour:
   hapticPattern:
     IOS_HapticPattern:
     - Delay: 0
-      PulseType: 5
+      PulseType: 6
     Android_HapticPattern:
-    - Delay: 30
-      PulseTime: 50
-      PulseStrength: 150
+    - Delay: 0
+      PulseTime: 150
+      PulseStrength: 300
   canShoot: 0
   aimDir: {x: 0, y: 0}
   isPickup: 1

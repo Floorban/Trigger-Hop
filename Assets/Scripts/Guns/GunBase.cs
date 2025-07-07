@@ -2,9 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor.SearchService;
 using Solo.MOST_IN_ONE;
-using UnityEngine.InputSystem.Haptics;
 
 public class GunBase : MonoBehaviour {
     public enum FireMode {

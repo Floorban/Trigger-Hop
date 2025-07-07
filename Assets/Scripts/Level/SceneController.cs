@@ -119,7 +119,7 @@ public class SceneController : MonoBehaviour
         weaponManager.inputLocked = true;
         cam.target = end.lookAt;
 
-        float targetSize = 5f;
+        float targetSize = 4f;
         float duration = 1f;
 
         DOTween.Kill(cam);

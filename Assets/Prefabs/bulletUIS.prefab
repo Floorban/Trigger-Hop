@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4602660085573470627}
   - component: {fileID: 951907065525317896}
   m_Layer: 5
-  m_Name: bulletUI
+  m_Name: bulletUIS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 762456511582842315, guid: 132d2931f6c46d040bd3ab26dc8a8a01, type: 3}
+  m_Sprite: {fileID: -5353542134877338606, guid: edabe506f816cf94ab31107596bc9cc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GunBase : MonoBehaviour {
     public enum FireMode {
@@ -23,7 +24,8 @@ public class GunBase : MonoBehaviour {
     public int baseDamage;
 
     [Header("UI")]
-    [SerializeField] private RectTransform uiCanvas;
+    public RectTransform uiCanvas;
+    public Sprite gunUI;
     [SerializeField] protected GameObject bulletUI;
     protected List<GameObject> bulletUIList = new List<GameObject>();
 
@@ -48,7 +50,9 @@ public class GunBase : MonoBehaviour {
         inputAimDIr = GetInputDir(reverseAimDir);
         lastShotTime = -1;
         gameObject.SetActive(true);
+        ClearAmmoUI();
         Debug.Log(name + " in hand");
+        Reload(0f);
     }
 
     /*    // handle different fire logic with abstract class now
@@ -131,7 +135,7 @@ public class GunBase : MonoBehaviour {
             for (int i = currentAmmo + removedNum - 1; i >= currentAmmo; i--)
             {
                 GameObject bullet = bulletUIList[i];
-                bullet.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack)
+                bullet.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
                     .OnComplete(() => bullet.SetActive(false));
             }
         }
@@ -158,7 +162,6 @@ public class GunBase : MonoBehaviour {
 
             rect.anchoredPosition = new Vector2(i * 45f + xOffset, yOffset);
             rect.localRotation = Quaternion.Euler(0, 0, randomZRotation);
-
             rect.localScale = Vector3.zero;
 
             // Animate scale up with delay
@@ -169,6 +172,17 @@ public class GunBase : MonoBehaviour {
             bulletUIList.Add(bullet);
             canShoot = true;
         }
+    }
+    public void ClearAmmoUI()
+    {
+        if (!uiCanvas || !bulletUI) return;
+
+        uiCanvas.GetComponentInParent<Image>().sprite = gunUI;
+        foreach (var b in bulletUIList)
+        {
+            Destroy(b);
+        }
+        bulletUIList.Clear();
     }
 
     public bool isPickup = false;

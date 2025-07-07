@@ -42,10 +42,7 @@ public class WeaponManager : MonoBehaviour
             g.gameObject.SetActive(false);
         }
         if (currentGun)
-        {
             currentGun.Setup(player);
-            currentGun.Reload(0f);
-        }
         input = new DesktopInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -66,6 +63,7 @@ public class WeaponManager : MonoBehaviour
 
     public void CycleGun(float cycleOrder) {
         if (Time.time - lastCycleTime <= cycleCooldown) return;
+
         if (cycleOrder < 0) { // cycle down
             currentIndex = (currentIndex + 1) % allGuns.Count; 
         }
@@ -75,6 +73,7 @@ public class WeaponManager : MonoBehaviour
             else
                 currentIndex = allGuns.Count - 1;
         }
+        currentGun.ClearAmmoUI();
         currentGun.gameObject.SetActive(false);
         currentGun = allGuns[currentIndex];
         if (currentGun)

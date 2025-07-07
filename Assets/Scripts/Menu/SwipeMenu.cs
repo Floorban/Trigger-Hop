@@ -18,14 +18,16 @@ public class SwipeMenu : MonoBehaviour
     private bool isSwiping;
 
     [SerializeField] LevelSelection[] levelSelections;
-    [SerializeField] private List<Button> levelButtons;
+    [SerializeField] List<Button> levelButtons;
     [SerializeField] Image[] pageImage;
     //[SerializeField] Sprite pageEnabled, pageDisabled;
     [SerializeField] Button nextButton, previousButton;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
-        Debug.Log(PlayerPrefs.GetInt("UnlockedLevel", 1));
+        audioManager = FindFirstObjectByType<AudioManager>();
         currentPage = 1;
         levelPagesRect = GetComponent<RectTransform>();
         if (levelPagesRect) targetPos = levelPagesRect.localPosition;
@@ -56,6 +58,7 @@ public class SwipeMenu : MonoBehaviour
         if (currentPage < maxPage)
         {
             ScaleEffect(btn.GetComponent<RectTransform>(), 1.3f, 1f);
+            audioManager.PlaySfx(audioManager.spin);
             currentPage++;
             targetPos += pageStep;
             MovePage();
@@ -66,6 +69,7 @@ public class SwipeMenu : MonoBehaviour
         if (currentPage > 1)
         {
             ScaleEffect(btn.GetComponent<RectTransform>(), 1.3f, 1f);
+            audioManager.PlaySfx(audioManager.spin);
             currentPage--;
             targetPos -= pageStep;
             MovePage();

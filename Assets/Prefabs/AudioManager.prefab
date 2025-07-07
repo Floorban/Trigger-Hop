@@ -56,6 +56,16 @@ MonoBehaviour:
   gameOver: {fileID: 8300000, guid: 656f4b870578fa340b29ffa84c4ef28c, type: 3}
   coinCollect: {fileID: 8300000, guid: 0085b2c7a6bbcb94ab721e096cadc2e8, type: 3}
   lvlFinished: {fileID: 8300000, guid: abc7048ae4d3de74594da290500b1209, type: 3}
+  spin: {fileID: 8300000, guid: 40dba01f0462c7d4b9396b9d209cfd04, type: 3}
+  bullet1: {fileID: 8300000, guid: 5887d5516e7e599439e26b1964009368, type: 3}
+  bullet2: {fileID: 8300000, guid: a8124e75eae541948a63a1535345b989, type: 3}
+  bullet3: {fileID: 8300000, guid: 3d007d58a7445fe48996b8249d7d3ec7, type: 3}
+  firePistol: {fileID: 8300000, guid: b43792858871aa1439a9f505956ebf00, type: 3}
+  fireShotgun: {fileID: 8300000, guid: cbc738fecb906ff4f91d32f04d09786e, type: 3}
+  fireRifle: {fileID: 8300000, guid: 2e3a4324c9965bc43ab4a2a11fc7c8ec, type: 3}
+  reloadPistol: {fileID: 8300000, guid: 5be3ec5640f02844bbe03d281b7442f6, type: 3}
+  reloadShotgun: {fileID: 8300000, guid: d2f4f39480d17304da4d9fc9507f78ac, type: 3}
+  reloadRifle: {fileID: 8300000, guid: b1b8914d262d60c498a7ce64fe8a4d4f, type: 3}
 --- !u!114 &7741235779845558755
 MonoBehaviour:
   m_ObjectHideFlags: 0

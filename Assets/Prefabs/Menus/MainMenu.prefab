@@ -324,6 +324,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.85711104
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.85711104
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292598776
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -586,11 +602,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 133972748920993223, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 133972748920993223, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2031617426954092501, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
       propertyPath: m_Sprite
@@ -683,6 +699,10 @@ PrefabInstance:
     - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
       propertyPath: m_text
       value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845853771269679289, guid: d7d1930e60e08264f8321237f11f6a7b, type: 3}
+      propertyPath: m_characterSpacing
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

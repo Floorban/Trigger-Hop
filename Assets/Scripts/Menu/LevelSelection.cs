@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Lean.Touch;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class LevelSelection : MonoBehaviour
@@ -14,8 +13,6 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private float friction = 0.98f;
     [SerializeField] private float rotationSensitivity = 0.5f;
     public bool canSelect;
-    [SerializeField] private AudioSource buttonSound;
-    [SerializeField] private AudioClip buttonClickClip;
 
     private float currentAngle;
     private float angleStep;
@@ -26,8 +23,11 @@ public class LevelSelection : MonoBehaviour
     public static UnityAction<int> OnLevelSelected;
     public int previousLvls;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
+        audioManager = FindFirstObjectByType<AudioManager>();
         rectTransform = GetComponent<RectTransform>();
         SetupRadialLayout();
     }
@@ -106,8 +106,8 @@ public class LevelSelection : MonoBehaviour
     {
         angularVelocity = 0.1f;
 
-/*        if (finger.IsOverGui)  //&& !isSnapping
-            angularVelocity = 0.1f;*/
+        /*        if (finger.IsOverGui)  //&& !isSnapping
+                    angularVelocity = 0.1f;*/
     }
     private void UpdateButtonRotations()
     {
@@ -134,6 +134,7 @@ public class LevelSelection : MonoBehaviour
     private void SelectLevel(int index)
     {
         if (!canSelect) return;
+        audioManager.PlaySfx(audioManager.spin);
         currentLevel = index + 1 + previousLvls;
         //RotateButtonToTop(index);
         Debug.Log($"Selected Level {currentLevel}");
@@ -170,6 +171,7 @@ public class LevelSelection : MonoBehaviour
                 lastTopButtonIndex = buttonIndex;
                 SelectLevel(lastTopButtonIndex);
             });
+
     }
 
     private void PlayScaleEffect(int buttonIndex)
@@ -203,11 +205,7 @@ public class LevelSelection : MonoBehaviour
             }
         }
     }
-    private void PlayButtonSfx()
-    {
-        if (buttonSound != null && buttonClickClip != null)
-            buttonSound.PlayOneShot(buttonClickClip);
-    }
+
     private bool ValidateButtons()
     {
         return levelButtons != null && levelButtons.Length > 0;

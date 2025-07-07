@@ -106,8 +106,6 @@ MonoBehaviour:
   friction: 0.99
   rotationSensitivity: 0.5
   canSelect: 0
-  buttonSound: {fileID: 0}
-  buttonClickClip: {fileID: 0}
   isSnapping: 0
   previousLvls: 7
 --- !u!1 &328670113511105356
@@ -608,8 +606,6 @@ MonoBehaviour:
   friction: 0.99
   rotationSensitivity: 0.5
   canSelect: 0
-  buttonSound: {fileID: 0}
-  buttonClickClip: {fileID: 0}
   isSnapping: 0
   previousLvls: 3
 --- !u!1 &4941008050676454150
@@ -861,8 +857,6 @@ MonoBehaviour:
   friction: 0.99
   rotationSensitivity: 0.5
   canSelect: 0
-  buttonSound: {fileID: 0}
-  buttonClickClip: {fileID: 0}
   isSnapping: 0
   previousLvls: 0
 --- !u!1 &7288789703176582322

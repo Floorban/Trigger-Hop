@@ -2,17 +2,28 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Unity Audio")]
-    public AudioSource musicSource, sfxSource;
+    [Header("Audio Source")]
+    public AudioSource musicSource;
+    public AudioSource sfxSource;
 
-    [Header("Audio Clip")]
-    public AudioClip bgm,
-                      btnSelect,
-                      btnConfirm,
-                      gameStart,
-                      gameOver,
-                      coinCollect,
-                      lvlFinished;
+    [Header("Audio Clips")]
+    public AudioClip bgm;
+    public AudioClip btnSelect,
+                     btnConfirm,
+                     gameStart,
+                     gameOver,
+                     coinCollect,
+                     lvlFinished,
+                     spin,
+                     bullet1,
+                     bullet2,
+                     bullet3,
+                     firePistol,
+                     fireShotgun,
+                     fireRifle,
+                     reloadPistol,
+                     reloadShotgun,
+                     reloadRifle;
     private void Awake()
     {
         if (bgm)

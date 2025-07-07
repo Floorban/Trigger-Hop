@@ -81,7 +81,7 @@ public class GunBase : MonoBehaviour {
         // - used amount of ammo
         if (fireMode != FireMode.Charge) {
             currentAmmo -= consumedAmmo;
-            UpdateAmmoUI();
+            UpdateAmmoUI(consumedAmmo);
             SceneController.instance.cam.Shake();
             Debug.Log(currentAmmo + " left");
         }
@@ -120,18 +120,19 @@ public class GunBase : MonoBehaviour {
         ReloadAmmoUI();
         Debug.Log("finish reload");
     }
-    protected void UpdateAmmoUI()
+    protected void UpdateAmmoUI(int removedNum)
     {
         if (bulletUIList == null || bulletUIList.Count == 0) return;
 
         int indexToRemove = currentAmmo;
         if (indexToRemove >= 0 && indexToRemove < bulletUIList.Count)
         {
-            GameObject bullet = bulletUIList[indexToRemove];
-
-            // Animate out or hide
-            bullet.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack)
-                .OnComplete(() => bullet.SetActive(false));
+            for (int i = currentAmmo + removedNum - 1; i >= currentAmmo; i--)
+            {
+                GameObject bullet = bulletUIList[i];
+                bullet.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.InBack)
+                    .OnComplete(() => bullet.SetActive(false));
+            }
         }
     }
     protected void ReloadAmmoUI()

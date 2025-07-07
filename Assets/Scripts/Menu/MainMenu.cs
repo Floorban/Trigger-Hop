@@ -2,21 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using DG.Tweening;
-using static Unity.VisualScripting.Member;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button startButton, settingsButton, creditsButton, quitButton;
     [SerializeField] private GameObject mainMenu, levelSelectionMenu, settingsMenu, creditsMenu;
-    [SerializeField] private AudioSource musicSound, buttonSound;
-    [SerializeField] private AudioClip bgmClip, buttonClickClip;
+    [SerializeField] private AudioManager audioManager;
     private void Awake()
     {
-        if (musicSound && bgmClip)
-        {
-            musicSound.clip = bgmClip;
-            musicSound.Play();
-        }
-        
         InitSubMenus();
         InitButtons();
     }
@@ -59,7 +51,7 @@ public class MainMenu : MonoBehaviour
     }
     private void StartGame()
     {
-        PlayButtonSfx(buttonSound, buttonClickClip);
+        PlayButtonSfx(audioManager.sfxSource, audioManager.btnConfirm);
         PlayButtonAnim(startButton.gameObject, () =>
         {
             mainMenu.SetActive(false);
@@ -74,7 +66,7 @@ public class MainMenu : MonoBehaviour
     }
     private void SubMenu(Button btn, GameObject menu)
     {
-        PlayButtonSfx(buttonSound, buttonClickClip);
+        PlayButtonSfx(audioManager.sfxSource, audioManager.btnSelect);
         PlayButtonAnim(btn.gameObject, () =>
         {
             mainMenu.SetActive(false);
@@ -87,7 +79,7 @@ public class MainMenu : MonoBehaviour
     }
     private void QuitGame()
     {
-        PlayButtonSfx(buttonSound, buttonClickClip);
+        PlayButtonSfx(audioManager.sfxSource, audioManager.btnSelect);
 /*        PlayButtonAnim(quitButton.gameObject, () =>
         {
             Application.Quit();
@@ -103,7 +95,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ReturnMainMenu(GameObject currentMenu)
     {
-        PlayButtonSfx(buttonSound, buttonClickClip);
+        PlayButtonSfx(audioManager.sfxSource, audioManager.btnSelect);
 /*        PlayButtonAnim(backButton, () => 
             currentMenu.transform.DOScale(Vector3.zero, 0.8f)
                 .SetEase(Ease.OutElastic, 1.5f)

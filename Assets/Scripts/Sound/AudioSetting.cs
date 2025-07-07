@@ -4,16 +4,11 @@ using UnityEngine.UI;
 
 public class AudioSetting : MonoBehaviour
 {
-    private AudioManager audioManager;
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sfxSlider;
 
-    private void Awake()
-    {
-        audioManager = FindFirstObjectByType<AudioManager>();
-        LoadVolume();
-    }
+    private void Awake() => LoadVolume();
 
     public void UpdateVolume()
     {
@@ -32,10 +27,10 @@ public class AudioSetting : MonoBehaviour
 
     private void LoadVolume()
     {
+        UpdateVolume();
         if (musicSlider)
             musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         if (sfxSlider)
             sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        UpdateVolume();
     }
 }

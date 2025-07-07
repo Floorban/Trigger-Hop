@@ -3,17 +3,23 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("Unity Audio")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource sfxSource;
+    public AudioSource musicSource, sfxSource;
 
     [Header("Audio Clip")]
-    [SerializeField]
-    private AudioClip bgm,
+    public AudioClip bgm,
                       btnSelect,
                       btnConfirm,
                       gameStart,
                       gameOver,
                       coinCollect,
                       lvlFinished;
+    private void Awake()
+    {
+        if (bgm)
+        {
+            musicSource.clip = bgm;
+            musicSource.Play();
+        }
+    }
     public void PlaySfx(AudioClip clip) => sfxSource.PlayOneShot(clip);
 }

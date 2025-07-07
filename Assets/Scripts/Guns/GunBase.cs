@@ -95,6 +95,9 @@ public class GunBase : MonoBehaviour {
             currentAmmo -= consumedAmmo;
             UpdateAmmoUI(consumedAmmo);
             SceneController.instance.cam.Shake();
+            muzzle.SetTrigger("Fire");
+            StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
+            SceneController.instance.audioManager.PlaySfx(fireSfx);
             Debug.Log(currentAmmo + " left");
         }
 
@@ -110,9 +113,6 @@ public class GunBase : MonoBehaviour {
             }
         }
 
-        muzzle.SetTrigger("Fire");
-        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
-        SceneController.instance.audioManager.PlaySfx(fireSfx);
         // activate cooldown
         lastShotTime = Time.time;
         return true;

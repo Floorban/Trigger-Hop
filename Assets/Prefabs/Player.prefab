@@ -139,7 +139,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b60c18310d13ac448bb5f89a5fd785c3, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +159,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -171,7 +171,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.11538696
+        value: 0.06647922
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -180,7 +180,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.3150927
+        value: 0.13030547
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -192,8 +192,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9622642, g: 0.07807041, b: 0.07807041, a: 0.35686275}
-      key1: {r: 0.8113208, g: 0.10868638, b: 0.1868477, a: 1}
+      key0: {r: 0.372686, g: 0.6193186, b: 0.6320754, a: 0.35686275}
+      key1: {r: 0.24750803, g: 0.49752828, b: 0.509434, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -247,6 +247,7 @@ MonoBehaviour:
   allGuns:
   - {fileID: 8710219848955722271}
   currentGun: {fileID: 0}
+  inputAimDir: 1
   slowMotionScale: 0.3
   cycleCooldown: 0.3
   swipeStartPos: {x: 0, y: 0}
@@ -481,15 +482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: hapticPattern.IOS_HapticPattern.Array.data[0].PulseType
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseTime
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2985260621085338012, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseStrength
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5564977014879158713, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_Name

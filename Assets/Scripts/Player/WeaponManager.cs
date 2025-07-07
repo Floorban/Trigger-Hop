@@ -12,6 +12,7 @@ public class WeaponManager : MonoBehaviour
     private int currentIndex = 0;
 
     [Header("Aiming")]
+    [HideInInspector] public int inputAimDir = 1;
     private LineRenderer aimLine;
     private bool isAiming = false;
     [SerializeField] private float slowMotionScale = 0.3f;
@@ -43,7 +44,6 @@ public class WeaponManager : MonoBehaviour
         }
         if (currentGun)
             currentGun.Setup(player);
-        input = new DesktopInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
         input = new MobileInput();
@@ -96,14 +96,12 @@ public class WeaponManager : MonoBehaviour
         player.transform.right = touchWorldPos.normalized;
         aimLine.positionCount = 2;
         aimLine.SetPosition(0, transform.position);
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, currentGun.aimDir, maxRayDistance, layerDetection);
-        if (hitInfo) {
-            aimLine.SetPosition(1, hitInfo.point);
-        }
-        else {
-            aimLine.SetPosition(1, (Vector2)transform.position + touchWorldPos);
-            //aimLine.SetPosition(1, touchWorldPos.normalized * maxRayDistance);
-        }
+        aimLine.SetPosition(1, (Vector2)transform.position + touchWorldPos * inputAimDir);
+
+        //aimLine.SetPosition(1, touchWorldPos.normalized * maxRayDistance);
+        /*RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, currentGun.aimDir, maxRayDistance, layerDetection);
+        if (hitInfo)
+            aimLine.SetPosition(1, hitInfo.point);*/
     }
 
     /// <summary>

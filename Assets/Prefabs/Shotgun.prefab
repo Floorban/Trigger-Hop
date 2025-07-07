@@ -367,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reverseAimDir: 0
   inputAimDIr: 1
-  autoReload: 1
+  autoReload: 0
   clipSize: 6
   cooldown: 1
   reloadDuration: 1

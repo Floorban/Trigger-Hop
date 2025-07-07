@@ -57,15 +57,6 @@ MonoBehaviour:
   coinCollect: {fileID: 8300000, guid: b26b37e0b48ea244193eebea2676f32e, type: 3}
   lvlFinished: {fileID: 8300000, guid: abc7048ae4d3de74594da290500b1209, type: 3}
   spin: {fileID: 8300000, guid: b34d37ab637040e4c99faf31cbe547cd, type: 3}
-  bullet1: {fileID: 8300000, guid: 5887d5516e7e599439e26b1964009368, type: 3}
-  bullet2: {fileID: 8300000, guid: a8124e75eae541948a63a1535345b989, type: 3}
-  bullet3: {fileID: 8300000, guid: 3d007d58a7445fe48996b8249d7d3ec7, type: 3}
-  firePistol: {fileID: 8300000, guid: b43792858871aa1439a9f505956ebf00, type: 3}
-  fireShotgun: {fileID: 8300000, guid: cbc738fecb906ff4f91d32f04d09786e, type: 3}
-  fireRifle: {fileID: 8300000, guid: 2e3a4324c9965bc43ab4a2a11fc7c8ec, type: 3}
-  reloadPistol: {fileID: 8300000, guid: 5be3ec5640f02844bbe03d281b7442f6, type: 3}
-  reloadShotgun: {fileID: 8300000, guid: d2f4f39480d17304da4d9fc9507f78ac, type: 3}
-  reloadRifle: {fileID: 8300000, guid: b1b8914d262d60c498a7ce64fe8a4d4f, type: 3}
 --- !u!114 &7741235779845558755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +246,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.25
+  m_Pitch: 0.8
   Loop: 1
   Mute: 0
   Spatialize: 0

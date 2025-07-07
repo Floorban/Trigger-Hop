@@ -3,12 +3,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
     public AudioManager audioManager;
     public PlayerController player;
+    [HideInInspector] public WeaponManager weaponManager;
     public CameraController cam;
     public bool inLevel;
 
@@ -18,7 +20,8 @@ public class SceneController : MonoBehaviour
     public int numOfCoin;
     public TextMeshProUGUI coinText, timerText;
     public GameObject finalScreen, pauseScreen;
-    public TextMeshProUGUI currentLevelText;
+    public TextMeshProUGUI currentLevelText1, currentLevelText2;
+    [SerializeField] private Toggle aimDir, autoReload;
 
     [Header("Global Time Control")]
     public float currentTime;
@@ -47,6 +50,8 @@ public class SceneController : MonoBehaviour
             InitTimeScales();
             finalScreen.SetActive(false);
             pauseScreen.SetActive(false);
+            aimDir.onValueChanged.AddListener(ToggleAimDir);
+            autoReload.onValueChanged.AddListener(ToggleAutoReload);
         }
         else
         {
@@ -66,7 +71,7 @@ public class SceneController : MonoBehaviour
 
         audioManager.PlaySfx(audioManager.spin);
         PauseGame();
-        player.GetComponentInChildren<WeaponManager>().inputLocked = true;
+        weaponManager.inputLocked = true;
         pauseScreen.SetActive(true);
         pauseScreen.transform.localScale = Vector3.zero;
         pauseScreen.transform
@@ -93,6 +98,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelStarted(PlayerController p)
     {
+        weaponManager = p.GetComponentInChildren<WeaponManager>();
         audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;
         player = p;
@@ -102,7 +108,8 @@ public class SceneController : MonoBehaviour
         isPaused = false;
         coinText.color = Color.white;
         coinText.color = Color.white;
-
+        ToggleAimDir(aimDir.isOn);
+        ToggleAutoReload(autoReload.isOn);
     }
     public void LevelFinished(LevelEnd end)
     {
@@ -112,7 +119,8 @@ public class SceneController : MonoBehaviour
         player.Stop();
         FindFirstObjectByType<WeaponManager>().StopAiming();
 
-        currentLevelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        currentLevelText1.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        currentLevelText2.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         timerAnim.SetBool("LevelEnd", true);
         CameraLock(end);
     }
@@ -191,6 +199,7 @@ public class SceneController : MonoBehaviour
     }
     public void BackToMenu()
     {
+        ResumeGame();
         audioManager.PlaySfx(audioManager.btnConfirm);
         player = null;
         SceneManager.LoadSceneAsync(0);
@@ -221,6 +230,32 @@ public class SceneController : MonoBehaviour
     {
         Time.timeScale = timeScale * scale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+    public void ToggleAimDir(bool toggled)
+    {
+        foreach (var gun in weaponManager.allGuns)
+        {
+            if (toggled)
+            {
+                gun.reverseAimDir = false;
+                gun.inputAimDIr = 1;
+            }
+            else
+            {
+                gun.reverseAimDir = true;
+                gun.inputAimDIr = -1;
+            }
+        }
+    }
+    public void ToggleAutoReload(bool toggled)
+    {
+        foreach (var gun in weaponManager.allGuns)
+        {
+            if (toggled)
+                gun.autoReload = true;
+            else
+                gun.autoReload = false;
+        }
     }
     private void CoinCollected(int amount)
     {

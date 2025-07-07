@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2670346379251679572, guid: dccb218818b07724a96f7c2cfcc72368, type: 3}
       propertyPath: recoilForce
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2910545623205234318, guid: dccb218818b07724a96f7c2cfcc72368, type: 3}
       propertyPath: m_LocalPosition.x

@@ -41,6 +41,7 @@ public class GunBase : MonoBehaviour {
         uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;
         inputAimDIr = GetInputDir(reverseAimDir);
+        StartSwing();
     }
     public virtual void Setup(PlayerController p) {
         player = p;
@@ -168,5 +169,35 @@ public class GunBase : MonoBehaviour {
             bulletUIList.Add(bullet);
             canShoot = true;
         }
+    }
+
+    public bool isPickup = false;
+    public float swingAngle = 15f;
+    public float swingDuration = 2;
+    public void StartSwing()
+    {
+        if (!isPickup) return;
+
+        transform.rotation = Quaternion.identity;
+        Sequence swingSeq = DOTween.Sequence();
+
+        bool startRight = Random.value > 0.5f;
+
+        if (startRight)
+        {
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, -swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(Vector3.zero, swingDuration).SetEase(Ease.InOutSine));
+        }
+        else
+        {
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, -swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(new Vector3(0, 0, -swingAngle), swingDuration).SetEase(Ease.InOutSine));
+            swingSeq.Append(transform.DORotate(Vector3.zero, swingDuration).SetEase(Ease.InOutSine));
+        }
+
+        swingSeq.SetLoops(-1);
     }
 }

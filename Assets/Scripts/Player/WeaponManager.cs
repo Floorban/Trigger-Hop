@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using TouchPhase = UnityEngine.TouchPhase;
+using System.Collections.Generic;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class WeaponManager : MonoBehaviour
     private PlayerController player;
     private IInput input;
 
-    public GunController[] allGuns;
+    public List<GunController> allGuns;
     public GunController currentGun;
     private int currentIndex = 0;
 
@@ -37,7 +36,7 @@ public class WeaponManager : MonoBehaviour
         Physics2D.queriesStartInColliders = false;
         aimLine = GetComponent<LineRenderer>();
         if (aimLine) aimLine.enabled = false;
-        if (allGuns.Length > 0) currentGun = allGuns[0];
+        if (allGuns.Count > 0) currentGun = allGuns[0];
         foreach (var g in allGuns)
         {
             g.gameObject.SetActive(false);
@@ -47,11 +46,11 @@ public class WeaponManager : MonoBehaviour
             currentGun.Setup(player);
             currentGun.Reload(0f);
         }
-        input = new MobileInput();
+        input = new DesktopInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-        input = new MobileInput();
-        //input = new DesktopInput();
+        //input = new MobileInput();
+        input = new DesktopInput();
 #elif UNITY_IOS || UNITY_ANDROID
         input = new MobileInput();
 #endif
@@ -68,13 +67,13 @@ public class WeaponManager : MonoBehaviour
     public void CycleGun(float cycleOrder) {
         if (Time.time - lastCycleTime <= cycleCooldown) return;
         if (cycleOrder < 0) { // cycle down
-            currentIndex = (currentIndex + 1) % allGuns.Length; 
+            currentIndex = (currentIndex + 1) % allGuns.Count; 
         }
         else { // cycle up
             if (currentIndex > 0)
-                currentIndex = (currentIndex - 1) % allGuns.Length;
+                currentIndex = (currentIndex - 1) % allGuns.Count;
             else
-                currentIndex = allGuns.Length - 1;
+                currentIndex = allGuns.Count - 1;
         }
         currentGun.gameObject.SetActive(false);
         currentGun = allGuns[currentIndex];

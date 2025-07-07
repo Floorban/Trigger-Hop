@@ -674,6 +674,18 @@ PrefabInstance:
       propertyPath: muzzle
       value: 
       objectReference: {fileID: 13293855989041456}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: clipSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: autoReload
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679926685169855318, guid: 77357b77fa7566a41a1162a6db6c16cf, type: 3}
+      propertyPath: pelletCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -784,8 +796,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7328450899570170221}
     - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: clipSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 414678154687330020, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: autoReload
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 624759709277876542, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_LocalPosition.x

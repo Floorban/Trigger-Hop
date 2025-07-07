@@ -7,7 +7,7 @@ using TMPro;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
-    public AudioManager gameAudio;
+    public AudioManager audioManager;
     public PlayerController player;
     public CameraController cam;
     public bool inLevel;
@@ -64,6 +64,7 @@ public class SceneController : MonoBehaviour
     {
         if (isPaused) return;
 
+        audioManager.PlaySfx(audioManager.spin);
         PauseGame();
         player.GetComponentInChildren<WeaponManager>().inputLocked = true;
         pauseScreen.SetActive(true);
@@ -78,6 +79,7 @@ public class SceneController : MonoBehaviour
         if (!isPaused) return;
 
         ResumeGame();
+        audioManager.PlaySfx(audioManager.btnConfirm);
 
         pauseScreen.transform
           .DOScale(Vector3.zero, 0.2f)
@@ -91,6 +93,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelStarted(PlayerController p)
     {
+        audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;
         player = p;
         numOfCoin = 0;
@@ -103,6 +106,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelFinished(LevelEnd end)
     {
+        audioManager.PlaySfx(audioManager.lvlFinished);
         inLevel = false;
         isPaused = true;
         player.Stop();
@@ -168,6 +172,7 @@ public class SceneController : MonoBehaviour
     }
     public void NextLevel(bool next)
     {
+        audioManager.PlaySfx(audioManager.btnConfirm);
         player = null;
         if (ammoUI.GetChild(0))
         {
@@ -186,6 +191,7 @@ public class SceneController : MonoBehaviour
     }
     public void BackToMenu()
     {
+        audioManager.PlaySfx(audioManager.btnConfirm);
         player = null;
         SceneManager.LoadSceneAsync(0);
         Destroy(gameObject);

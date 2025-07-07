@@ -241,13 +241,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2596160840251715142}
   - component: {fileID: 2985260621085338012}
+  - component: {fileID: 854340693933879571}
+  - component: {fileID: 6409506802601025204}
   m_Layer: 0
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2596160840251715142
 Transform:
   m_ObjectHideFlags: 0
@@ -292,11 +294,73 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8960536926405029604, guid: 3621b23179a1afb4192551b2c8c4719d, type: 3}
   shootPoint: {fileID: 4662062087156934074}
   muzzle: {fileID: 3764674185529035502}
+  fireSfx: {fileID: 8300000, guid: b43792858871aa1439a9f505956ebf00, type: 3}
+  bulletSfx: {fileID: 8300000, guid: 5887d5516e7e599439e26b1964009368, type: 3}
+  reloadSfx: {fileID: 8300000, guid: 5be3ec5640f02844bbe03d281b7442f6, type: 3}
   canShoot: 0
   aimDir: {x: 0, y: 0}
   isPickup: 0
   swingAngle: 15
   swingDuration: 2
+--- !u!95 &854340693933879571
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564977014879158713}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59768f83f4bb8844384f3d29f7196319, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &6409506802601025204
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564977014879158713}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 1, y: 0.7}
+  m_Direction: 1
 --- !u!1 &8882689657011356213
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public abstract class GunController : GunBase
         if (!isPickup || !collision.CompareTag("Player")) return;
 
         isPickup = false;
+        GetComponent<Collider2D>().isTrigger = false;
         var weapon = FindFirstObjectByType<WeaponManager>();
         weapon.allGuns.Add(this);
         DOTween.KillAll();

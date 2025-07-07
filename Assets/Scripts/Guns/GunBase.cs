@@ -2,6 +2,9 @@ using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEditor.SearchService;
+using Solo.MOST_IN_ONE;
+using UnityEngine.InputSystem.Haptics;
 
 public class GunBase : MonoBehaviour {
     public enum FireMode {
@@ -30,9 +33,14 @@ public class GunBase : MonoBehaviour {
     protected List<GameObject> bulletUIList = new List<GameObject>();
 
     [Header("References")]
+    protected Animator animator;
     [SerializeField] protected GameObject bulletPrefab;
     public Transform shootPoint;
     public Animator muzzle;
+    public AudioClip fireSfx;
+    public AudioClip bulletSfx;
+    public AudioClip reloadSfx;
+    public Most_HapticFeedback.CustomHapticPattern hapticPattern;
 
     protected int currentAmmo;
     public bool canShoot = false;
@@ -40,6 +48,7 @@ public class GunBase : MonoBehaviour {
     protected bool isReloading = false;
     [HideInInspector] public  Vector2 aimDir;
     private void Awake() {
+        animator = GetComponent<Animator>();
         uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;
         inputAimDIr = GetInputDir(reverseAimDir);
@@ -104,6 +113,8 @@ public class GunBase : MonoBehaviour {
         }
 
         muzzle.SetTrigger("Fire");
+        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
+        SceneController.instance.audioManager.PlaySfx(fireSfx);
         // activate cooldown
         lastShotTime = Time.time;
         return true;
@@ -115,14 +126,16 @@ public class GunBase : MonoBehaviour {
         if (isReloading) return;
         isReloading = true;
         Debug.Log("reloading");
-        // add anim and sfx here
-        // TO DO: get the reload duration from each gun's scriptable stats 
         Invoke(nameof(FinishReload), reloadTime);
     }
     protected void FinishReload() {
         currentAmmo = clipSize;
         isReloading = false;
         ReloadAmmoUI();
+        canShoot = true;
+        animator.SetTrigger("Reload");
+        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
+        SceneController.instance.audioManager.PlaySfx(reloadSfx);
         Debug.Log("finish reload");
     }
     protected void UpdateAmmoUI(int removedNum)
@@ -169,8 +182,8 @@ public class GunBase : MonoBehaviour {
                 .SetEase(Ease.OutBack)
                 .SetDelay(i * 0.15f);
 
+            SceneController.instance.audioManager.PlaySfx(bulletSfx);
             bulletUIList.Add(bullet);
-            canShoot = true;
         }
     }
     public void ClearAmmoUI()

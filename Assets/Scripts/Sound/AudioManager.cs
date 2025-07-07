@@ -14,16 +14,8 @@ public class AudioManager : MonoBehaviour
                      gameOver,
                      coinCollect,
                      lvlFinished,
-                     spin,
-                     bullet1,
-                     bullet2,
-                     bullet3,
-                     firePistol,
-                     fireShotgun,
-                     fireRifle,
-                     reloadPistol,
-                     reloadShotgun,
-                     reloadRifle;
+                     spin;
+
     private void Awake()
     {
         if (bgm)

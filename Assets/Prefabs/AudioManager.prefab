@@ -54,9 +54,9 @@ MonoBehaviour:
   btnConfirm: {fileID: 8300000, guid: 51639c9d4525de0439b765a3929a0dc7, type: 3}
   gameStart: {fileID: 8300000, guid: 946a74c3f27348b408829d7130429c61, type: 3}
   gameOver: {fileID: 8300000, guid: 656f4b870578fa340b29ffa84c4ef28c, type: 3}
-  coinCollect: {fileID: 8300000, guid: 0085b2c7a6bbcb94ab721e096cadc2e8, type: 3}
+  coinCollect: {fileID: 8300000, guid: b26b37e0b48ea244193eebea2676f32e, type: 3}
   lvlFinished: {fileID: 8300000, guid: abc7048ae4d3de74594da290500b1209, type: 3}
-  spin: {fileID: 8300000, guid: 40dba01f0462c7d4b9396b9d209cfd04, type: 3}
+  spin: {fileID: 8300000, guid: b34d37ab637040e4c99faf31cbe547cd, type: 3}
   bullet1: {fileID: 8300000, guid: 5887d5516e7e599439e26b1964009368, type: 3}
   bullet2: {fileID: 8300000, guid: a8124e75eae541948a63a1535345b989, type: 3}
   bullet3: {fileID: 8300000, guid: 3d007d58a7445fe48996b8249d7d3ec7, type: 3}

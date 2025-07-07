@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
-using FMOD.Studio;
-using FMODUnity;
-using System.Collections.Generic;
 
 public class SceneController : MonoBehaviour
 {

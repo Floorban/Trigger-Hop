@@ -62,7 +62,7 @@ public class WeaponManager : MonoBehaviour
     }
 
     public void CycleGun(float cycleOrder) {
-        if (Time.time - lastCycleTime <= cycleCooldown) return;
+        if (Time.time - lastCycleTime <= cycleCooldown || allGuns.Count <= 1) return;
 
         if (cycleOrder < 0) { // cycle down
             currentIndex = (currentIndex + 1) % allGuns.Count; 

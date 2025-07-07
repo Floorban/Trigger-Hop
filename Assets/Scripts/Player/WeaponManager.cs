@@ -46,8 +46,8 @@ public class WeaponManager : MonoBehaviour
         input = new DesktopInput();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-        //input = new MobileInput();
-        input = new DesktopInput();
+        input = new MobileInput();
+        //input = new DesktopInput();
 #elif UNITY_IOS || UNITY_ANDROID
         input = new MobileInput();
 #endif

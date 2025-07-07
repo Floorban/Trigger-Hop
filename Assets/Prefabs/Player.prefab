@@ -246,8 +246,6 @@ MonoBehaviour:
   inputLocked: 0
   allGuns:
   - {fileID: 8710219848955722271}
-  - {fileID: 0}
-  - {fileID: 0}
   currentGun: {fileID: 0}
   slowMotionScale: 0.3
   cycleCooldown: 0.3
@@ -370,7 +368,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6095412779133782044}
@@ -393,7 +391,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0.2
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -514,6 +512,10 @@ PrefabInstance:
     - target: {fileID: 5564977014879158713, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564977014879158713, guid: e547636ba5d29864ab1b4fe2d278aef2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

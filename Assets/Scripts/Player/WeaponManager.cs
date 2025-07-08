@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class WeaponManager : MonoBehaviour
 {
     public bool inputLocked;
-    private PlayerController player;
+    [HideInInspector] public PlayerController player;
     private IInput input;
 
     public List<GunController> allGuns;
@@ -83,11 +83,13 @@ public class WeaponManager : MonoBehaviour
     public void StartAiming() {
         if (currentGun.fireMode == GunBase.FireMode.Auto || isAiming) return;
         isAiming = true;
+        SceneController.instance.cancelAim.SetActive(true);
         SceneController.instance.SetScaledTime(slowMotionScale);
         if (aimLine) aimLine.enabled = true;
     }
     public void StopAiming() {
         isAiming = false;
+        SceneController.instance.cancelAim.SetActive(false);
         SceneController.instance.SetScaledTime(1f);
         if (aimLine) aimLine.enabled = false;
     }

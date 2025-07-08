@@ -15,6 +15,7 @@ public class SceneController : MonoBehaviour
     public bool inLevel;
 
     [Header("UI")]
+    public GameObject cancelAim;
     public RectTransform ammoUI;
     public Animator timerAnim;
     public int numOfCoin;
@@ -50,6 +51,7 @@ public class SceneController : MonoBehaviour
             InitTimeScales();
             finalScreen.SetActive(false);
             pauseScreen.SetActive(false);
+            cancelAim.SetActive(false);
             aimDir.onValueChanged.AddListener(ToggleAimDir);
             autoReload.onValueChanged.AddListener(ToggleAutoReload);
         }
@@ -63,7 +65,7 @@ public class SceneController : MonoBehaviour
         if (isPaused) return;
 
         currentTime += Time.fixedDeltaTime;
-        timerText.text = currentTime.ToString("0.00");
+        timerText.text = currentTime.ToString("0.0");
     }
     public void PauseMenu()
     {

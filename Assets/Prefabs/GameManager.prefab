@@ -51,6 +51,7 @@ MonoBehaviour:
   weaponManager: {fileID: 0}
   cam: {fileID: 0}
   inLevel: 0
+  cancelAim: {fileID: 3900019945393123807}
   ammoUI: {fileID: 1575729690522992419}
   timerAnim: {fileID: 8322519698117787002}
   numOfCoin: 0
@@ -232,6 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3900019945393123807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753646382378602282, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+  m_PrefabInstance: {fileID: 1164547404422135541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4000530033050556308 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2859206798331455841, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}

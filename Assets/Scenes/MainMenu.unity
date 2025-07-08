@@ -791,6 +791,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1440319237252271897, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562267880150513954, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602621044077381647, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303347514406536521, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2568013562978468227, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -915,10 +931,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6295849278971232593, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6340571616564982793, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 536620396}
+    - target: {fileID: 6349451147621391666, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967327706741415938, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7212656536054031957, guid: 8bb6af2225c901e449d637d16b94977a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

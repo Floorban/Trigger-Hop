@@ -46,6 +46,7 @@ public class GunBase : MonoBehaviour {
     protected bool isReloading = false;
     [HideInInspector] public  Vector2 aimDir;
     private void Awake() {
+        if (isPickup) GetComponent<Collider2D>().isTrigger = true;
         animator = GetComponent<Animator>();
         uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;

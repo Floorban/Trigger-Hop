@@ -11,12 +11,11 @@ public class MobileInput : IInput
         if (Input.touchCount == 1 && !wManager.isSwipingTwoFingers) {
             Touch touch = Input.GetTouch(0);
 
-/*            if (touch.position.y > Screen.height * 0.8f || touch.position.y < Screen.height * 0.15f)
+            if (touch.position.y > Screen.height * 0.8f)
             {
                 wManager.StopAiming();
-                wManager.player.transform.rotation = Quaternion.identity;
                 return;
-            }*/
+            }
 
             if (wManager.currentGun) {
                 GunController gun = wManager.currentGun;

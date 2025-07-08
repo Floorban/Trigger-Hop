@@ -63,6 +63,7 @@ MonoBehaviour:
   trueSprite: {fileID: 4815476061570213978, guid: f8ad8c68d43a84143929aad0dac7bb50, type: 3}
   falseSprite: {fileID: 2076758792, guid: cc26c202971503d4185205e2e6172017, type: 3}
   timerRequirementText: {fileID: 2273730634694691675}
+  coinRequirementText: {fileID: 5772874404950179236}
   finalScreen: {fileID: 4870173476059453689}
   deathScreen: {fileID: 4460008072224367628}
   pauseScreen: {fileID: 6826011934822417344}
@@ -82,6 +83,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 6301678162993428334}
     m_Modifications:
     - target: {fileID: 515876081120995244, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6995943440937449176}
+    - target: {fileID: 1098259835800354532, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6995943440937449176}
+    - target: {fileID: 1538600687255364872, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6995943440937449176}
@@ -197,6 +206,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6995943440937449176}
+    - target: {fileID: 8959368911720621441, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6995943440937449176}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -308,6 +321,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5772874404950179236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4626343740331574097, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
+  m_PrefabInstance: {fileID: 1164547404422135541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6559132723634689807 stripped

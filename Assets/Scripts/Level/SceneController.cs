@@ -23,7 +23,7 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI coinText, timerText;
     public Image coinResult, timerResult;
     public Sprite trueSprite, falseSprite;
-    public TextMeshProUGUI timerRequirementText;
+    public TextMeshProUGUI timerRequirementText, coinRequirementText;
     public GameObject finalScreen, deathScreen, pauseScreen;
     public TextMeshProUGUI currentLevelText1, currentLevelText2;
     [SerializeField] private Toggle aimDir, autoReload;
@@ -72,6 +72,11 @@ public class SceneController : MonoBehaviour
             currentTime = 0;
             LevelFinished(false);
         }
+        else if (currentTime <= lvl.timeRequirement / 2f)
+        {
+            timerText.color = Color.red;
+            timerAnim.speed = 2f;
+        }
     }
     public void PauseMenu()
     {
@@ -110,6 +115,8 @@ public class SceneController : MonoBehaviour
         deathScreen.SetActive(false);
         pauseScreen.SetActive(false);
         cancelAim.SetActive(false);
+        timerAnim.speed = 1f;
+        timerAnim.SetBool("LevelEnd", false);
         weaponManager = p.GetComponentInChildren<WeaponManager>();
         audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;
@@ -131,6 +138,7 @@ public class SceneController : MonoBehaviour
         FindFirstObjectByType<WeaponManager>().StopAiming();
         currentLevelText1.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         currentLevelText2.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        timerRequirementText.text = "under " + lvl.timeRequirement / 2 + " seconds?";
         timerAnim.SetBool("LevelEnd", true);
         if (win)
         {
@@ -148,7 +156,7 @@ public class SceneController : MonoBehaviour
         else
         {
             Transform t = new GameObject("player lookAt", typeof(Transform)).transform;
-            t.position = player.transform.position + new Vector3(0, -2.2f, 0);
+            t.position = player.transform.position + new Vector3(-0.5f, -2f, 0);
             audioManager.PlaySfx(audioManager.gameOver);
             CameraLock(t, deathScreen);
         }
@@ -176,40 +184,43 @@ public class SceneController : MonoBehaviour
              screen.SetActive(true);
              screen.transform.localScale = Vector3.one;
              screen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
-             DOVirtual.DelayedCall(0.2f, () => ResultEffect());
-             DOVirtual.DelayedCall(0.5f, () => TextEffects(lvl));
+             DOVirtual.DelayedCall(0.8f, () => ResultEffect());
+             DOVirtual.DelayedCall(1.5f, () => TextEffects(lvl));
          });
     }
     private void ResultEffect()
     {
-        coinResult.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
-        timerResult.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+        coinResult.rectTransform.DOPunchScale(Vector3.one * 0.5f, 0.5f, 5, 1f);
+        timerResult.rectTransform.DOPunchScale(Vector3.one * 0.5f, 0.5f, 5, 1f);
     }
     private void TextEffects(LevelEnd end)
     {
-        timerRequirementText.text = "under " + end.timeRequirement / 2 + " seconds?";
         if (end.timeRequirement - currentTime <= end.timeRequirement / 2f)
         {
             timerText.color = Color.green;
-            timerText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+            timerRequirementText.color = Color.green;
+            timerRequirementText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
         }
         else
         {
             timerText.color = Color.red;
-            timerText.rectTransform.DOShakePosition(0.3f, strength: new Vector3(5f, 0f, 0f));
-            timerText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
+            timerRequirementText.color = Color.red;
+            timerRequirementText.rectTransform.DOShakePosition(0.3f, strength: new Vector3(5f, 0f, 0f));
+            timerRequirementText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
             cam.Shake();
         }
 
         if (numOfCoin == end.coinRequirement)
         {
             coinText.color = Color.green;
-            coinText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+            coinRequirementText.color = Color.green;
+            coinRequirementText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
         }
         else
         {
             coinText.color = Color.red;
-            coinText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
+            coinRequirementText.color = Color.red;
+            coinRequirementText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
             cam.Shake();
         }
     }
@@ -292,6 +303,7 @@ public class SceneController : MonoBehaviour
                 gun.autoReload = false;
         }
     }
+    public void Reload() => weaponManager.currentGun.Reload(weaponManager.currentGun.reloadDuration);
     private void CoinCollected(int amount)
     {
         Debug.Log("a");

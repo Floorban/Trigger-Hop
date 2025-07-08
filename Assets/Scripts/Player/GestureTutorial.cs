@@ -22,8 +22,6 @@ public class GestureTutorial : MonoBehaviour
     }
     public void Show(GestureType gesture)
     {
-        StopAllCoroutines();
-        fingerTransform.DOKill();
         fingerTransform.gameObject.SetActive(true);
 
         switch (gesture)
@@ -63,8 +61,8 @@ public class GestureTutorial : MonoBehaviour
 
     private void PlaySwipe()
     {
-        Vector2 start = new Vector2(0f, -150f);
-        Vector2 end = new Vector2(0f, 150f);
+        Vector2 start = new Vector2(0f, 150f);
+        Vector2 end = new Vector2(0f, -150f);
         fingerTransform.anchoredPosition = start;
 
         fingerTransform.DOAnchorPos(end, animationDuration)

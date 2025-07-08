@@ -78,10 +78,17 @@ public class WeaponManager : MonoBehaviour
         currentGun = allGuns[currentIndex];
         if (currentGun)
             currentGun.Setup(player);
+        if (!SceneController.instance.hasSwipped)
+        {
+            SceneController.instance.hasSwipped = true;
+            SceneController.instance.gesture.Hide();
+        }
         lastCycleTime = Time.time;
     }
     public void StartAiming() {
         if (currentGun.fireMode == GunBase.FireMode.Auto || isAiming) return;
+        SceneController.instance.hasDragged = true;
+        SceneController.instance.gesture.Hide();
         isAiming = true;
         SceneController.instance.cancelAim.SetActive(true);
         SceneController.instance.SetScaledTime(slowMotionScale);

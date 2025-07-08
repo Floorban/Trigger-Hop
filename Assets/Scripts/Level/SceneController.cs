@@ -28,6 +28,7 @@ public class SceneController : MonoBehaviour
     public GameObject finalScreen, deathScreen, pauseScreen;
     public TextMeshProUGUI currentLevelText1, currentLevelText2;
     [SerializeField] private Toggle aimDir, autoReload;
+    public bool hasDragged, hasSwipped, hasPinched;
 
     [Header("Global Time Control")]
     public float currentTime;
@@ -82,7 +83,8 @@ public class SceneController : MonoBehaviour
     public void PauseMenu()
     {
         if (isPaused) return;
-        gesture.Show(GestureType.Pinch);
+        if (!hasPinched)
+            gesture.Show(GestureType.Pinch);
         audioManager.PlaySfx(audioManager.spin);
         PauseGame();
         weaponManager.inputLocked = true;
@@ -112,11 +114,13 @@ public class SceneController : MonoBehaviour
     }
     public void LevelStarted(PlayerController p)
     {
+        gesture.Hide();
+        if (!hasDragged)
+            gesture.Show(GestureType.Drag);
         finalScreen.SetActive(false);
         deathScreen.SetActive(false);
         pauseScreen.SetActive(false);
         cancelAim.SetActive(false);
-        gesture.gameObject.SetActive(false);
         timerAnim.speed = 1f;
         timerAnim.SetBool("LevelEnd", false);
         timerRequirementText.color = Color.white;
@@ -313,7 +317,6 @@ public class SceneController : MonoBehaviour
     public void Reload() => weaponManager.currentGun.Reload(weaponManager.currentGun.reloadDuration);
     private void CoinCollected(int amount)
     {
-        Debug.Log("a");
         numOfCoin += amount;
         coinText.text = numOfCoin.ToString();
     }

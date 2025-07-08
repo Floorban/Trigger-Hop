@@ -12,7 +12,7 @@ public abstract class GunController : GunBase
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isPickup || !collision.CompareTag("Player")) return;
-
+        if (!SceneController.instance.hasSwipped) SceneController.instance.gesture.Show(GestureType.Swipe);
         isPickup = false;
         GetComponent<Collider2D>().isTrigger = false;
         var weapon = FindFirstObjectByType<WeaponManager>();

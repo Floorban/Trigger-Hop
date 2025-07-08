@@ -30,6 +30,7 @@ public class PinchZoom : MonoBehaviour
 
         if (fingers.Count == 2)
         {
+            SceneController.instance.hasPinched = true;
             isPinching = true;
 
             child1.SetActive(false);

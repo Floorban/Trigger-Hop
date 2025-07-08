@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 3387068616552782184}
   - component: {fileID: 5948980659664071937}
   - component: {fileID: 4007955943089920324}
+  - component: {fileID: 8235871007221498304}
   m_Layer: 0
   m_Name: LevelEnd
   m_TagString: Untagged
@@ -265,3 +266,17 @@ MonoBehaviour:
   lookAt: {fileID: 8795369775808303022}
   coinRequirement: 3
   timeRequirement: 10
+--- !u!114 &8235871007221498304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730239670538593667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241a6cd3b734e624f89a2a60e0b3bc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  indicatorPrefab: {fileID: 1184254559332774007, guid: 816499cfbb7a76d45bd6bda05fcbcd05, type: 3}

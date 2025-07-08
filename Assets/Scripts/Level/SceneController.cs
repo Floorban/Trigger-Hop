@@ -117,6 +117,8 @@ public class SceneController : MonoBehaviour
         cancelAim.SetActive(false);
         timerAnim.speed = 1f;
         timerAnim.SetBool("LevelEnd", false);
+        timerRequirementText.color = Color.white;
+        coinRequirementText.color = Color.white;
         weaponManager = p.GetComponentInChildren<WeaponManager>();
         audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;

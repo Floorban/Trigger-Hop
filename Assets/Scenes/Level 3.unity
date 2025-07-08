@@ -4089,6 +4089,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1455846846}
     m_Modifications:
+    - target: {fileID: 4007955943089920324, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
+      propertyPath: coinRequirement
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7730239670538593667, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
       propertyPath: m_Name
       value: LevelEnd

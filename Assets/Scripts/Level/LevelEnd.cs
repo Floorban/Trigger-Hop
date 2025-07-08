@@ -6,19 +6,20 @@ public class LevelEnd : MonoBehaviour
 {
     public Transform lookAt;
     public float coinRequirement, timeRequirement;
-    public static UnityAction<LevelEnd> OnLevelFinished;
+    public static UnityAction<bool> OnLevelFinished;
     private OffScreenIndicator indicator;
-    private void Awake()
+    private void Start()
     {
         indicator = GetComponent<OffScreenIndicator>();
         indicator.InitIndicator(gameObject);
+        SceneController.instance.lvl = this;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             UnlockNewLevel();
-            OnLevelFinished?.Invoke(this);
+            OnLevelFinished?.Invoke(true);
             //SceneController.instance.NextLevel();
         }
     }

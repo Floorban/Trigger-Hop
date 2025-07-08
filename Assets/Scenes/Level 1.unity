@@ -3620,6 +3620,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 392790212170226685, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5725071583623204278}
+    - target: {fileID: 392790212170226685, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1427662678218387572, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3636,6 +3644,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2239555866063421457, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5725071583623204278}
+    - target: {fileID: 2239555866063421457, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 3370671044046759840, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3649,36 +3665,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3370671044046759840, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460008072224367628, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174354736960508145, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174354736960508145, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174354736960508145, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174354736960508145, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5295188456166038929, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.IOS_HapticPattern.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.Android_HapticPattern.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].Delay
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.IOS_HapticPattern.Array.data[0].PulseType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseTime
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseStrength
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6301678162993428334, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3720,6 +3732,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6748917389550045981, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748917389550045981, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748917389550045981, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748917389550045981, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8032062353414317486, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3741,6 +3769,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+--- !u!114 &5725071583623204278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6995943440937449176, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+  m_PrefabInstance: {fileID: 5725071583623204275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f3aa4d14b1f94418a3092ef9f57f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9141938216982161855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3794,7 +3833,8 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 221217632163734095, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68546ae327aab8f44af2ccd0c68d52f7, type: 3}

@@ -414,6 +414,14 @@ MonoBehaviour:
   cancelDelay: 0.3
   isPointerOver: 0
   fillIn: {fileID: 9071291458308510434}
+  hapticPattern:
+    IOS_HapticPattern:
+    - Delay: 0
+      PulseType: 4
+    Android_HapticPattern:
+    - Delay: 30
+      PulseTime: 80
+      PulseStrength: 100
 --- !u!1 &3053173744872110525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,35 +1727,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 632621246383780918, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 632621246383780918, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 632621246383780918, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 632621246383780918, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1342210161680560090, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342210161680560090, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342210161680560090, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1342210161680560090, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 2847720606459777011, guid: e36c7130c6e798b418d6d55062d5ef5f, type: 3}
       propertyPath: m_SizeDelta.x

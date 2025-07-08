@@ -9,11 +9,11 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb { get; private set; }
     private Collider2D col;
 
-    [Header("Movement")]
+/*    [Header("Movement")]
     public bool canMove = false;
     [SerializeField] private float moveSpeed = 3f;
     private int moveDir = 1; // 1 for right, -1 for left
-    [SerializeField] private LayerMask playerLayer, platformLayer;
+    [SerializeField] private LayerMask playerLayer, platformLayer;*/
 
     [Header("RecoilEffect")]
     private Vector3 oriScale;
@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour {
         oriScale = transform.localScale;
     }
     private void Start() => OnLevelStarted?.Invoke(this);
-    private void FixedUpdate() => HorizonMove();
     
 /*    private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -55,10 +54,10 @@ public class PlayerController : MonoBehaviour {
             isOnPlatform = false;
         }
     }*/
-    private void HorizonMove() {
+/*    private void HorizonMove() {
         if (!canMove) return;
         rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
-    }
+    }*/
 
     public void ApplyRecoil(Vector2 dir, float force)
     {
@@ -80,14 +79,14 @@ public class PlayerController : MonoBehaviour {
         transform.DOScale(squashed, duration).SetEase(Ease.OutQuad)
             .OnComplete(() => transform.DOScale(originalScale, duration * 0.8f).SetEase(Ease.InQuad));
     }
-    private IEnumerator ShootPause()
+/*    private IEnumerator ShootPause()
     {
         //canMove = false;
         // set the duration depending on the current weapon (type and recoil)
         // using unscaled time here
         yield return new WaitForSecondsRealtime(movePauseDuration);
         canMove = true;
-    }
+    }*/
     public void Stop()
     {
         GetComponentInChildren<WeaponManager>().inputLocked = true;

@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController instance;
     public AudioManager audioManager;
+    [HideInInspector] public LevelEnd lvl;
     public PlayerController player;
     [HideInInspector] public WeaponManager weaponManager;
     public CameraController cam;
@@ -20,7 +21,10 @@ public class SceneController : MonoBehaviour
     public Animator timerAnim;
     public int numOfCoin;
     public TextMeshProUGUI coinText, timerText;
-    public GameObject finalScreen, pauseScreen;
+    public Image coinResult, timerResult;
+    public Sprite trueSprite, falseSprite;
+    public TextMeshProUGUI timerRequirementText;
+    public GameObject finalScreen, deathScreen, pauseScreen;
     public TextMeshProUGUI currentLevelText1, currentLevelText2;
     [SerializeField] private Toggle aimDir, autoReload;
 
@@ -49,9 +53,6 @@ public class SceneController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             InitTimeScales();
-            finalScreen.SetActive(false);
-            pauseScreen.SetActive(false);
-            cancelAim.SetActive(false);
             aimDir.onValueChanged.AddListener(ToggleAimDir);
             autoReload.onValueChanged.AddListener(ToggleAutoReload);
         }
@@ -64,8 +65,13 @@ public class SceneController : MonoBehaviour
     {
         if (isPaused) return;
 
-        currentTime += Time.fixedDeltaTime;
+        currentTime -= Time.fixedDeltaTime;
         timerText.text = currentTime.ToString("0.0");
+        if (currentTime <= 0)
+        {
+            currentTime = 0;
+            LevelFinished(false);
+        }
     }
     public void PauseMenu()
     {
@@ -100,38 +106,59 @@ public class SceneController : MonoBehaviour
     }
     public void LevelStarted(PlayerController p)
     {
+        finalScreen.SetActive(false);
+        deathScreen.SetActive(false);
+        pauseScreen.SetActive(false);
+        cancelAim.SetActive(false);
         weaponManager = p.GetComponentInChildren<WeaponManager>();
         audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;
         player = p;
         numOfCoin = 0;
         CoinCollected(0);
-        currentTime = 0;
+        currentTime = lvl.timeRequirement;
         isPaused = false;
-        coinText.color = Color.white;
+        timerText.color = Color.white;
         coinText.color = Color.white;
         ToggleAimDir(aimDir.isOn);
         ToggleAutoReload(autoReload.isOn);
     }
-    public void LevelFinished(LevelEnd end)
+    public void LevelFinished(bool win)
     {
-        audioManager.PlaySfx(audioManager.lvlFinished);
         inLevel = false;
         isPaused = true;
         player.Stop();
         FindFirstObjectByType<WeaponManager>().StopAiming();
-
         currentLevelText1.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         currentLevelText2.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         timerAnim.SetBool("LevelEnd", true);
-        CameraLock(end);
+        if (win)
+        {
+            audioManager.PlaySfx(audioManager.lvlFinished);
+            CameraLock(lvl.lookAt, finalScreen);
+            if (lvl.timeRequirement - currentTime <= lvl.timeRequirement / 2f)
+                timerResult.sprite = trueSprite;
+            else
+                timerResult.sprite = falseSprite;
+            if (numOfCoin == lvl.coinRequirement)
+                coinResult.sprite = trueSprite;
+            else
+                coinResult.sprite = falseSprite;
+        }
+        else
+        {
+            Transform t = new GameObject("player lookAt", typeof(Transform)).transform;
+            t.position = player.transform.position + new Vector3(0, -2.2f, 0);
+            audioManager.PlaySfx(audioManager.gameOver);
+            CameraLock(t, deathScreen);
+        }
     }
-    private void CameraLock(LevelEnd end)
+    private void CameraLock(Transform target, GameObject screen)
     {
         var weaponManager = FindFirstObjectByType<WeaponManager>();
 
         weaponManager.inputLocked = true;
-        cam.target = end.lookAt;
+        cam.target = target;
 
         float targetSize = 4f;
         float duration = 1f;
@@ -146,15 +173,22 @@ public class SceneController : MonoBehaviour
          .SetTarget(cam)
          .OnComplete(() =>
          {
-             finalScreen.SetActive(true);
-             finalScreen.transform.localScale = Vector3.one;
-             finalScreen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
-             DOVirtual.DelayedCall(0.3f, () => TextEffects(end));
+             screen.SetActive(true);
+             screen.transform.localScale = Vector3.one;
+             screen.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f, 5, 0.5f);
+             DOVirtual.DelayedCall(0.2f, () => ResultEffect());
+             DOVirtual.DelayedCall(0.5f, () => TextEffects(lvl));
          });
+    }
+    private void ResultEffect()
+    {
+        coinResult.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
+        timerResult.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
     }
     private void TextEffects(LevelEnd end)
     {
-        if (currentTime <= end.timeRequirement)
+        timerRequirementText.text = "under " + end.timeRequirement / 2 + " seconds?";
+        if (end.timeRequirement - currentTime <= end.timeRequirement / 2f)
         {
             timerText.color = Color.green;
             timerText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f);
@@ -164,7 +198,6 @@ public class SceneController : MonoBehaviour
             timerText.color = Color.red;
             timerText.rectTransform.DOShakePosition(0.3f, strength: new Vector3(5f, 0f, 0f));
             timerText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
-
             cam.Shake();
         }
 

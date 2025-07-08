@@ -7,6 +7,12 @@ public class LevelEnd : MonoBehaviour
     public Transform lookAt;
     public float coinRequirement, timeRequirement;
     public static UnityAction<LevelEnd> OnLevelFinished;
+    private OffScreenIndicator indicator;
+    private void Awake()
+    {
+        indicator = GetComponent<OffScreenIndicator>();
+        indicator.InitIndicator(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

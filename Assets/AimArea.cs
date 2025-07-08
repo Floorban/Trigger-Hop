@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Solo.MOST_IN_ONE;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class AimArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public float cancelDelay = 0.5f;
     public bool isPointerOver = false;
     public Image fillIn;
+    public Most_HapticFeedback.CustomHapticPattern hapticPattern;
+
     private void Awake()
     {
         panel = GetComponent<RectTransform>();
@@ -66,6 +69,7 @@ public class AimArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void CancelAiming()
     {
+        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
         isPointerOver = false;
         fillIn.fillAmount = 0;
         transform.localScale = Vector3.one;

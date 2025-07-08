@@ -161,8 +161,8 @@ MonoBehaviour:
       PulseType: 5
     Android_HapticPattern:
     - Delay: 0
-      PulseTime: 80
-      PulseStrength: 150
+      PulseTime: 60
+      PulseStrength: 100
   canShoot: 0
   aimDir: {x: 0, y: 0}
   isPickup: 1

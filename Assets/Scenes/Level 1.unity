@@ -3460,13 +3460,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7730239670538593667, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3691734979014509084}
   m_SourcePrefab: {fileID: 100100000, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
 --- !u!4 &3691734979014509079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8731110319460959314, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
   m_PrefabInstance: {fileID: 3691734979014509078}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3691734979014509080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7730239670538593667, guid: 9ed97f4c639126f40b1ea59cd62df5e4, type: 3}
+  m_PrefabInstance: {fileID: 3691734979014509078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3691734979014509084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691734979014509080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241a6cd3b734e624f89a2a60e0b3bc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  indicatorPrefab: {fileID: 1184254559332774007, guid: 816499cfbb7a76d45bd6bda05fcbcd05, type: 3}
 --- !u!1001 &3724544715429905133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3635,8 +3657,28 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
-      propertyPath: cancelDelay
-      value: 0.3
+      propertyPath: hapticPattern.IOS_HapticPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].Delay
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: hapticPattern.IOS_HapticPattern.Array.data[0].PulseType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseTime
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942288398306185389, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
+      propertyPath: hapticPattern.Android_HapticPattern.Array.data[0].PulseStrength
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6301678162993428334, guid: 0798b51721e1e494db5fb7473b47e88d, type: 3}
       propertyPath: m_LocalPosition.x

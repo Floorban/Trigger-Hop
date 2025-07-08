@@ -16,11 +16,6 @@ public class OffScreenIndicator : MonoBehaviour
     // <target, indicator>
     private Dictionary<GameObject, GameObject> targetIndicators = new Dictionary<GameObject, GameObject>();
 
-    private void OnEnable()
-    {
-        //Enemy.OnEnemyDeath += RemoveTarget;
-    }
-
     private void Awake()
     {
         player = FindFirstObjectByType<PlayerController>().gameObject.transform;

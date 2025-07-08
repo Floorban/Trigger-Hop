@@ -298,8 +298,13 @@ MonoBehaviour:
   bulletSfx: {fileID: 8300000, guid: 5887d5516e7e599439e26b1964009368, type: 3}
   reloadSfx: {fileID: 8300000, guid: 5be3ec5640f02844bbe03d281b7442f6, type: 3}
   hapticPattern:
-    IOS_HapticPattern: []
-    Android_HapticPattern: []
+    IOS_HapticPattern:
+    - Delay: 0
+      PulseType: 4
+    Android_HapticPattern:
+    - Delay: 0
+      PulseTime: 50
+      PulseStrength: 100
   canShoot: 0
   aimDir: {x: 0, y: 0}
   isPickup: 0

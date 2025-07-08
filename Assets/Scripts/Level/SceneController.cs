@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
 
     [Header("Global Time Control")]
     public float currentTime;
-    [SerializeField] private bool isPaused = false;
+    public bool isPaused = false;
     private float playerTimeScale = 1f;
     private float enemyTimeScale = 1f;
     [SerializeField] [Range(0f, 1.5f)] private float timeScale = 1f;

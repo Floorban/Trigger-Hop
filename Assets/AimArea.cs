@@ -66,6 +66,8 @@ public class AimArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void CancelAiming()
     {
+        isPointerOver = false;
+        fillIn.fillAmount = 0;
         transform.localScale = Vector3.one;
         SceneController.instance.weaponManager.StopAiming();
         SceneController.instance.player.transform.rotation = Quaternion.identity;

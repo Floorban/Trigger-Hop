@@ -411,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleUp: 1.15
   scaleDuration: 0.1
-  cancelDelay: 0.5
+  cancelDelay: 0.3
   isPointerOver: 0
   fillIn: {fileID: 9071291458308510434}
 --- !u!1 &3053173744872110525

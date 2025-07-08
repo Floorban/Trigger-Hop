@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("RecoilEffect")]
     private Vector3 oriScale;
-    [SerializeField] private float movePauseDuration = 0.2f;
+    //[SerializeField] private float movePauseDuration = 0.2f;
 
     static public UnityAction<PlayerController> OnLevelStarted;
 

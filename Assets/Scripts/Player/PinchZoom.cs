@@ -6,17 +6,18 @@ using UnityEngine.UI;
 public class PinchZoom : MonoBehaviour
 {
     private Camera cam;
-    private Image img;
+    [SerializeField] private Image img;
     [SerializeField] private GameObject child1, child2, child3;
+    [SerializeField] private GameObject pinchGuide;
     public float zoomSpeed = 0.8f;
     public float minZoom = 3f;
     public float maxZoom = 10f;
     private bool isPinching = false;
-    private Color originalColor;
-    private void Start()
+    private Color originalColor, transparent;
+
+    private void Awake()
     {
-        cam = SceneController.instance.cam.GetComponent<Camera>();
-        img = GetComponent<Image>();
+        cam = FindFirstObjectByType<Camera>();
         originalColor = img.color;
     }
     private void HandleGesture(List<LeanFinger> fingers)
@@ -34,11 +35,15 @@ public class PinchZoom : MonoBehaviour
             child1.SetActive(false);
             child2.SetActive(false);
             child3.SetActive(false);
+            pinchGuide.SetActive(true);
 
             // Fade image while pinching
-            Color transparent = img.color;
-            transparent.a = 0.2f;
-            img.color = transparent;
+            if (transparent != null)
+            {
+                transparent = img.color;
+                transparent.a = 0.2f;
+                img.color = transparent;
+            }
 
             // Apply zoom
             var pinchScale = LeanGesture.GetPinchScale(fingers);
@@ -60,6 +65,7 @@ public class PinchZoom : MonoBehaviour
         child1.SetActive(true);
         child2.SetActive(true);
         child3.SetActive(true);
+        pinchGuide.SetActive(false);
     }
     private void OnEnable()
     {

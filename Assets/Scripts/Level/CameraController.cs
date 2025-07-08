@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using DG.Tweening;
-using Lean.Touch;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {

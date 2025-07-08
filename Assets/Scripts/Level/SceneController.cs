@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
     [HideInInspector] public LevelEnd lvl;
     public PlayerController player;
     [HideInInspector] public WeaponManager weaponManager;
+    public GestureTutorial gesture;
     public CameraController cam;
     public bool inLevel;
 
@@ -81,7 +82,7 @@ public class SceneController : MonoBehaviour
     public void PauseMenu()
     {
         if (isPaused) return;
-
+        gesture.Show(GestureType.Pinch);
         audioManager.PlaySfx(audioManager.spin);
         PauseGame();
         weaponManager.inputLocked = true;
@@ -115,6 +116,7 @@ public class SceneController : MonoBehaviour
         deathScreen.SetActive(false);
         pauseScreen.SetActive(false);
         cancelAim.SetActive(false);
+        gesture.gameObject.SetActive(false);
         timerAnim.speed = 1f;
         timerAnim.SetBool("LevelEnd", false);
         timerRequirementText.color = Color.white;

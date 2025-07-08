@@ -1715,6 +1715,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3552827109523327131}
   m_SourcePrefab: {fileID: 100100000, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
+--- !u!1 &371720022924817416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5404859750268305272, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
+  m_PrefabInstance: {fileID: 5632162734748011376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2468545476827074886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7812477766702848566, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
+  m_PrefabInstance: {fileID: 5632162734748011376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4897612769390856284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 999419750451544876, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
@@ -1732,12 +1742,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3500aede021f50489237f439af576d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 0.8
+  child1: {fileID: 9034434694338711306}
+  child2: {fileID: 371720022924817416}
+  child3: {fileID: 2468545476827074886}
+  zoomSpeed: 1.5
   minZoom: 3
   maxZoom: 10
 --- !u!224 &8081909336313390928 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4468067337295522848, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
+  m_PrefabInstance: {fileID: 5632162734748011376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9034434694338711306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3695683252294452346, guid: c4635aba8aa82224baa7899c837fc5dc, type: 3}
   m_PrefabInstance: {fileID: 5632162734748011376}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6854980206233049650

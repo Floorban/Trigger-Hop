@@ -217,7 +217,7 @@ public class SceneController : MonoBehaviour
 
         finalScreen.SetActive(false);
 
-        if (next)
+        if (next && PlayerPrefs.GetInt("ReachedLevels") < 5)
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         else
         {

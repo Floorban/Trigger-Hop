@@ -282,6 +282,7 @@ public class SceneController : MonoBehaviour
     public void ResumeGame()
     {
          isPaused = false;
+         gesture.Hide();
          SetScaledTime(1f);
     }
     public float GetPlayerTime() => GameTime * playerTimeScale * timeScale;
@@ -322,7 +323,7 @@ public class SceneController : MonoBehaviour
     {
         StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
         player.transform.rotation = Quaternion.identity;
-        cancelAim.gameObject.SetActive(false);
+        cancelAim.SetActive(false);
     }
     private void CoinCollected(int amount)
     {

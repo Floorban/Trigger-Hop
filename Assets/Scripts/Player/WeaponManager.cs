@@ -100,7 +100,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void StopAiming() {
         isAiming = false;
-        SceneController.instance.CancelAim();
+        SceneController.instance.cancelAim?.SetActive(false);
         SceneController.instance.SetScaledTime(1f);
         if (aimLine) aimLine.enabled = false;
     }

@@ -99,11 +99,6 @@ public class GunBase : MonoBehaviour {
             muzzle.SetTrigger("Fire");
             StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
             SceneController.instance.audioManager.PlaySfx(fireSfx);
-            if (currentAmmo <= 0)
-            {
-                if (!SceneController.instance.hasShaked)
-                    SceneController.instance.gesture.Show(GestureType.Shake);
-            }
             Debug.Log(currentAmmo + " left");
         }
 
@@ -116,6 +111,8 @@ public class GunBase : MonoBehaviour {
             canShoot = false;
             if (autoReload)
                 Reload(reloadDuration);
+            if (!SceneController.instance.hasShaked)
+                SceneController.instance.gesture.Show(GestureType.Shake);
         }
 
         // activate cooldown

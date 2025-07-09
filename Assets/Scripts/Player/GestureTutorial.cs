@@ -22,6 +22,7 @@ public class GestureTutorial : MonoBehaviour
     }
     public void Show(GestureType gesture)
     {
+        fingerTransform.DOKill();
         fingerTransform.gameObject.SetActive(true);
 
         switch (gesture)
@@ -49,11 +50,15 @@ public class GestureTutorial : MonoBehaviour
 
     private void PlayDrag()
     {
-        Vector2 start = new Vector2(-200f, 0f);
-        Vector2 end = new Vector2(200f, 0f);
-        fingerTransform.anchoredPosition = start;
+        fingerTransform.anchoredPosition = new Vector2(-200f, 0f);
 
-        fingerTransform.DOAnchorPos(end, animationDuration)
+        fingerTransform.DOAnchorPos(new Vector2(200f, 0f), animationDuration)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetUpdate(true);
+
+        fingerTransform.DOAnchorPosY(20f, animationDuration / 2f)
+            .SetRelative()
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine)
             .SetUpdate(true);

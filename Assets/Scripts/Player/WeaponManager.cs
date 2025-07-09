@@ -87,8 +87,11 @@ public class WeaponManager : MonoBehaviour
     }
     public void StartAiming() {
         if (currentGun.fireMode == GunBase.FireMode.Auto || isAiming) return;
-        SceneController.instance.hasDragged = true;
-        SceneController.instance.gesture.Hide();
+        if (!SceneController.instance.hasDragged)
+        {
+            SceneController.instance.hasDragged = true;
+            SceneController.instance.gesture.Hide();
+        }
         isAiming = true;
         SceneController.instance.cancelAim.SetActive(true);
         SceneController.instance.SetScaledTime(slowMotionScale);

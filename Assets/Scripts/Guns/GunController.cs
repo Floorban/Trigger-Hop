@@ -12,12 +12,12 @@ public abstract class GunController : GunBase
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isPickup || !collision.CompareTag("Player")) return;
+        DOTween.KillAll();
         if (!SceneController.instance.hasSwipped) SceneController.instance.gesture.Show(GestureType.Swipe);
         isPickup = false;
         GetComponent<Collider2D>().isTrigger = false;
         var weapon = FindFirstObjectByType<WeaponManager>();
         weapon.allGuns.Add(this);
-        DOTween.KillAll();
         gameObject.transform.SetParent(weapon.transform);
         gameObject.transform.localScale = Vector3.one;
         gameObject.transform.localPosition = Vector3.zero;

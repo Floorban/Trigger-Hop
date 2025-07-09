@@ -123,6 +123,7 @@ public class GunBase : MonoBehaviour {
     }
     public void Reload(float reloadTime) {
         if (isReloading) return;
+        if (SceneController.instance) SceneController.instance.audioManager.PlaySfx(bulletSfx);
         isReloading = true;
         Debug.Log("reloading");
         Invoke(nameof(FinishReload), reloadTime);

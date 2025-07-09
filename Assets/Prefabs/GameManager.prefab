@@ -75,6 +75,7 @@ MonoBehaviour:
   hasDragged: 0
   hasSwipped: 0
   hasPinched: 0
+  hasShaked: 0
   hapticPattern:
     IOS_HapticPattern:
     - Delay: 0

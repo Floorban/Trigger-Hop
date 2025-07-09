@@ -1,8 +1,8 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using Unity.VisualScripting;
+using static UnityEngine.Rendering.DebugUI;
 public enum GestureType
 {
     Drag,
@@ -14,8 +14,8 @@ public class GestureTutorial : MonoBehaviour
 {
     [SerializeField] private RectTransform fingerTransform;
     private Image fingerImage;
-    public Sprite drag, swipe, pinch;
-    public GameObject shake;
+    public Sprite drag, swipe, pinch, shake;
+    public TextMeshProUGUI prompt;
     public float animationDuration = 1f;
     private void Awake()
     {
@@ -26,6 +26,8 @@ public class GestureTutorial : MonoBehaviour
     {
         fingerTransform.DOKill();
         fingerTransform.gameObject.SetActive(true);
+        prompt.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -600f);
+        prompt.gameObject.SetActive(true);
 
         switch (gesture)
         {
@@ -42,7 +44,7 @@ public class GestureTutorial : MonoBehaviour
                 PlayPinch();
                 break;
             case GestureType.Shake:
-                fingerImage.sprite = null;
+                fingerImage.sprite = shake;
                 PlayShake();
                 break;
         }
@@ -52,13 +54,15 @@ public class GestureTutorial : MonoBehaviour
     {
         fingerTransform.DOKill();
         fingerTransform.gameObject.SetActive(false);
+        prompt.gameObject.SetActive(false);
     }
 
     private void PlayDrag()
     {
-        fingerTransform.anchoredPosition = new Vector2(-200f, 0f);
+        fingerTransform.anchoredPosition = new Vector2(-150f, 150f);
+        prompt.text = "drag to shoot";
 
-        fingerTransform.DOAnchorPos(new Vector2(200f, 0f), animationDuration)
+        fingerTransform.DOAnchorPos(new Vector2(150f, 50f), animationDuration)
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo)
             .SetUpdate(true);
@@ -72,9 +76,10 @@ public class GestureTutorial : MonoBehaviour
 
     private void PlaySwipe()
     {
-        Vector2 start = new Vector2(0f, 150f);
-        Vector2 end = new Vector2(0f, -150f);
+        Vector2 start = new Vector2(0f, 300f);
+        Vector2 end = new Vector2(0f, 0f);
         fingerTransform.anchoredPosition = start;
+        prompt.text = "swipe to switch weapon";
 
         fingerTransform.DOAnchorPos(end, animationDuration)
             .SetLoops(-1, LoopType.Yoyo)
@@ -86,6 +91,7 @@ public class GestureTutorial : MonoBehaviour
     {
         fingerTransform.anchoredPosition = new Vector2(0f, 350f);
         fingerTransform.localScale = Vector3.one;
+        prompt.text = "";
 
         fingerTransform.DOScale(0.5f, animationDuration)
             .SetLoops(-1, LoopType.Yoyo)
@@ -94,12 +100,18 @@ public class GestureTutorial : MonoBehaviour
     }
     private void PlayShake()
     {
-        fingerTransform.anchoredPosition = new Vector2(0f, 350f);
+        fingerTransform.anchoredPosition = new Vector2(-10f, 200f);
         fingerTransform.localScale = Vector3.one;
+        prompt.text = "shake / tap corner gun icon to reload\r\n";
 
-        fingerTransform.DOScale(0.5f, animationDuration)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine)
-            .SetUpdate(true);
+        fingerTransform.DOShakeAnchorPos(
+            duration: animationDuration,
+            strength: new Vector2(20f, 20f),
+            vibrato: 10,
+            randomness: 90,
+            snapping: false,
+            fadeOut: true)
+        .SetLoops(-1, LoopType.Restart)
+        .SetUpdate(true);
     }
 }

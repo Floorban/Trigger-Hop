@@ -45,6 +45,11 @@ public class MobileInput : IInput
         Vector3 acc = Input.acceleration;
         if (acc.sqrMagnitude > wManager.shakeIntensity) {
             wManager.currentGun.Reload(wManager.currentGun.reloadDuration);
+            if (!SceneController.instance.hasShaked)
+            {
+                SceneController.instance.hasShaked = true;
+                SceneController.instance.gesture.Hide();
+            }
         }
     }
     private void HandleSwitchWeaponInput(WeaponManager wManager) {

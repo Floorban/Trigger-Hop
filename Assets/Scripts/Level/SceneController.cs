@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
     public GameObject finalScreen, deathScreen, pauseScreen;
     public TextMeshProUGUI currentLevelText1, currentLevelText2;
     [SerializeField] private Toggle aimDir, autoReload;
-    public bool hasDragged, hasSwipped, hasPinched;
+    public bool hasDragged, hasSwipped, hasPinched, hasShaked;
     public Most_HapticFeedback.CustomHapticPattern hapticPattern;
 
     [Header("Global Time Control")]
@@ -110,6 +110,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelFinished(bool win)
     {
+        gesture.Hide();
         inLevel = false;
         isPaused = true;
         player.Stop();

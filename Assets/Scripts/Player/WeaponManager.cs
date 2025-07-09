@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour
     public float shakeIntensity = 10f;
     public float cycleDistance = 100f;
 
-    private void Awake() {
+    private void Start() {
         player = GetComponentInParent<PlayerController>();
         Physics2D.queriesStartInColliders = false;
         aimLine = GetComponent<LineRenderer>();

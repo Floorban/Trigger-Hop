@@ -123,6 +123,7 @@ public class GunBase : MonoBehaviour {
     }
     public void Reload(float reloadTime) {
         if (isReloading) return;
+        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
         if (SceneController.instance) SceneController.instance.audioManager.PlaySfx(bulletSfx);
         isReloading = true;
         Debug.Log("reloading");
@@ -134,7 +135,6 @@ public class GunBase : MonoBehaviour {
         ReloadAmmoUI();
         canShoot = true;
         animator.SetTrigger("Reload");
-        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
         SceneController.instance.audioManager.PlaySfx(reloadSfx);
         Debug.Log("finish reload");
     }
@@ -182,7 +182,6 @@ public class GunBase : MonoBehaviour {
                 .SetEase(Ease.OutBack)
                 .SetDelay(i * 0.15f);
 
-            SceneController.instance.audioManager.PlaySfx(bulletSfx);
             bulletUIList.Add(bullet);
         }
     }

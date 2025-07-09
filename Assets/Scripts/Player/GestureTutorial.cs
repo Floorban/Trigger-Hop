@@ -7,13 +7,15 @@ public enum GestureType
 {
     Drag,
     Swipe,
-    Pinch
+    Pinch,
+    Shake
 }
 public class GestureTutorial : MonoBehaviour
 {
     [SerializeField] private RectTransform fingerTransform;
     private Image fingerImage;
     public Sprite drag, swipe, pinch;
+    public GameObject shake;
     public float animationDuration = 1f;
     private void Awake()
     {
@@ -38,6 +40,10 @@ public class GestureTutorial : MonoBehaviour
             case GestureType.Pinch:
                 fingerImage.sprite = pinch;
                 PlayPinch();
+                break;
+            case GestureType.Shake:
+                fingerImage.sprite = null;
+                PlayShake();
                 break;
         }
     }
@@ -77,6 +83,16 @@ public class GestureTutorial : MonoBehaviour
     }
 
     private void PlayPinch()
+    {
+        fingerTransform.anchoredPosition = new Vector2(0f, 350f);
+        fingerTransform.localScale = Vector3.one;
+
+        fingerTransform.DOScale(0.5f, animationDuration)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true);
+    }
+    private void PlayShake()
     {
         fingerTransform.anchoredPosition = new Vector2(0f, 350f);
         fingerTransform.localScale = Vector3.one;

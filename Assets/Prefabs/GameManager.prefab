@@ -72,6 +72,17 @@ MonoBehaviour:
   currentLevelText2: {fileID: 2699289204187311098}
   aimDir: {fileID: 3208767977999332453}
   autoReload: {fileID: 415179901200628884}
+  hasDragged: 0
+  hasSwipped: 0
+  hasPinched: 0
+  hapticPattern:
+    IOS_HapticPattern:
+    - Delay: 0
+      PulseType: 5
+    Android_HapticPattern:
+    - Delay: 0
+      PulseTime: 50
+      PulseStrength: 150
   currentTime: 0
   isPaused: 0
   timeScale: 1

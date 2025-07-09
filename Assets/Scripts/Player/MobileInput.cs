@@ -11,7 +11,7 @@ public class MobileInput : IInput
         if (Input.touchCount == 1 && !wManager.isSwipingTwoFingers) {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.position.y > Screen.height * 0.8f)
+            if (touch.position.y > Screen.height * 0.8f || touch.position.y < Screen.height * 0.15f)
             {
                 wManager.StopAiming();
                 return;

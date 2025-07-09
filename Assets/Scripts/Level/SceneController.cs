@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
+using Solo.MOST_IN_ONE;
 
 public class SceneController : MonoBehaviour
 {
@@ -29,6 +31,7 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI currentLevelText1, currentLevelText2;
     [SerializeField] private Toggle aimDir, autoReload;
     public bool hasDragged, hasSwipped, hasPinched;
+    public Most_HapticFeedback.CustomHapticPattern hapticPattern;
 
     [Header("Global Time Control")]
     public float currentTime;
@@ -38,7 +41,6 @@ public class SceneController : MonoBehaviour
     [SerializeField] [Range(0f, 1.5f)] private float timeScale = 1f;
 
     public float GameTime => isPaused ? 0f : 1f;
-
     public float TimeScale
     {
         get => timeScale;
@@ -79,38 +81,6 @@ public class SceneController : MonoBehaviour
             timerText.color = Color.red;
             timerAnim.speed = 2f;
         }
-    }
-    public void PauseMenu()
-    {
-        if (isPaused) return;
-        if (!hasPinched)
-            gesture.Show(GestureType.Pinch);
-        audioManager.PlaySfx(audioManager.spin);
-        PauseGame();
-        weaponManager.inputLocked = true;
-        pauseScreen.SetActive(true);
-        pauseScreen.transform.localScale = Vector3.zero;
-        pauseScreen.transform
-          .DOScale(Vector3.one, 0.5f)
-          .SetEase(Ease.OutBack)
-          .SetUpdate(true);
-    }
-    public void Unpause()
-    {
-        if (!isPaused) return;
-
-        ResumeGame();
-        audioManager.PlaySfx(audioManager.btnConfirm);
-
-        pauseScreen.transform
-          .DOScale(Vector3.zero, 0.2f)
-          .SetEase(Ease.InOutQuad)
-          .SetUpdate(true)
-          .OnComplete(() =>
-            {
-                player.GetComponentInChildren<WeaponManager>().inputLocked = false;
-                pauseScreen.SetActive(false);
-            });
     }
     public void LevelStarted(PlayerController p)
     {
@@ -271,6 +241,38 @@ public class SceneController : MonoBehaviour
     {
         isPaused = !isPaused;
     }
+    public void PauseMenu()
+    {
+        if (isPaused) return;
+        if (!hasPinched)
+            gesture.Show(GestureType.Pinch);
+        audioManager.PlaySfx(audioManager.spin);
+        PauseGame();
+        weaponManager.inputLocked = true;
+        pauseScreen.SetActive(true);
+        pauseScreen.transform.localScale = Vector3.zero;
+        pauseScreen.transform
+          .DOScale(Vector3.one, 0.5f)
+          .SetEase(Ease.OutBack)
+          .SetUpdate(true);
+    }
+    public void Unpause()
+    {
+        if (!isPaused) return;
+
+        ResumeGame();
+        audioManager.PlaySfx(audioManager.btnConfirm);
+
+        pauseScreen.transform
+          .DOScale(Vector3.zero, 0.2f)
+          .SetEase(Ease.InOutQuad)
+          .SetUpdate(true)
+          .OnComplete(() =>
+          {
+              player.GetComponentInChildren<WeaponManager>().inputLocked = false;
+              pauseScreen.SetActive(false);
+          });
+    }
     public void PauseGame()
     {
          isPaused = true;
@@ -315,6 +317,12 @@ public class SceneController : MonoBehaviour
         }
     }
     public void Reload() => weaponManager.currentGun.Reload(weaponManager.currentGun.reloadDuration);
+    public void CancelAim()
+    {
+        StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
+        player.transform.rotation = Quaternion.identity;
+        cancelAim.gameObject.SetActive(false);
+    }
     private void CoinCollected(int amount)
     {
         numOfCoin += amount;

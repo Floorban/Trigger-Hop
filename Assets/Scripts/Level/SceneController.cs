@@ -217,7 +217,13 @@ public class SceneController : MonoBehaviour
 
         finalScreen.SetActive(false);
 
-        if (next && PlayerPrefs.GetInt("ReachedLevels") < 5)
+        if (SceneManager.GetActiveScene().buildIndex + 1 > 11)
+        {
+            BackToMenu();
+            return;
+        }
+
+        if (next)
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         else
         {

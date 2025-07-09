@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour
     [Header("Aiming")]
     [HideInInspector] public int inputAimDir = 1;
     private LineRenderer aimLine;
-    private bool isAiming = false;
+    public bool isAiming = false;
     [SerializeField] private float slowMotionScale = 0.3f;
 
     [Header("Switch Weapon")]

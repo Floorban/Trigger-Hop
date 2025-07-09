@@ -13,7 +13,8 @@ public class MobileInput : IInput
 
             if (touch.position.y > Screen.height * 0.8f || touch.position.y < Screen.height * 0.15f)
             {
-                SceneController.instance.CancelAim();
+                if (wManager.isAiming)
+                    SceneController.instance.CancelAim();
                 wManager.StopAiming();
                 return;
             }

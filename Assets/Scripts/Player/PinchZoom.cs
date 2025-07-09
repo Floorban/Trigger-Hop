@@ -51,14 +51,16 @@ public class PinchZoom : MonoBehaviour
             float newSize = cam.orthographicSize / pinchScale;
             cam.orthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
         }
-        else
+        else if (isPinching)
         {
-            if (isPinching)
-            {
-                isPinching = false;
-                ResetImageAlpha();
-            }
+            isPinching = false;
+            ResetImageAlpha();
         }
+    }
+    private void HandleFingerUp(LeanFinger finger)
+    {
+        isPinching = false;
+        ResetImageAlpha();
     }
     private void ResetImageAlpha()
     {
@@ -71,10 +73,12 @@ public class PinchZoom : MonoBehaviour
     private void OnEnable()
     {
         LeanTouch.OnGesture += HandleGesture;
+        LeanTouch.OnFingerUp += HandleFingerUp;
     }
 
     private void OnDisable()
     {
         LeanTouch.OnGesture -= HandleGesture;
+        LeanTouch.OnFingerUp -= HandleFingerUp;
     }
 }

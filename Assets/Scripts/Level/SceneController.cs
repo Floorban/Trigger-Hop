@@ -93,8 +93,6 @@ public class SceneController : MonoBehaviour
         cancelAim.SetActive(false);
         timerAnim.speed = 1f;
         timerAnim.SetBool("LevelEnd", false);
-        timerRequirementText.color = Color.white;
-        coinRequirementText.color = Color.white;
         weaponManager = p.GetComponentInChildren<WeaponManager>();
         audioManager.PlaySfx(audioManager.gameStart);
         inLevel = true;
@@ -115,6 +113,8 @@ public class SceneController : MonoBehaviour
         isPaused = true;
         player.Stop();
         FindFirstObjectByType<WeaponManager>().StopAiming();
+        timerRequirementText.color = Color.white;
+        coinRequirementText.color = Color.white;
         currentLevelText1.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         currentLevelText2.text = "Level " + SceneManager.GetActiveScene().buildIndex;
         timerRequirementText.text = "under " + lvl.timeRequirement / 2 + " seconds?";

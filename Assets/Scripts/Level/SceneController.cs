@@ -86,7 +86,7 @@ public class SceneController : MonoBehaviour
     {
         gesture.Hide();
         if (!hasDragged)
-            gesture.Show(GestureType.Drag);
+            gesture.ShowGesture(GestureType.Drag);
         finalScreen.SetActive(false);
         deathScreen.SetActive(false);
         pauseScreen.SetActive(false);
@@ -252,7 +252,7 @@ public class SceneController : MonoBehaviour
     {
         if (isPaused) return;
         if (!hasPinched)
-            gesture.Show(GestureType.Pinch);
+            gesture.ShowGesture(GestureType.Pinch);
         audioManager.PlaySfx(audioManager.spin);
         PauseGame();
         weaponManager.inputLocked = true;
@@ -335,6 +335,12 @@ public class SceneController : MonoBehaviour
     {
         numOfCoin += amount;
         coinText.text = numOfCoin.ToString();
+        coinText.color = Color.green;
+        coinText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f)
+                              .OnComplete(() => { 
+                                coinText.rectTransform.localScale = Vector3.one;
+                                coinText.color = Color.white;});
+        audioManager.PlaySfx(audioManager.coinCollect);
     }
     public int GetCoins() => numOfCoin;
     public void ConsumeCoins(int amount) => numOfCoin -= amount;

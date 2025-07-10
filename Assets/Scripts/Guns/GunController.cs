@@ -13,7 +13,7 @@ public abstract class GunController : GunBase
     {
         if (!isPickup || !collision.CompareTag("Player")) return;
         DOTween.KillAll();
-        if (!SceneController.instance.hasSwipped) SceneController.instance.gesture.Show(GestureType.Swipe);
+        if (!SceneController.instance.hasSwipped) SceneController.instance.gesture.ShowGesture(GestureType.Swipe);
         isPickup = false;
         GetComponent<Collider2D>().isTrigger = false;
         var weapon = FindFirstObjectByType<WeaponManager>();

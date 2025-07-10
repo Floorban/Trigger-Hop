@@ -22,7 +22,7 @@ public class GestureTutorial : MonoBehaviour
         fingerTransform = GetComponent<RectTransform>();
         fingerImage = GetComponent<Image>();
     }
-    public void Show(GestureType gesture)
+    public void ShowGesture(GestureType gesture)
     {
         fingerTransform.DOKill();
         fingerTransform.gameObject.SetActive(true);

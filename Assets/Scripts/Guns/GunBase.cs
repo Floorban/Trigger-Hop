@@ -112,7 +112,7 @@ public class GunBase : MonoBehaviour {
             if (autoReload)
                 Reload(reloadDuration);
             if (!SceneController.instance.hasShaked)
-                SceneController.instance.gesture.Show(GestureType.Shake);
+                SceneController.instance.gesture.ShowGesture(GestureType.Shake);
         }
 
         // activate cooldown

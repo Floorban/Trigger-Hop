@@ -13,6 +13,8 @@ public class Shop : MonoBehaviour
     {
         if (toOpen && !isOpen)
         {
+            GetCurrentCoin();
+            coinText.text = $"Coins : {numOfCoin}";
             shopPanel.SetActive(true);
             isOpen = true;
             shopPanel.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f, 2, 0.2f).SetEase(Ease.InOutQuad);
@@ -25,11 +27,28 @@ public class Shop : MonoBehaviour
             shopPanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
         }
     }
-    public void GetCoin() => numOfCoin = PlayerPrefs.GetInt("CoinCount");
+    private void GetCurrentCoin() => numOfCoin = PlayerPrefs.GetInt("CoinCount");
+    private void EarnCoin(int amount)
+    {
+        GetCurrentCoin();
+        numOfCoin += amount;
+        PlayerPrefs.SetInt("CoinCount", numOfCoin);
+        coinText.text = $"Coins : {numOfCoin}";
+    }
     public void ConsumeCoin()
     {
-        GetCoin();
+        GetCurrentCoin();
+        if (numOfCoin <= 0) return;
         numOfCoin--;
-        coinText.text = "Coins: " + numOfCoin.ToString();
+        PlayerPrefs.SetInt("CoinCount", numOfCoin);
+        coinText.text = $"Coins : {numOfCoin}";
+    }
+    private void OnEnable()
+    {
+        Reward.OnCoinReward += EarnCoin;
+    }
+    private void OnDisable()
+    {
+        Reward.OnCoinReward -= EarnCoin;
     }
 }

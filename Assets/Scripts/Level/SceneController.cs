@@ -249,7 +249,7 @@ public class SceneController : MonoBehaviour
         player.gameObject.transform.position = deadPos;
         player.UnFreeze();
         camC.target = player.transform;
-        Debug.Log("hey");
+        cam.orthographicSize = 7f;
     }
     public void BackToMenu()
     {

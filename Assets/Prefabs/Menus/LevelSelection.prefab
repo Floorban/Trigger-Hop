@@ -107,7 +107,7 @@ MonoBehaviour:
   rotationSensitivity: 0.5
   canSelect: 0
   isSnapping: 0
-  previousLvls: 7
+  previousLvls: 5
 --- !u!1 &328670113511105356
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   rotationSensitivity: 0.5
   canSelect: 0
   isSnapping: 0
-  previousLvls: 3
+  previousLvls: 2
 --- !u!1 &4941008050676454150
 GameObject:
   m_ObjectHideFlags: 0

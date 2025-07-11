@@ -148,8 +148,8 @@ MonoBehaviour:
   baseDamage: 2
   uiCanvas: {fileID: 0}
   gunUI: {fileID: 8333481726314500824, guid: ccbe0b18b5429d6438e3a5d336932a7d, type: 3}
-  bulletUI: {fileID: 3558773299328921602, guid: 241d789cd85a7ce41a1a62e355cf77e7, type: 3}
-  bulletPrefab: {fileID: 8960536926405029604, guid: 3621b23179a1afb4192551b2c8c4719d, type: 3}
+  bulletUI: {fileID: 2408793858625120054, guid: f02f931a276181c408e11d0a397f7966, type: 3}
+  bulletPrefab: {fileID: 7296618267740976744, guid: cab9015c37f1fd34f93394be7f5806a3, type: 3}
   shootPoint: {fileID: 8995636390683229517}
   muzzle: {fileID: 8816448977804265966}
   fireSfx: {fileID: 8300000, guid: 2e3a4324c9965bc43ab4a2a11fc7c8ec, type: 3}

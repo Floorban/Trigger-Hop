@@ -1,11 +1,11 @@
 using Lean.Touch;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 
 public class PinchZoom : MonoBehaviour
 {
-    private Camera cam;
     [SerializeField] private Image img;
     [SerializeField] private GameObject child1, child2, child3;
     [SerializeField] private GameObject pinchGuide;
@@ -17,7 +17,6 @@ public class PinchZoom : MonoBehaviour
 
     private void Awake()
     {
-        cam = FindFirstObjectByType<Camera>();
         originalColor = img.color;
     }
     private void HandleGesture(List<LeanFinger> fingers)
@@ -30,6 +29,17 @@ public class PinchZoom : MonoBehaviour
 
         if (fingers.Count == 2)
         {
+            foreach (var finger in fingers)
+            {
+                float y = finger.ScreenPosition.y;
+                if (y < Screen.height * 0.2f)
+                {
+                    ResetImageAlpha();
+                    return;
+                }
+            }
+
+
             SceneController.instance.hasPinched = true;
             isPinching = true;
 
@@ -48,8 +58,8 @@ public class PinchZoom : MonoBehaviour
 
             // Apply zoom
             var pinchScale = LeanGesture.GetPinchScale(fingers);
-            float newSize = cam.orthographicSize / pinchScale;
-            cam.orthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+            float newSize = SceneController.instance.cam.orthographicSize / pinchScale;
+            SceneController.instance.cam.orthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
         }
         else if (isPinching)
         {

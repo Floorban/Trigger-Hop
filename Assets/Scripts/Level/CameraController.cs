@@ -17,7 +17,8 @@ public class CameraController : MonoBehaviour
     private void Awake() => cam = GetComponent<Camera>();
     private void Start()
     {
-        SceneController.instance.cam = this;
+        SceneController.instance.camC = this;
+        SceneController.instance.cam = cam;
         target = SceneController.instance.player.transform;
     }
     private void LateUpdate()

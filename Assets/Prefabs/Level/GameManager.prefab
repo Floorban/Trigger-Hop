@@ -115,18 +115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Gameplay
       objectReference: {fileID: 0}
-    - target: {fileID: 2753646382378602282, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6741998230895345429, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6406224725222281349}
-    - target: {fileID: 7254988394104952278, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7405618616918168769, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -231,10 +223,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6995943440937449176}
-    - target: {fileID: 8996918507116417665, guid: c960ddbe74dec3344bf19ff3868fc6e0, type: 3}
-      propertyPath: zoomSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

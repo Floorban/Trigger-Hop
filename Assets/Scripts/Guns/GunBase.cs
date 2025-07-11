@@ -95,7 +95,7 @@ public class GunBase : MonoBehaviour {
         if (fireMode != FireMode.Charge) {
             currentAmmo -= consumedAmmo;
             UpdateAmmoUI(consumedAmmo);
-            SceneController.instance.cam.Shake();
+            SceneController.instance.camC.Shake();
             muzzle.SetTrigger("Fire");
             StartCoroutine(Most_HapticFeedback.GeneratePattern(hapticPattern));
             SceneController.instance.audioManager.PlaySfx(fireSfx);

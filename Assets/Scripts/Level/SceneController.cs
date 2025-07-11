@@ -15,7 +15,8 @@ public class SceneController : MonoBehaviour
     public PlayerController player;
     [HideInInspector] public WeaponManager weaponManager;
     public GestureTutorial gesture;
-    public CameraController cam;
+    public Camera cam;
+    public CameraController camC;
     public bool inLevel;
 
     [Header("UI")]
@@ -145,19 +146,19 @@ public class SceneController : MonoBehaviour
         var weaponManager = FindFirstObjectByType<WeaponManager>();
 
         weaponManager.inputLocked = true;
-        cam.target = target;
+        camC.target = target;
 
         float targetSize = 4f;
         float duration = 1f;
 
-        DOTween.Kill(cam);
+        DOTween.Kill(camC);
         DOTween.To(
-            () => cam.Size,
-            x => cam.Size = x,
+            () => camC.Size,
+            x => camC.Size = x,
             targetSize,
             duration
         ).SetEase(Ease.InOutQuad)
-         .SetTarget(cam)
+         .SetTarget(camC)
          .OnComplete(() =>
          {
              screen.SetActive(true);
@@ -186,7 +187,7 @@ public class SceneController : MonoBehaviour
             timerRequirementText.color = Color.red;
             timerRequirementText.rectTransform.DOShakePosition(0.3f, strength: new Vector3(5f, 0f, 0f));
             timerRequirementText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
-            cam.Shake();
+            camC.Shake();
         }
 
         if (numOfCoin == end.coinRequirement)
@@ -200,7 +201,7 @@ public class SceneController : MonoBehaviour
             coinText.color = Color.red;
             coinRequirementText.color = Color.red;
             coinRequirementText.rectTransform.DOShakeRotation(0.4f, strength: 30f);
-            cam.Shake();
+            camC.Shake();
         }
     }
     public void NextLevel(bool next)

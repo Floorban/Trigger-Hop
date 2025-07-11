@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidGameId: 5897619
   _iOSGameId: 5897618
-  _testMode: 1
+  _testMode: 0
 --- !u!114 &473890568806801825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +75,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04e75ca20b501a4b99b255cb3ef1e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showAdButton: {fileID: 0}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS

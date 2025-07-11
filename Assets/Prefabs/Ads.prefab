@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5766798458934389101}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -401.78653, y: -572.1261, z: 0.35453215}
   m_LocalScale: {x: 0.74074084, y: 0.74074084, z: 0.74074084}
   m_ConstrainProportionsScale: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0e802adacb4464aa96077aa5f4b868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidGameId: 5897618
-  _iOSGameId: 5897619
+  _androidGameId: 5897619
+  _iOSGameId: 5897618
   _testMode: 1
 --- !u!114 &473890568806801825
 MonoBehaviour:

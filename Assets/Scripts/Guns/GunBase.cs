@@ -129,6 +129,11 @@ public class GunBase : MonoBehaviour {
         }
 
         // activate cooldown
+        if (player.justRevive)
+        {
+            player.rb.simulated = true;
+            player.justRevive = false;
+        }
         lastShotTime = Time.time;
         return true;
     }

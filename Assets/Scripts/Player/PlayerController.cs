@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     public Rigidbody2D rb { get; private set; }
     private HealthSystem health;
+    [HideInInspector] public bool justRevive;
 
 /*    [Header("Movement")]
     public bool canMove = false;
@@ -77,12 +78,24 @@ public class PlayerController : MonoBehaviour, IDamageable
         .SetTarget(rb)
         .OnComplete(() => rb.bodyType = RigidbodyType2D.Kinematic);
     }
+    public void UnFreeze()
+    {
+        var weapon = GetComponentInChildren<WeaponManager>();
+        weapon.inputLocked = false;
+        weapon.currentGun.Setup(this);
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.simulated = false;
+        justRevive = true;
+    }
 
     public void TakeDamage(int damageAmount, float stun)
     {
         health.Damage(damageAmount);
         if (health.GetHealth() <= 0)
+        {
+            SceneController.instance.deadPos = transform.position + Vector3.one;
             SceneController.instance.LevelFinished(false);
+        }
     }
 
     /*    private void ApplyCustomGravity()

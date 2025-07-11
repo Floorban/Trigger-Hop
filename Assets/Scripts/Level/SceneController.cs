@@ -18,6 +18,7 @@ public class SceneController : MonoBehaviour
     public Camera cam;
     public CameraController camC;
     public bool inLevel;
+    [HideInInspector] public Vector3 deadPos;
 
     [Header("UI")]
     public GameObject cancelAim;
@@ -208,7 +209,6 @@ public class SceneController : MonoBehaviour
     public void NextLevel(bool next)
     {
         audioManager.PlaySfx(audioManager.btnConfirm);
-        player = null;
         if (ammoUI.GetChild(0))
         {
             foreach (Transform child in ammoUI)
@@ -232,6 +232,24 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             LevelStarted(player);
         }
+    }
+    public void Revive()
+    {
+        audioManager.PlaySfx(audioManager.btnConfirm);
+        if (ammoUI.GetChild(0))
+        {
+            foreach (Transform child in ammoUI)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        finalScreen.SetActive(false);
+        LevelStarted(player);
+        player.gameObject.transform.position = deadPos;
+        player.UnFreeze();
+        camC.target = player.transform;
+        Debug.Log("hey");
     }
     public void BackToMenu()
     {

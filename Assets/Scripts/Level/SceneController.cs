@@ -228,10 +228,7 @@ public class SceneController : MonoBehaviour
         if (next)
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         else
-        {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-            LevelStarted(player);
-        }
     }
     public void Revive()
     {

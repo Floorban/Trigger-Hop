@@ -63,12 +63,14 @@ public class Reward : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListene
     {
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
+        SceneController.instance.Revive();
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
+        SceneController.instance.Revive();
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }

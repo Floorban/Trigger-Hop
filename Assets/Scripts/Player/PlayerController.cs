@@ -5,9 +5,10 @@ using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IDamageable
+{
     public Rigidbody2D rb { get; private set; }
-    private Collider2D col;
+    private HealthSystem health;
 
 /*    [Header("Movement")]
     public bool canMove = false;
@@ -21,43 +22,16 @@ public class PlayerController : MonoBehaviour {
 
     static public UnityAction<PlayerController> OnLevelStarted;
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
         oriScale = transform.localScale;
     }
-    private void Start() => OnLevelStarted?.Invoke(this);
-    
-/*    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-*//*        if (collision.collider.CompareTag("Wall"))
-        {
-            foreach (ContactPoint2D contact in collision.contacts)
-            {
-                // hit from the side
-                if (Mathf.Abs(contact.normal.x) > 0.5f)
-                {
-                    Flip();
-                    break;
-                }
-            }
-        }*//*
-        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
-        {
-            isOnPlatform = true;
-        }
+        OnLevelStarted?.Invoke(this);
+        health = GetComponent<HealthManager>()?.healthSystem;
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
-        {
-            isOnPlatform = false;
-        }
-    }*/
-/*    private void HorizonMove() {
-        if (!canMove) return;
-        rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
-    }*/
 
     public void ApplyRecoil(Vector2 dir, float force)
     {
@@ -69,6 +43,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(FallThroughPlatform());
         }*/
     }
+
     public void RecoilSquash(float duration = 0.08f, float squashAmount = 0.7f)
     {
         transform.DOKill();
@@ -101,6 +76,13 @@ public class PlayerController : MonoBehaviour {
         .SetEase(Ease.OutQuad)
         .SetTarget(rb)
         .OnComplete(() => rb.bodyType = RigidbodyType2D.Kinematic);
+    }
+
+    public void TakeDamage(int damageAmount, float stun)
+    {
+        health.Damage(damageAmount);
+        if (health.GetHealth() <= 0)
+            SceneController.instance.LevelFinished(false);
     }
 
     /*    private void ApplyCustomGravity()
@@ -137,6 +119,37 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = scale;
         }*/
 
+    /*    private void OnCollisionEnter2D(Collision2D collision)
+    {
+*//*        if (collision.collider.CompareTag("Wall"))
+        {
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                // hit from the side
+                if (Mathf.Abs(contact.normal.x) > 0.5f)
+                {
+                    Flip();
+                    break;
+                }
+            }
+        }*//*
+        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
+        {
+            isOnPlatform = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & platformLayer) != 0)
+        {
+            isOnPlatform = false;
+        }
+    }*/
+
+    /*    private void HorizonMove() {
+            if (!canMove) return;
+            rb.linearVelocity = new Vector2(moveDir * moveSpeed * Time.fixedDeltaTime, rb.linearVelocity.y);
+        }*/
     // TO DO: use leantween or dotween to replace the effect later
     /*    public IEnumerator RecoilSquash(float duration = 0.1f, float squashAmount = 0.8f)
         {

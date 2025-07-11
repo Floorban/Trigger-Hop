@@ -13,7 +13,11 @@ public class AttackComponent : MonoBehaviour
             damageable.TakeDamage(damageAmount, stunTime);
             Destroy(gameObject);
         }
-        // TO DO: get the contact point and spawn particle
-        //Destroy(gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
+            damageable.TakeDamage(damageAmount, stunTime);
     }
 }

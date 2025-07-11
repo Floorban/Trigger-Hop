@@ -66,7 +66,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         bac.damageAmount = 1;
         Rigidbody2D brb = proj.GetComponent<Rigidbody2D>();
         brb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        proj.GetComponent<ProjectileController>().Init(Vector2.right, 1f, 5f, false);
+        proj.GetComponent<ProjectileController>().Init(Vector2.right, stats.projectileSpeed, 5f, false);
     }
     public virtual void Die() {
         Destroy(gameObject, 0f);

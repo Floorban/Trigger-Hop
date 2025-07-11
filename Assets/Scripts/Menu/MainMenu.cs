@@ -116,9 +116,12 @@ public class MainMenu : MonoBehaviour
     private void PlayButtonAnim(GameObject targetButton, UnityAction onComplete)
     {
         if (targetButton)
+        {
+            targetButton.transform.localScale = Vector3.one;
             targetButton.transform.DOPunchScale(Vector3.one * 0.2f, 0.2f, 2, 0.2f) // Scale punch animation
-                                    .SetEase(Ease.InOutQuad)
-                                    .OnComplete(() => onComplete?.Invoke()); 
+                                   .SetEase(Ease.InOutQuad)
+                                   .OnComplete(() => onComplete?.Invoke());
+        }
         else
             onComplete?.Invoke();
     }

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6065c91f3551cc64cbf0e1a6d2a71333, type: 2}
   canBeDamaged: 1
-  coolDown: 0.75
+  canShoot: 1
   projectilePrefab: {fileID: 8960536926405029604, guid: 5442e0dd821fbb44e9951013da47dc7e, type: 3}
   shootPoint: {fileID: 6675746953746416283}
   active: 0

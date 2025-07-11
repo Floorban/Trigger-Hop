@@ -9,6 +9,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public EnemyStats stats;
     protected HealthSystem health;
     public bool canBeDamaged = true;
+    public bool canShoot;
     protected float timer;
     public GameObject projectilePrefab;
     [SerializeField] private Transform shootPoint;
@@ -63,12 +64,14 @@ public class EnemyBase : MonoBehaviour, IDamageable
     }
     public void Shoot()
     {
+        if (!canShoot) return;
+
         GameObject proj = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
         AttackComponent bac = proj.AddComponent<AttackComponent>();
         bac.damageAmount = 1;
         Rigidbody2D brb = proj.GetComponent<Rigidbody2D>();
         brb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        proj.GetComponent<ProjectileController>().Init(Vector2.right * shootDir, stats.projectileSpeed, 5f, false);
+        proj.GetComponent<ProjectileController>().Init(shootPoint.right * shootDir, stats.projectileSpeed, 5f, false);
     }
     public virtual void Die() {
         Destroy(gameObject, 0f);

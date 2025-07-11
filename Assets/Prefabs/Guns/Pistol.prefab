@@ -282,10 +282,10 @@ MonoBehaviour:
   inputAimDIr: 1
   autoReload: 0
   clipSize: 3
-  cooldown: 0.5
+  cooldown: 0.4
   reloadDuration: 1
   bulletSpeed: 20
-  recoilForce: 4
+  recoilForce: 3.5
   bulletLifetime: 1
   baseDamage: 1
   uiCanvas: {fileID: 0}

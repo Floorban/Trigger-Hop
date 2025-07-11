@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 881151138131519241}
   - component: {fileID: 3770983810418118525}
   - component: {fileID: 1589581733492511501}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Collecter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 6543627876583755661}
   - component: {fileID: 8111186287780900109}
   - component: {fileID: 706012477980804616}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Magnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

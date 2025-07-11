@@ -369,7 +369,7 @@ MonoBehaviour:
   inputAimDIr: 1
   autoReload: 0
   clipSize: 6
-  cooldown: 1
+  cooldown: 0.8
   reloadDuration: 1
   bulletSpeed: 30
   recoilForce: 7

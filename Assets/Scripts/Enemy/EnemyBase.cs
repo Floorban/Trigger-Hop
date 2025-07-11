@@ -9,7 +9,6 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public EnemyStats stats;
     protected HealthSystem health;
     public bool canBeDamaged = true;
-    [SerializeField] protected float coolDown = 1f;
     protected float timer;
     public GameObject projectilePrefab;
     [SerializeField] private Transform shootPoint;
@@ -23,6 +22,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public float returnDuration = 0.2f;
 
     private Vector3 originalScale;
+    private int shootDir = 1;
     private Sequence squashLoop;
     public bool Active
     {
@@ -41,6 +41,8 @@ public class EnemyBase : MonoBehaviour, IDamageable
     private void Start()
     {
         originalScale = transform.localScale;
+        if (originalScale.x > 0) shootDir = 1;
+        else shootDir = -1;
         health = GetComponent<HealthManager>().healthSystem;
         Active = true;
     }
@@ -49,7 +51,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     {
         if (!active) return;
 
-        if (timer < coolDown)
+        if (timer < stats.coolDown)
         {
             timer += Time.fixedDeltaTime;
         }
@@ -66,7 +68,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         bac.damageAmount = 1;
         Rigidbody2D brb = proj.GetComponent<Rigidbody2D>();
         brb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        proj.GetComponent<ProjectileController>().Init(Vector2.right, stats.projectileSpeed, 5f, false);
+        proj.GetComponent<ProjectileController>().Init(Vector2.right * shootDir, stats.projectileSpeed, 5f, false);
     }
     public virtual void Die() {
         Destroy(gameObject, 0f);

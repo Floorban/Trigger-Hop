@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibleTime: 0.5
   damage: 1
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  coolDown: 2
+  projectileSpeed: 3

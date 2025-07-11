@@ -45,14 +45,27 @@ public class GunBase : MonoBehaviour {
     protected float lastShotTime;
     protected bool isReloading = false;
     [HideInInspector] public  Vector2 aimDir;
+
+    private OffScreenIndicator indicator;
+    public bool isPickup = false;
+    public float swingAngle = 15f;
+    public float swingDuration = 2;
+
     private void Awake() {
-        if (isPickup) GetComponent<Collider2D>().isTrigger = true;
         animator = GetComponent<Animator>();
         uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;
         inputAimDIr = GetInputDir(reverseAimDir);
         StartSwing();
     }
+    private void Start()
+    {
+        if (!isPickup) return;
+        GetComponent<Collider2D>().isTrigger = true;
+        indicator = GetComponent<OffScreenIndicator>();
+        indicator.InitIndicator(gameObject);
+    }
+
     public virtual void Setup(PlayerController p) {
         player = p;
         inputAimDIr = GetInputDir(reverseAimDir);
@@ -198,9 +211,6 @@ public class GunBase : MonoBehaviour {
         bulletUIList.Clear();
     }
 
-    public bool isPickup = false;
-    public float swingAngle = 15f;
-    public float swingDuration = 2;
     public void StartSwing()
     {
         if (!isPickup) return;

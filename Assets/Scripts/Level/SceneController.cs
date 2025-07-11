@@ -109,6 +109,7 @@ public class SceneController : MonoBehaviour
     }
     public void LevelFinished(bool win)
     {
+        if (!inLevel) return;
         gesture.Hide();
         inLevel = false;
         isPaused = true;

@@ -354,6 +354,8 @@ public class SceneController : MonoBehaviour
     private void CoinCollected(int amount)
     {
         numOfCoin += amount;
+        PlayerPrefs.SetInt("CoinCount", numOfCoin);
+        PlayerPrefs.Save();
         coinText.text = numOfCoin.ToString();
         coinText.color = Color.green;
         coinText.rectTransform.DOPunchScale(Vector3.one * 0.3f, 0.5f, 5, 1f)

@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using static Unity.VisualScripting.Member;
 
 /// <summary>
 /// source code from Unity documentation https://docs.unity.com/grow/en-us/ads/unity-sdk/interstitial-ads
 /// </summary>
+/// 
+
 public class Interstitial : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] string _androidAdUnitId = "Interstitial_Android";

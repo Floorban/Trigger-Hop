@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8000816608383650118}
   - component: {fileID: 7894791487315111776}
   - component: {fileID: 473890568806801825}
+  - component: {fileID: 457145248150913278}
   m_Layer: 0
   m_Name: Ads
   m_TagString: Untagged
@@ -62,3 +63,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidAdUnitId: Interstitial_Android
   _iOSAdUnitId: Interstitial_iOS
+--- !u!114 &457145248150913278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766798458934389101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04e75ca20b501a4b99b255cb3ef1e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showAdButton: {fileID: 0}
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS

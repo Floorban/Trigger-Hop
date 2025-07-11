@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 8630431187435480854}
   - component: {fileID: 2587929185726133524}
   - component: {fileID: 5796152332275720306}
+  - component: {fileID: 8193677333216564767}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Player
@@ -233,6 +234,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8193677333216564767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169202594134628686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241a6cd3b734e624f89a2a60e0b3bc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  indicatorPrefab: {fileID: 1184254559332774007, guid: 47f1ab4f033b72e41b5a07bb10b06d45, type: 3}
 --- !u!1 &8577793530998334751
 GameObject:
   m_ObjectHideFlags: 0

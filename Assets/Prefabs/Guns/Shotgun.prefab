@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 1864334223346747582}
   - component: {fileID: 2490637896506010854}
   - component: {fileID: 4462851619274085184}
+  - component: {fileID: 6441424543359657129}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Player
@@ -459,3 +460,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6441424543359657129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490934903384766553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241a6cd3b734e624f89a2a60e0b3bc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  indicatorPrefab: {fileID: 1184254559332774007, guid: 47f1ab4f033b72e41b5a07bb10b06d45, type: 3}

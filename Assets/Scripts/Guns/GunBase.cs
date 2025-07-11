@@ -52,6 +52,7 @@ public class GunBase : MonoBehaviour {
     public float swingDuration = 2;
 
     private void Awake() {
+        indicator = GetComponent<OffScreenIndicator>();
         animator = GetComponent<Animator>();
         uiCanvas = GameObject.Find("Ammo").GetComponent<RectTransform>();
         currentAmmo = clipSize;
@@ -62,7 +63,6 @@ public class GunBase : MonoBehaviour {
     {
         if (!isPickup) return;
         GetComponent<Collider2D>().isTrigger = true;
-        indicator = GetComponent<OffScreenIndicator>();
         indicator.InitIndicator(gameObject);
     }
 

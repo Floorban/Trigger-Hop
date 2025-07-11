@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 2985260621085338012}
   - component: {fileID: 854340693933879571}
   - component: {fileID: 6409506802601025204}
+  - component: {fileID: 2925734139936145786}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Player
@@ -260,8 +261,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 729881616518530984}
   m_Father: {fileID: 0}
@@ -307,9 +308,9 @@ MonoBehaviour:
       PulseStrength: 100
   canShoot: 0
   aimDir: {x: 0, y: 0}
-  isPickup: 0
-  swingAngle: 15
-  swingDuration: 2
+  isPickup: 1
+  swingAngle: 20
+  swingDuration: 1.5
 --- !u!95 &854340693933879571
 Animator:
   serializedVersion: 7
@@ -362,13 +363,27 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 1, y: 0.7}
   m_Direction: 1
+--- !u!114 &2925734139936145786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564977014879158713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241a6cd3b734e624f89a2a60e0b3bc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  indicatorPrefab: {fileID: 1184254559332774007, guid: 47f1ab4f033b72e41b5a07bb10b06d45, type: 3}
 --- !u!1 &8882689657011356213
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ MonoBehaviour:
   weaponManager: {fileID: 0}
   gesture: {fileID: 1903806101308358805}
   cam: {fileID: 0}
+  camC: {fileID: 0}
   inLevel: 0
   cancelAim: {fileID: 3900019945393123807}
   ammoUI: {fileID: 1575729690522992419}
